@@ -1,5 +1,43 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Radon';
+  src: url('/fonts/RadonRegular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Archia';
+  src: url('/fonts/Archia-Regular.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apple Garamond Bold';
+  src: url('/fonts/AppleGaramond-Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apple Garamond Bold Italic';
+  src: url('/fonts/AppleGaramond-BoldItalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/fonts/AppleGaramond.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
 :root {
   --background: var(--color-primary);
 }
@@ -19,19 +57,24 @@
   --spacing-x-small: 4px;
   --spacing-small: 8px;
   --spacing-medium: 16px;
-  --spacing-large: 32px;
+  --spacing-large: clamp(2rem, -1.4286rem + 17.1429vw, 14rem);
   --spacing-x-large: 40px;
   --spacing-xx-large: 64px;
   --spacing-negative: 224px;
-  --spacing-button: 12px;
+  --spacing-button: .7rem 1.4rem;
 
   /*===== Font =====*/
+  --font-header: 'RadonRegular', serif;
+  --font-subheader: 'AppleGaramond', serif;
+  --font-subheader-bold: 'AppleGaramond-Bold', serif;
+  --font-subheader-bold-italic: 'AppleGaramond-BoldItalic', serif;
+  --font-body-text: 'Archia-Regular', sans-serif;
   /*===== Font-size =====*/
   --text-h1: clamp(2.4413rem, 1.1798rem + 6.3071vw, 6.8563rem);
   --text-h2: clamp(1.9531rem, 1.3004rem + 3.2634vw, 4.2375rem);
   --text-h3: clamp(1.5625rem, 1.2607rem + 1.5089vw, 2.6188rem);
-  --text-paragraph: 1rem;
-  --text-button: 1rem;
+  --text-paragraph: 1.6rem;
+  --text-button: var(--text-paragraph);
   --text-label: var(--text-paragraph);
   --text-blockquote: clamp(1.25rem, 1.1446rem + 0.5268vw, 1.6188rem);
   --text-pill: clamp(0.6188rem, 0.8518rem + -0.2589vw, 0.8rem);
@@ -55,3 +98,31 @@ body {
 h1, h2, h3, p, blockquote {
   color: var(--color-secondary);
 } 
+
+h1{
+  font-size: var(--text-h1);
+  font-family: 'Radon';
+}
+
+header > h2:only-child{
+  font-size: var(--text-h2);
+  font-family: 'Radon';
+}
+h1 + h2{
+  font-size: var(--text-h2);
+}
+h3{
+  font-size: var(--text-h3);
+}
+
+blockquote {
+  font-size: var(--text-blockquote);
+}
+
+button, a, p  {
+  font-family: 'Archia';
+}
+
+.blue-shadow{
+  box-shadow: -16px 125px 35px 0px rgba(111, 140, 236, 0.00), -10px 80px 32px 0px rgba(111, 140, 236, 0.01), -6px 45px 27px 0px rgba(111, 140, 236, 0.03), -3px 20px 20px 0px rgba(111, 140, 236, 0.04), -1px 5px 11px 0px rgba(111, 140, 236, 0.05);
+}

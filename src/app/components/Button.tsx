@@ -9,7 +9,7 @@ const Button = ({ children, onClick }: ButtonProps) => {
   return (
     <button
       onClick={onClick}
-      className="bg-[linear-gradient(244deg,_#2854E3_13.87%,_#96ABEE_175.35%)] text-primary text-button px-button rounded-full"
+      className="bg-[linear-gradient(244deg,_#2854E3_13.87%,_#96ABEE_175.35%)] text-primary text-button p-button rounded-full blue-shadow"
     >
       {children}
     </button>

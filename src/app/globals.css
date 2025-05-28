@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-primary);
 }
 
 @theme inline {
-  --color-background: var(--background);
+  /*===== Colorpalette =====*/
+  --color-primary: #FAF7EE;
+  --color-secondary: #1D3557;
+  --color-accent: #2854E3;
+  --color-accent-gradient: linear-gradient(244deg, #2854E3, #96ABEE);
+  --color-text: var(--color-secondary);
+  --color-pill: var(--color-accent-gradient);
+  --color-btn-text:;
+  
+  /*===== Spacing =====*/
+  --spacing-xx-small: 2px;
+  --spacing-x-small: 4px;
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 32px;
+  --spacing-x-large: 40px;
+  --spacing-xx-large: 64px;
+  --spacing-negative: 224px;
+  --spacing-button: 12px;
+
+  /*===== Font =====*/
+  /*===== Font-size =====*/
+  --text-h1: clamp(2.4413rem, 1.1798rem + 6.3071vw, 6.8563rem);
+  --text-h2: clamp(1.9531rem, 1.3004rem + 3.2634vw, 4.2375rem);
+  --text-h3: clamp(1.5625rem, 1.2607rem + 1.5089vw, 2.6188rem);
+  --text-paragraph: 1rem;
+  --text-button: 1rem;
+  --text-label: var(--text-paragraph);
+  --text-blockquote: clamp(1.25rem, 1.1446rem + 0.5268vw, 1.6188rem);
+  --text-pill: clamp(0.6188rem, 0.8518rem + -0.2589vw, 0.8rem);
+  /*===== Font-weight =====*/
+  /*===== Lineheight =====*/
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-primary);
   }
-}
+}*/
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-primary);
 }
+
+h1, h2, h3, p, blockquote {
+  color: var(--color-secondary);
+} 

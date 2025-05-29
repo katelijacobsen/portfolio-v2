@@ -48,6 +48,7 @@
   --color-secondary: #1D3557;
   --color-accent: #2854E3;
   --color-accent-gradient: linear-gradient(244deg, #2854E3, #96ABEE);
+  --color-neutral: #FBFBFB;
   --color-text: var(--color-secondary);
   --color-pill: var(--color-accent-gradient);
   --color-btn-text:;
@@ -91,6 +92,7 @@
   }
 }*/
 
+/*===== Fixed Rules =====*/
 body {
   background: var(--color-primary);
 }
@@ -108,7 +110,7 @@ header > h2:only-child{
   font-size: var(--text-h2);
   font-family: 'Radon';
 }
-h1 + h2{
+header div + h2{
   font-size: var(--text-h2);
 }
 h3{
@@ -125,4 +127,32 @@ button, a, p  {
 
 .blue-shadow{
   box-shadow: -16px 125px 35px 0px rgba(111, 140, 236, 0.00), -10px 80px 32px 0px rgba(111, 140, 236, 0.01), -6px 45px 27px 0px rgba(111, 140, 236, 0.03), -3px 20px 20px 0px rgba(111, 140, 236, 0.04), -1px 5px 11px 0px rgba(111, 140, 236, 0.05);
+}
+
+/*===== GSAP Classes =====*/
+
+.line {
+  overflow: hidden;
+}
+
+/*===== Pesudo Elements =====*/
+
+.asset-moon::after {
+  content: "";
+  position: absolute;
+  inset: 15% 0 0 -11%;
+  width: 5rem;
+  height: 5rem;
+  pointer-events: none;
+  background: url('/img/icons/moon.svg') no-repeat center / contain;
+}
+.asset-wheel::before {
+  content: "";
+  position: absolute;
+  inset: 65% 0 0 85%;
+  width: 5rem;
+  height: 5rem;
+  pointer-events: none;
+  background: url('/img/icons/wheel.svg') no-repeat center / contain;
+  z-index: 1;
 }

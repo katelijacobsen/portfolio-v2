@@ -1,33 +1,70 @@
 "use client";
 // Import GSAP and React Hooks
 import { gsap } from "gsap";
+import SplitText from "gsap/SplitText";
 import { useEffect, useRef } from "react";
 
+//Icons
+import { LuArrowUpRight } from "react-icons/lu";
+
+// Components
 import Image from "next/image";
 import Button from "./components/Button";
 import Skills from "./components/Skills";
+import _SplitText from "gsap/SplitText";
 
 export default function Home() {
 
+  
+  useEffect(() => {
+    //Plugin
+    gsap.registerPlugin(SplitText);
+
+    //Variant
+    let split = SplitText.create(".text", {
+      type: "chars, words, lines" })
+
+    gsap.from(split.chars,{
+      duration: 1.8,
+      y: 100,
+      ease: "power4.out",
+      delay: 1,
+      skewY: 7,
+      autoAlpha: 0,
+      stagger: {
+        amount: .3
+      }
+    })
+
+  }, [])
+  
+
+
   return (
     <main className="space-y-negative mb-negative">
-      <section className="flex flex-col items-center content-center">
+      <section className="flex flex-col items-center content-center gap-medium">
         <header className="text-center">
-          <h1>
+          <div className="line">
+          <h1 className="text">
             Hej I'm Katja
           </h1>
+          </div>
           <h2 className="-tracking-widest font-header">
             <strong className="italic font-subheader">UI/UX</strong> &{" "}
             <strong className="font-subheader">Frontend Designer</strong>
           </h2>
         </header>
+        <div className="asset-moon asset-wheel relative">
         <Image
-          src="/profile.png"
-          width={100}
-          height={100}
+          src="/img/pictures/testimg.png"
+          width={300}
+          height={300}
           alt="Picture of the designer"
-        />
-        <Button>Contact Me</Button>
+          loading="lazy"
+          className="rounded-full blue-shadow relative asset-after"
+          />
+          </div>
+        <Button variant="primary" text="Take a look" icon={<LuArrowUpRight className="w-8 h-auto"/>}/>
       </section>
       <section className="lg:mx-large">
         <article className="bg-white lg:mx-large p-medium rounded-2xl blue-shadow">

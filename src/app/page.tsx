@@ -94,7 +94,7 @@ export default function Home() {
             trigger: aboutHeadingRef.current,
             start: "top 70%",
             toggleActions: "play none none none",
-            markers: true, // Enable for debugging
+            markers: false, // Enable for debugging
           },
           opacity: 0,
           y: 20,
@@ -115,7 +115,7 @@ export default function Home() {
             trigger: aboutParagraphRef.current,
             start: "top 77%",
             toggleActions: "play none none none",
-            markers: true, // Enable for debugging
+            markers: false, // Enable for debugging
           },
           opacity: 0,
           y: 20,
@@ -198,10 +198,6 @@ export default function Home() {
           <Skills />
         </section >
         <section className="mx-large">
-          <header>
-            <h2 className="text-right">Creative skills</h2>
-          </header>
-          <Skills />
         </section>
       </div>
     </main>

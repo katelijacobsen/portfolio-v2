@@ -75,7 +75,7 @@ const Button = ({ text, variant, icon, className }: Props) => {
   }
 
   return (
-    <button ref={buttonRef} className={`${variantClass} ${className}`}>
+    <button ref={buttonRef} className={`${variantClass} ${className} relative z-10`}>
       <span ref={textRef}>{text}</span>
       <span ref={iconRef}>{icon}</span>
     </button>

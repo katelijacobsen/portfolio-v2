@@ -144,7 +144,7 @@ export default function Home() {
               <strong className="font-subheader">Frontend Designer</strong>
             </h2>
           </header>
-          <div className="asset-moon asset-wheel relative">
+          <figure className="asset-moon asset-wheel relative">
             <Image
               src="/img/pictures/testimg.png"
               width={300}
@@ -153,7 +153,10 @@ export default function Home() {
               loading="lazy"
               className="rounded-full blue-shadow relative asset-after"
             />
-          </div>
+            <div
+              className=" rounded-full absolute blur-overlay"
+            ></div>
+          </figure>
           <Button
             variant="primary"
             text="Take a look"
@@ -181,20 +184,20 @@ export default function Home() {
             </div>
           </article>
         </section>
-        <section className="mx-large block relative">
-          <blockquote className="font-subheader text-center lg:mx-negative asset-moon2 asset-misc absolute">
+        <section className="mx-large relative block">
+          <blockquote className="font-subheader mx-large text-center asset-moon2 asset-misc relative">
             "This is the section where I'm
             <i className="italic font-bold"> supposed </i> to impress you with
             my portfolio"
           </blockquote>
         </section>
-        <section className="relative">
+        <section className="mx-large">
           <header>
             <h2>Technical skills</h2>
           </header>
           <Skills />
-        </section>
-        <section>
+        </section >
+        <section className="mx-large">
           <header>
             <h2>Creative skills</h2>
           </header>

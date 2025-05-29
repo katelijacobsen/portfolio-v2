@@ -18,30 +18,28 @@ import Skills from "./components/Skills";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function Home() {
+  //Scroll Smooth
+  useEffect(() => {
+    let smoother: ScrollSmoother | null = null;
 
- //Scroll Smooth 
-useEffect(() => {
-  let smoother: ScrollSmoother | null = null;
+    if (typeof window !== "undefined") {
+      smoother = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.5,
+      });
+    }
 
-  if (typeof window !== "undefined") {
-    smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.5,
-    });
-  }
-
-  return () => {
-    if (smoother) smoother.kill();
-  };
-}, []);
-
+    return () => {
+      if (smoother) smoother.kill();
+    };
+  }, []);
 
   // Reference the values
   const aboutSectionRef = useRef<HTMLElement>(null);
   const aboutArticleRef = useRef<HTMLElement>(null);
-  const aboutHeadingRef = useRef<HTMLElement>(null);
-  const aboutParagraphRef = useRef<HTMLElement>(null);
+  const aboutHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  const aboutParagraphRef = useRef<HTMLParagraphElement | null>(null);
 
   //Animation H1 with GSAP by splitting characters
   useEffect(() => {
@@ -136,72 +134,72 @@ useEffect(() => {
   return (
     <main className="space-y-negative mb-negative" id="smooth-wrapper">
       <div id="smooth-content" className="space-y-negative">
-      <section className="flex flex-col items-center content-center gap-medium mx-large">
-        <header className="text-center">
-          <div className="line">
-            <h1 className="text">Hej I'm Katja</h1>
-          </div>
-          <h2 className="-tracking-widest font-header text">
-            <strong className="italic font-subheader">UI/UX</strong> &{" "}
-            <strong className="font-subheader">Frontend Designer</strong>
-          </h2>
-        </header>
-        <div className="asset-moon asset-wheel relative">
-          <Image
-            src="/img/pictures/testimg.png"
-            width={300}
-            height={300}
-            alt="Picture of the designer"
-            loading="lazy"
-            className="rounded-full blue-shadow relative asset-after"
-          />
-        </div>
-        <Button
-          variant="primary"
-          text="Take a look"
-          icon={<LuArrowUpRight className="w-8 h-auto" />}
-        />
-      </section>
-      <section ref={aboutSectionRef} className="mx-large">
-        <article
-          ref={aboutArticleRef}
-          className="bg-white lg:mx-large p-medium rounded-2xl blue-shadow"
-        >
-          <header>
-            <h2 ref={aboutHeadingRef}>About me</h2>
+        <section className="flex flex-col items-center content-center gap-medium mx-large">
+          <header className="text-center">
+            <div className="line">
+              <h1 className="text">Hej I'm Katja</h1>
+            </div>
+            <h2 className="-tracking-widest font-header text">
+              <strong className="italic font-subheader">UI/UX</strong> &{" "}
+              <strong className="font-subheader">Frontend Designer</strong>
+            </h2>
           </header>
-          <div className="line">
-            <p
-              ref={aboutParagraphRef}
-              className="text-body-text/10 text-paragraph"
-            >
-              I’m a educated multimedia designer that has strong focus on
-              creating and implementing designs. To me, it's not just about
-              aesthetics. It's about crafting solutions that are both intuitive
-              and engaging.
-            </p>
+          <div className="asset-moon asset-wheel relative">
+            <Image
+              src="/img/pictures/testimg.png"
+              width={300}
+              height={300}
+              alt="Picture of the designer"
+              loading="lazy"
+              className="rounded-full blue-shadow relative asset-after"
+            />
           </div>
-        </article>
-      </section>
-      <section className="mx-large block relative">
-        <blockquote className="font-subheader text-center lg:mx-negative asset-moon2 asset-misc absolute">
-          "This is the section where I'm
-          <i className="italic font-bold"> supposed </i> to impress you with my
-          portfolio"
-        </blockquote>
-      </section>
-      <section className="relative">
-        <header>
-          <h2>Technical skills</h2>
-        </header>
-        <Skills />
-      </section>
-      <section>
-        <header>
-          <h2>Creative skills</h2>
-        </header>
-        <Skills />
-      </section>
+          <Button
+            variant="primary"
+            text="Take a look"
+            icon={<LuArrowUpRight className="w-8 h-auto" />}
+          />
+        </section>
+        <section ref={aboutSectionRef} className="mx-large">
+          <article
+            ref={aboutArticleRef}
+            className="bg-white lg:mx-large p-medium rounded-2xl blue-shadow"
+          >
+            <header>
+              <h2 ref={aboutHeadingRef}>About me</h2>
+            </header>
+            <div className="line">
+              <p
+                ref={aboutParagraphRef}
+                className="text-body-text/10 text-paragraph"
+              >
+                I’m a educated multimedia designer that has strong focus on
+                creating and implementing designs. To me, it's not just about
+                aesthetics. It's about crafting solutions that are both
+                intuitive and engaging.
+              </p>
+            </div>
+          </article>
+        </section>
+        <section className="mx-large block relative">
+          <blockquote className="font-subheader text-center lg:mx-negative asset-moon2 asset-misc absolute">
+            "This is the section where I'm
+            <i className="italic font-bold"> supposed </i> to impress you with
+            my portfolio"
+          </blockquote>
+        </section>
+        <section className="relative">
+          <header>
+            <h2>Technical skills</h2>
+          </header>
+          <Skills />
+        </section>
+        <section>
+          <header>
+            <h2>Creative skills</h2>
+          </header>
+          <Skills />
+        </section>
       </div>
     </main>
   );

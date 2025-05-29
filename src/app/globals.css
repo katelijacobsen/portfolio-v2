@@ -121,7 +121,7 @@ blockquote {
   font-size: var(--text-blockquote);
 }
 
-button, a, p  {
+button, a, p, li  {
   font-family: 'Archia';
 }
 
@@ -137,7 +137,7 @@ button, a, p  {
 
 /*===== Pesudo Elements =====*/
 
-.asset-moon::after {
+.asset-moon::before {
   content: "";
   position: absolute;
   inset: 15% 0 0 -11%;
@@ -145,8 +145,13 @@ button, a, p  {
   height: 5rem;
   pointer-events: none;
   background: url('/img/icons/moon.svg') no-repeat center / contain;
+  z-index: 1;
+  animation: fadeIn 4s ease 2s normal forwards, rotation 25s linear infinite;
+  opacity: 0;
+  transform: scale(0.5);
 }
-.asset-wheel::before {
+
+.asset-wheel::after {
   content: "";
   position: absolute;
   inset: 65% 0 0 85%;
@@ -154,5 +159,75 @@ button, a, p  {
   height: 5rem;
   pointer-events: none;
   background: url('/img/icons/wheel.svg') no-repeat center / contain;
-  z-index: 1;
+  animation: fadeIn2 6s ease 3s normal forwards, rotation2 25s linear infinite;
+  opacity: 0;
+  transform: scale(0.5);
+}
+.asset-moon2::before {
+  content: "";
+  position: absolute;
+  inset: -60% 0 0 0%;
+  width: 5rem;
+  height: 5rem;
+  pointer-events: none;
+  background: url('/img/icons/moon2.svg') no-repeat center / contain;
+  z-index: -1;
+}
+
+.asset-misc::after {
+  content: "";
+  position: absolute;
+  inset: 65% 0 0 85%;
+  width: 8rem;
+  height: 8rem;
+  pointer-events: none;
+  background: url('/img/icons/misc2.png') no-repeat center / contain;
+}
+
+/*===== Animations =====*/
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+		transform: scale(0.5);
+	}
+  
+	100% {
+    opacity: 1;
+		transform:scale(1);
+	}
+}
+
+@keyframes rotation {
+	0%
+  {
+		transform: rotate(0deg);
+	}
+  
+	100% {
+    transform: rotate(360deg);
+	}
+}
+
+@keyframes fadeIn2 {
+  0% {
+    opacity: 0;
+		transform: scale(0.5);
+	}
+  
+	100% {
+    opacity: 1;
+		transform:scale(1);
+	}
+}
+
+@keyframes rotation2 {
+	0%
+  {
+		transform: rotate(360deg);
+	}
+  
+	100% {
+    transform: rotate(0deg);
+	}
 }

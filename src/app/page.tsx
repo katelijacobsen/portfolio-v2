@@ -193,13 +193,13 @@ export default function Home() {
         </section>
         <section className="mx-large">
           <header>
-            <h2>Technical skills</h2>
+            <h2 >Technical skills</h2>
           </header>
           <Skills />
         </section >
         <section className="mx-large">
           <header>
-            <h2>Creative skills</h2>
+            <h2 className="text-right">Creative skills</h2>
           </header>
           <Skills />
         </section>

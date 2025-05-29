@@ -1,12 +1,16 @@
+import { ReactNode } from "react";
+
 interface TagsProps {
-  children: React.ReactNode;
+  skill: string;
+  icon?: ReactNode; 
+  className?: string;
 }
 
-const Tags: React.FC<TagsProps> = ({ children }) => {
+const Tags: React.FC<TagsProps> = ({ skill, icon, className }) => {
   return (
-    <li>
-      {children}
-    </li>
+    <p className={`flex items-center gap-xx-small p-x-small bg-white border-accent border rounded-lg ${className}`}>
+      {icon}{skill}
+    </p>
   );
 };
 

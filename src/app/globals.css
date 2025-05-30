@@ -75,7 +75,7 @@
   --text-paragraph: 1.6rem;
   --text-button: var(--text-paragraph);
   --text-label: var(--text-paragraph);
-  --text-blockquote: clamp(1.25rem, 1.1446rem + 0.5268vw, 1.6188rem);
+  --text-blockquote: clamp(1.62rem, 1.1474rem + 2.3195vw, 2.945rem);
   --text-pill: clamp(0.6188rem, 0.8518rem + -0.2589vw, 0.8rem);
   /*===== Font-weight =====*/
   /*===== Lineheight =====*/

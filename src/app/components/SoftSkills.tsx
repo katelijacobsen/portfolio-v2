@@ -14,7 +14,7 @@ const SoftSkills = () => {
         <Tags
           skill="Enthusiastic"
           bgColor="bg-fuchsia-100"
-          txtColor="text-fuchsia-500"
+          txtColor="text-fuchsia-700"
         />
       </li>
       <li>

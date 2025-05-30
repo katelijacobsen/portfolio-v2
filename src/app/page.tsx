@@ -187,17 +187,55 @@ export default function Home() {
             </article>
           </section>
           <section className="mx-large relative block">
-            <blockquote className="font-subheader mx-large text-center asset-moon2 asset-misc relative">
-              "This is the section where I'm
+            <blockquote className="font-subheader text-center asset-moon2 asset-misc relative">
+              This is the section where I'm
               <i className="italic font-bold"> supposed </i> to impress you with
-              my portfolio"
+              my portfolio
             </blockquote>
+            <div className="grid grid-cols-4 relative">
+              <div>
+                <Image
+                  src="/img/icons/moon3.avif"
+                  width={160}
+                  height={160}
+                  alt="abstract flower with four pattels with blue gradient"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <Image
+                  src="/img/icons/flower3.avif"
+                  width={160}
+                  height={160}
+                  alt="abstract flower with four pattels with blue gradient"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <Image
+                  src="/img/icons/misc8.avif"
+                  width={160}
+                  height={160}
+                  alt="abstract flower with four pattels with blue gradient"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <Image
+                  src="/img/icons/misc5.avif"
+                  width={160}
+                  height={160}
+                  alt="abstract flower with four pattels with blue gradient"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </section>
           <section className="mx-large" aria-labelledby="skills-heading">
             <header>
               <h2 id="skills-heading">Skills</h2>
             </header>
-            <div className="grid grid-cols-1 gap-y-large lg:gap-y-medium lg:grid-cols-2 lg:grid-rows-2">
+            <div className="grid grid-cols-1 gap-y-large gap-x-large lg:gap-y-medium lg:grid-cols-2 lg:grid-rows-2">
               <section>
                 <h3>Technical Skills</h3>
                 <TechSkills />

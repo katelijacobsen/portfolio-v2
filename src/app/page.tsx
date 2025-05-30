@@ -14,7 +14,6 @@ import { LuArrowUpRight } from "react-icons/lu";
 // Components
 import Image from "next/image";
 import Button from "./components/Button";
-import Skills from "./components/Skills";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function Home() {
@@ -195,7 +194,6 @@ export default function Home() {
           <header>
             <h2 >Technical skills</h2>
           </header>
-          <Skills />
         </section >
         <section className="mx-large">
         </section>

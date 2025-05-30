@@ -14,6 +14,10 @@ import { LuArrowUpRight } from "react-icons/lu";
 // Components
 import Image from "next/image";
 import Button from "./components/Button";
+import Footer from "./components/Footer";
+import TechSkills from "./components/TechSkills";
+import SoftSkills from "./components/SoftSkills";
+import Card from "./components/Card";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function Home() {
@@ -131,73 +135,88 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="space-y-negative mb-negative" id="smooth-wrapper">
-      <div id="smooth-content" className="space-y-negative">
-        <section className="flex flex-col items-center content-center gap-medium mx-large">
-          <header className="text-center">
-            <div className="line">
-              <h1 className="text">Hej I'm Katja</h1>
-            </div>
-            <h2 className="-tracking-widest font-header text">
-              <strong className="italic font-subheader">UI/UX</strong> &{" "}
-              <strong className="font-subheader">Frontend Designer</strong>
-            </h2>
-          </header>
-          <figure className="asset-moon asset-wheel relative">
-            <Image
-              src="/img/pictures/testimg.png"
-              width={300}
-              height={300}
-              alt="Picture of the designer"
-              loading="lazy"
-              className="rounded-full blue-shadow relative asset-after"
-            />
-            <div
-              className=" rounded-full absolute blur-overlay"
-            ></div>
-          </figure>
-          <Button
-            variant="primary"
-            text="Take a look"
-            icon={<LuArrowUpRight className="w-8 h-auto" />}
-          />
-        </section>
-        <section ref={aboutSectionRef} className="mx-large">
-          <article
-            ref={aboutArticleRef}
-            className="bg-white lg:mx-large p-medium rounded-2xl blue-shadow"
-          >
-            <header>
-              <h2 ref={aboutHeadingRef}>About me</h2>
+    <div id="smooth-wrapper">
+      <div className="space-y-negative mb-negative" id="smooth-content">
+        <main className="space-y-negative">
+          <section className="flex flex-col items-center content-center gap-medium mx-large">
+            <header className="text-center">
+              <div className="line">
+                <h1 className="text">Hej I'm Katja</h1>
+              </div>
+              <h2 className="-tracking-widest font-header text">
+                <strong className="italic font-subheader">UI/UX</strong> &{" "}
+                <strong className="font-subheader">Frontend Designer</strong>
+              </h2>
             </header>
-            <div className="line">
-              <p
-                ref={aboutParagraphRef}
-                className="text-body-text/10 text-paragraph"
-              >
-                I’m a educated multimedia designer that has strong focus on
-                creating and implementing designs. To me, it's not just about
-                aesthetics. It's about crafting solutions that are both
-                intuitive and engaging.
-              </p>
+            <figure className="asset-moon asset-wheel relative">
+              <Image
+                src="/img/pictures/testimg.png"
+                width={300}
+                height={300}
+                alt="Picture of the designer"
+                loading="lazy"
+                className="rounded-full blue-shadow relative asset-after"
+              />
+              <div className=" rounded-full absolute blur-overlay"></div>
+            </figure>
+            <Button
+              variant="primary"
+              text="Take a look"
+              icon={<LuArrowUpRight className="w-8 h-auto" />}
+            />
+          </section>
+          <section ref={aboutSectionRef} className="mx-large">
+            <article
+              ref={aboutArticleRef}
+              className="bg-white lg:mx-large p-medium rounded-2xl blue-shadow"
+            >
+              <header>
+                <h2 ref={aboutHeadingRef}>About me</h2>
+              </header>
+              <div className="line">
+                <p
+                  ref={aboutParagraphRef}
+                  className="text-body-text/10 text-paragraph"
+                >
+                  I’m a educated multimedia designer that has strong focus on
+                  creating and implementing designs. To me, it's not just about
+                  aesthetics. It's about crafting solutions that are both
+                  intuitive and engaging.
+                </p>
+              </div>
+            </article>
+          </section>
+          <section className="mx-large relative block">
+            <blockquote className="font-subheader mx-large text-center asset-moon2 asset-misc relative">
+              "This is the section where I'm
+              <i className="italic font-bold"> supposed </i> to impress you with
+              my portfolio"
+            </blockquote>
+          </section>
+          <section className="mx-large" aria-labelledby="skills-heading">
+            <header>
+              <h2 id="skills-heading">Skills</h2>
+            </header>
+            <div className="grid grid-cols-1 gap-y-large lg:gap-y-medium lg:grid-cols-2 lg:grid-rows-2">
+              <section>
+                <h3>Technical Skills</h3>
+                <TechSkills />
+              </section>
+              <section className="lg:col-start-2 lg:row-start-2">
+                <h3 className="text-right">Soft Skills</h3>
+                <SoftSkills />
+              </section>
             </div>
-          </article>
-        </section>
-        <section className="mx-large relative block">
-          <blockquote className="font-subheader mx-large text-center asset-moon2 asset-misc relative">
-            "This is the section where I'm
-            <i className="italic font-bold"> supposed </i> to impress you with
-            my portfolio"
-          </blockquote>
-        </section>
-        <section className="mx-large">
-          <header>
-            <h2 >Technical skills</h2>
-          </header>
-        </section >
-        <section className="mx-large">
-        </section>
+          </section>
+          <section className="mx-large">
+            <header>
+              <h2>Latest Projects</h2>
+            </header>
+            <Card />
+          </section>
+        </main>
+        <Footer />
       </div>
-    </main>
+    </div>
   );
 }

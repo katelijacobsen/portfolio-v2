@@ -1,16 +1,15 @@
 const Footer = () => {
   return (
-    <footer>
-      <div className="footer-grid">
-        <address>
-          <strong>Contact</strong>
+    <footer className="w-full bg-accent py-negative px-large">
+      <div className="grid lg:grid-cols-2 gap-x-medium">
+        <address className="not-italic">
+          <h4 className="border-b-2 border-white grid text-h2 text-white">Contact</h4>
+          <a href="mailto:your@email.com">katjamaehleke98gmail.com</a>
           <br />
-          Email: <a href="mailto:your@email.com">your@email.com</a>
-          <br />
-          Phone: <a href="tel:+123456789">+1 234 567 89</a>
+          <a href="tel:+123456789">+1 234 567 89</a>
         </address>
         <nav aria-label="Social media">
-          <strong>Follow me</strong>
+          <h4 className="border-b-2 border-white grid text-h2 text-white ">Follow me</h4>
           <ul>
             <li>
               <a
@@ -30,7 +29,6 @@ const Footer = () => {
                 LinkedIn
               </a>
             </li>
-            {/* Add more social links as needed */}
           </ul>
         </nav>
       </div>

@@ -125,7 +125,8 @@ blockquote {
 button,
 a,
 p,
-li {
+li,
+h4 {
   font-family: "Archia";
 }
 

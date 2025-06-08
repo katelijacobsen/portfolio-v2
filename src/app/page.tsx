@@ -297,7 +297,7 @@ export default function Home() {
             </header>
             <div
               ref={cardsContainerRef}
-              className="grid grid-cols-[auto] gap-y-large overflow-y-auto h-screen snap-y snap-mandatory md:hidden"
+              className="grid grid-cols-1 gap-y-large overflow-y-auto h-screen snap-y snap-mandatory md:hidden"
               tabIndex={0}
               aria-label="Project Cards"
             >

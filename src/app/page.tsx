@@ -6,8 +6,6 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import { useEffect, useRef } from "react";
 
-//Register GSAP Plugin
-
 //Icons
 import { LuArrowUpRight } from "react-icons/lu";
 
@@ -18,9 +16,54 @@ import Footer from "./components/Footer";
 import TechSkills from "./components/TechSkills";
 import SoftSkills from "./components/SoftSkills";
 import Card from "./components/Card";
+
+const cards = [
+  {
+    title: "Foo Fest",
+    imgSrc: "/img/pictures/Logo.avif",
+    imgAlt: "Project thumbnail",
+    description:
+      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
+  },
+  {
+    title: "Foo Fest",
+    imgSrc: "/img/pictures/Logo.avif",
+    imgAlt: "Project thumbnail",
+    description:
+      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
+  },
+  {
+    title: "Foo Fest",
+    imgSrc: "/img/pictures/Logo.avif",
+    imgAlt: "Project thumbnail",
+    description:
+      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
+  },
+  {
+    title: "Foo Fest",
+    imgSrc: "/img/pictures/Logo.avif",
+    imgAlt: "Project thumbnail",
+    description:
+      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
+  },
+  {
+    title: "Foo Fest",
+    imgSrc: "/img/pictures/Logo.avif",
+    imgAlt: "Project thumbnail",
+    description:
+      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
+  },
+];
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function Home() {
+  // Reference the values
+  const aboutSectionRef = useRef<HTMLElement>(null);
+  const aboutArticleRef = useRef<HTMLElement>(null);
+  const aboutHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  const aboutParagraphRef = useRef<HTMLParagraphElement | null>(null);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
+
   //Scroll Smooth
   useEffect(() => {
     let smoother: ScrollSmoother | null = null;
@@ -37,12 +80,6 @@ export default function Home() {
       if (smoother) smoother.kill();
     };
   }, []);
-
-  // Reference the values
-  const aboutSectionRef = useRef<HTMLElement>(null);
-  const aboutArticleRef = useRef<HTMLElement>(null);
-  const aboutHeadingRef = useRef<HTMLHeadingElement | null>(null);
-  const aboutParagraphRef = useRef<HTMLParagraphElement | null>(null);
 
   //Animation H1 with GSAP by splitting characters
   useEffect(() => {
@@ -132,6 +169,26 @@ export default function Home() {
     }, aboutSectionRef);
 
     return () => ctx.revert();
+  }, []);
+
+  // Animation for project Cards
+  useEffect(() => {
+    const cards = gsap.utils.toArray(".project-card");
+    cards.forEach((card: any, i) => {
+      gsap.fromTo(card, { opacity: 0, y: 100 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power4.out", scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+          end: "top 60%",
+          toggleActions: "play none none reverse",
+          markers: true, 
+        }}
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    };
   }, []);
 
   return (
@@ -246,11 +303,32 @@ export default function Home() {
               </section>
             </div>
           </section>
-          <section className="mx-large">
-            <header>
+          <section className="mx-large" aria-labelledby="projects-heading">
+            <header
+              className="sticky top-0 z-10 py-large"
+              id="projects-heading"
+            >
               <h2>Latest Projects</h2>
             </header>
-            <Card />
+            <div
+              ref={cardsContainerRef}
+              className="snap-y snap-mandatory overflow-y-auto flex flex-col gap-y-large"
+              tabIndex={0}
+              aria-label="Project Cards"
+            >
+              {cards.map((card, i) => (
+                <div key={i} className="snap-start h-screen flex items-center justify-center project-card">
+                  <Card
+                    key={i}
+                    title={card.title}
+                    imgSrc={card.imgSrc}
+                    imgAlt={card.imgAlt}
+                    description={card.description}
+                    rotation={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
+                  />
+                </div>
+              ))}
+            </div>
           </section>
         </main>
         <Footer />

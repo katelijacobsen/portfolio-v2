@@ -25,7 +25,7 @@ function Card({ title, imgSrc, imgAlt, description, rotation, className }: Props
         width={300}
         height={200}
         loading="lazy"
-        className="bg-slate-900 w-full h-56 object-contain p-small rounded-2xl"
+        className="bg-slate-900 w-full h-42 object-contain p-small rounded-2xl"
       />
       <p>{description}</p>
     </article>

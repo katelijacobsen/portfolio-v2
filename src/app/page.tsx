@@ -23,24 +23,24 @@ const cards = [
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
     description:
-      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
+      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and UI/UX",
   },
   {
-    title: "Foo Fest",
+    title: "Kær Kaffebar",
+    imgSrc: "/img/pictures/Logo.avif",
+    imgAlt: "Project thumbnail",
+    description:
+      "For the group final exam project, I was responsible for illustrations, UI/UX design, designsystem and backend development, including API endpoints and database management with Supabase. I helped create a user-friendly interface supported by effective data management.",
+  },
+  {
+    title: "Foody",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
     description:
       "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
   },
   {
-    title: "Foo Fest",
-    imgSrc: "/img/pictures/Logo.avif",
-    imgAlt: "Project thumbnail",
-    description:
-      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
-  },
-  {
-    title: "Foo Fest",
+    title: "Prototypes",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
     description:
@@ -63,7 +63,6 @@ export default function Home() {
   const aboutHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const aboutParagraphRef = useRef<HTMLParagraphElement | null>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const projectsHeaderRef = useRef<HTMLElement>(null);
 
   //Scroll Smooth
   useEffect(() => {
@@ -173,31 +172,6 @@ export default function Home() {
   }, []);
 
   // Animation for project Cards
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray(".project-card").forEach((card: any) => {
-        gsap.fromTo(
-          card,
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power4.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 90%",
-              end: "top 60%",
-              toggleActions: "play none none reverse",
-              // markers: true, // Disable in production
-            },
-          }
-        );
-      });
-    }, cardsContainerRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <div id="smooth-wrapper">
@@ -209,8 +183,8 @@ export default function Home() {
                 <h1 className="text">Hej I'm Katja</h1>
               </div>
               <h2 className="-tracking-widest font-header text">
-                <strong className="italic font-subheader">UI/UX</strong> &{" "}
-                <strong className="font-subheader">Frontend Designer</strong>
+                <strong className="italic font-subheader">Frontend Developer</strong> &{" "}
+                <strong className="font-subheader">UI/UX</strong>
               </h2>
             </header>
             <figure className="asset-moon asset-wheel relative">
@@ -311,29 +285,33 @@ export default function Home() {
               </section>
             </div>
           </section>
-          <section className="mx-large" aria-labelledby="projects-heading">
+          <section
+            className="mx-large relative flex flex-col items-center justify-center"
+            aria-labelledby="projects-heading"
+          >
             <header
-              ref={projectsHeaderRef}
-              className="sticky top-0 z-10 py-large bg-background"
+              className="sticky top-0 z-10 py-large bg-fuchsia-500"
               id="projects-heading"
             >
               <h2>Latest Projects</h2>
             </header>
-
             <div
               ref={cardsContainerRef}
-              className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-12"
+              className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-y-large overflow-y-auto h-screen snap-y snap-mandatory md:hidden"
+              tabIndex={0}
+              aria-label="Project Cards"
             >
               {cards.map((card, i) => (
-                <Card
-                  key={i}
-                  title={card.title}
-                  imgSrc={card.imgSrc}
-                  imgAlt={card.imgAlt}
-                  description={card.description}
-                  className="project-card"
-                  rotation={i % 2 === 0 ? "lg:-rotate-1" : "lg:rotate-1"}
-                />
+                <div key={i}  className="snap-start h-screen flex items-center justify-center">
+                  <Card
+                    key={i}
+                    title={card.title}
+                    imgSrc={card.imgSrc}
+                    imgAlt={card.imgAlt}
+                    description={card.description}
+                    rotation={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
+                  />
+                </div>
               ))}
             </div>
           </section>

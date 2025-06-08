@@ -63,6 +63,7 @@ export default function Home() {
   const aboutHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const aboutParagraphRef = useRef<HTMLParagraphElement | null>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
+  const projectsHeaderRef = useRef<HTMLElement>(null);
 
   //Scroll Smooth
   useEffect(() => {
@@ -173,22 +174,29 @@ export default function Home() {
 
   // Animation for project Cards
   useEffect(() => {
-    const cards = gsap.utils.toArray(".project-card");
-    cards.forEach((card: any, i) => {
-      gsap.fromTo(card, { opacity: 0, y: 100 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power4.out", scrollTrigger: {
-          trigger: card,
-          start: "top 80%",
-          end: "top 60%",
-          toggleActions: "play none none reverse",
-          markers: true, 
-        }}
-      );
-    });
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray(".project-card").forEach((card: any) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power4.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              end: "top 60%",
+              toggleActions: "play none none reverse",
+              // markers: true, // Disable in production
+            },
+          }
+        );
+      });
+    }, cardsContainerRef);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -305,28 +313,27 @@ export default function Home() {
           </section>
           <section className="mx-large" aria-labelledby="projects-heading">
             <header
-              className="sticky top-0 z-10 py-large"
+              ref={projectsHeaderRef}
+              className="sticky top-0 z-10 py-large bg-background"
               id="projects-heading"
             >
               <h2>Latest Projects</h2>
             </header>
+
             <div
               ref={cardsContainerRef}
-              className="snap-y snap-mandatory overflow-y-auto flex flex-col gap-y-large"
-              tabIndex={0}
-              aria-label="Project Cards"
+              className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-12"
             >
               {cards.map((card, i) => (
-                <div key={i} className="snap-start h-screen flex items-center justify-center project-card">
-                  <Card
-                    key={i}
-                    title={card.title}
-                    imgSrc={card.imgSrc}
-                    imgAlt={card.imgAlt}
-                    description={card.description}
-                    rotation={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
-                  />
-                </div>
+                <Card
+                  key={i}
+                  title={card.title}
+                  imgSrc={card.imgSrc}
+                  imgAlt={card.imgAlt}
+                  description={card.description}
+                  className="project-card"
+                  rotation={i % 2 === 0 ? "lg:-rotate-1" : "lg:rotate-1"}
+                />
               ))}
             </div>
           </section>

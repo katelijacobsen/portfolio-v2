@@ -7,11 +7,12 @@ interface Props {
   imgAlt: string;
   description: string;
   rotation?: string;
+  className?: string;
 }
 
-function Card({ title, imgSrc, imgAlt, description, rotation }: Props) {
+function Card({ title, imgSrc, imgAlt, description, rotation, className }: Props) {
   return (
-    <article className={`bg-slate-50 p-medium rounded-3xl flex flex-col gap-medium shadow-sm hover:shadow-xl transition-shadow duration-300 ${rotation}`}>
+    <article className={`bg-slate-50 p-medium rounded-3xl flex flex-col gap-medium shadow-sm hover:shadow-xl transition-shadow duration-300 ${rotation} ${className}`}>
       <header className="flex items-end justify-between">
         <h3>{title}</h3>
         <a>

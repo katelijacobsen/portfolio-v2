@@ -17,6 +17,7 @@ import TechSkills from "./components/TechSkills";
 import SoftSkills from "./components/SoftSkills";
 import Card from "./components/Card";
 import Project from "./components/Project";
+import Link from "next/link";
 
 // constant to create a list of images for projects
 const projectImgs = [
@@ -50,6 +51,7 @@ const projectImgs = [
 const cards = [
   {
     title: "Kær Kaffebar",
+    slug: "kaer-kaffebar",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
     keyword: "final exam",
@@ -59,15 +61,17 @@ const cards = [
   },
   {
     title: "Foo Fest",
+    slug: "foo-fest",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
     keyword: "3rd semester exam",
-    tags: ["UI/UX", "A11Y", "Frontend"],
+    tags: ["UI/UX", "A11Y", "Frontend", "Logo"],
     description:
       "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and UI/UX",
   },
   {
     title: "Foody",
+    slug: "foody",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
     keyword: "side project",
@@ -76,18 +80,21 @@ const cards = [
   },
   {
     title: "Prototypes",
+    slug: "prototypes",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
     keyword: "internship",
-    tags: ["CMS", "", "A11Y"],
+    tags: ["CMS", "A11Y", "UI/UX"],
     description:
       "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
   },
   {
     title: "Frontend",
+    slug: "frontend",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
     keyword: "3rd semester",
+    tags: ["Astro", "CSS", "UI/UX"],
     description:
       "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
   },
@@ -212,7 +219,10 @@ export default function Home() {
 
   return (
     <div id="smooth-wrapper">
-      <div className="space-y-negative mb-negative relative" id="smooth-content">
+      <div
+        className="space-y-negative mb-negative relative"
+        id="smooth-content"
+      >
         <main className="space-y-negative">
           <section className="flex flex-col items-center content-center gap-medium mx-large">
             <header className="text-center">
@@ -324,28 +334,28 @@ export default function Home() {
               </section>
             </div>
           </section>
-          <section className="mx-large relative flex flex-col"> 
+          <section className="mx-large relative flex flex-col">
             <header className="sm:sticky sm:top-0 sm:z-10 sm:p-medium sm:my-large sm:bg-white md:bg-primary sm:blue-shadow sm:rounded-2xl">
               <h2>Latest Projects</h2>
             </header>
             <ul className="hidden md:flex md:flex-col md:gap-y-medium">
               {cards.map((card, i) => (
-                <Project
-                  key={i}
-                  title={card.title}
-                  keyword={card.keyword}
-                  tags={card.tags} // <-- add this
-                  onHover={() => setHoveredProject(i)}
-                  onLeave={() => setHoveredProject(null)}
-                />
+                <Link key={i} href={`/projects/${card.slug}`}>
+                  <Project
+                    key={i}
+                    title={card.title}
+                    keyword={card.keyword}
+                    tags={card.tags} // <-- add this
+                    onHover={() => setHoveredProject(i)}
+                    onLeave={() => setHoveredProject(null)}
+                  />
+                </Link>
               ))}
             </ul>
             {hoveredProject !== null && (
               <div
                 className="relative flex gap-2 z-50 pointer-events-none w-full h-full"
-                style={{ width: '100%', height: '100%', position: 'absolute' }}
-                
-                
+                style={{ width: "100%", height: "100%", position: "absolute" }}
               >
                 {projectImgs[hoveredProject]?.map((src, i) => (
                   <img
@@ -354,16 +364,17 @@ export default function Home() {
                     alt={`Preview ${i + 10}`}
                     className="relative rounded object-contain transition-all duration-700 ease-out"
                     style={{
-                      width: '20%',
-                      height: 'auto',
-                      left: i === 2 ? '20%' : i === 1 ? '30%' : '10%',
-                      top: i === 2 ? '50%' : i === 1 ? '20%' : '-5%',
+                      width: "20%",
+                      height: "auto",
+                      left: i === 2 ? "20%" : i === 1 ? "30%" : "10%",
+                      top: i === 2 ? "50%" : i === 1 ? "20%" : "-5%",
                       opacity: 1,
                       transform: `scale(1)`,
-                      transition: 'opacity 0.5s, transform 0.5s',
+                      transition: "opacity 0.5s, transform 0.5s",
                       zIndex: 10 + i,
                       // Animate in: scale/opacity on mount
-                      animation: 'imgFadeIn 0.8s cubic-bezier(0.4,0,0.2,1) both',
+                      animation:
+                        "imgFadeIn 0.8s cubic-bezier(0.4,0,0.2,1) both",
                       animationDelay: `${i * 0.2}s`,
                     }}
                   />
@@ -388,7 +399,7 @@ export default function Home() {
               aria-label="Project Cards"
             >
               {cards.map((card, i) => (
-                <div key={i} className="">
+                <Link key={i} href={`/projects/${card.slug}`}>
                   <Card
                     key={i}
                     title={card.title}
@@ -397,7 +408,7 @@ export default function Home() {
                     description={card.description}
                     rotation={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
                   />
-                </div>
+                </Link>
               ))}
             </ul>
           </section>

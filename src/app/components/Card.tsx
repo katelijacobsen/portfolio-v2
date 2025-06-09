@@ -20,7 +20,6 @@ function Card({
 }: Props) {
   return (
     <li>
-      <a>
         <article
           className={`group bg-slate-50 p-medium w-full rounded-3xl flex flex-col gap-medium shadow-sm duration-400 transform transition-transform hover:scale-102 ${rotation} ${className}`}
         >
@@ -40,7 +39,6 @@ function Card({
           />
           <p>{description}</p>
         </article>
-      </a>
     </li>
   );
 }

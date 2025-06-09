@@ -8,8 +8,10 @@ interface Props {
   description?: string;
   rotation?: string;
   className?: string;
-  keyword?:string;
+  keyword?: string;
   tags?: string[];
+  onHover?: () => void;
+  onLeave?: () => void;
 }
 
 function Project({
@@ -19,11 +21,18 @@ function Project({
   description,
   rotation,
   className,
+  tags,
   keyword,
+  onHover,
+  onLeave,
 }: Props) {
   return (
     <li>
-      <a className="group relative block">
+      <a
+        className="group relative block"
+        onMouseEnter={onHover}
+        onMouseLeave={onLeave}
+      >
         <article className="flex justify-between items-center self-stretch w-full border-b-2">
           <div className="flex items-center gap-x-medium">
             <h3 className="font-header">{title}</h3>
@@ -31,25 +40,19 @@ function Project({
           </div>
           <div className="flex items-center">
             <ul className="text-tag flex">
-              <li>
-                <Tags skill="UI/UX" />
-              </li>
-              <li>
-                <Tags skill="Illustrations" />
-              </li>
-              <li>
-                <Tags skill="API" />
-              </li>
-              <li>
-                <Tags skill="Designsystem" />
-              </li>
+              {tags &&
+                tags.map((tag) => (
+                  <li key={tag}>
+                    <Tags skill={tag} />
+                  </li>
+                ))}
             </ul>
             <span>
               <RiArrowRightUpLine className="w-8 h-auto" />
             </span>
           </div>
         </article>
-        <div className="absolute top-full left-0 flex gap-2 z-10 pointer-events-none group-hover:pointer-events-auto">
+        {/*  <div className="absolute top-full left-0 flex gap-2 z-10 pointer-events-none group-hover:pointer-events-auto">
           <img
             src="../img/pictures/waffles.avif"
             alt="Preview 1"
@@ -65,7 +68,7 @@ function Project({
             alt="Preview 3"
             className="w-46 h-auto absolute top-80 left-200 object-contain transform scale-0 group-hover:scale-100 transition duration-300 delay-300"
           />
-        </div>
+        </div>*/}
       </a>
     </li>
   );

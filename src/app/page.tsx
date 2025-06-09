@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 //Icons
 import { LuArrowUpRight } from "react-icons/lu";
@@ -17,6 +17,35 @@ import TechSkills from "./components/TechSkills";
 import SoftSkills from "./components/SoftSkills";
 import Card from "./components/Card";
 import Project from "./components/Project";
+
+// constant to create a list of images for projects
+const projectImgs = [
+  [
+    "/img/pictures/waffles.avif",
+    "/img/pictures/mug.avif",
+    "/img/pictures/coffe-w-legs.avif",
+  ],
+  [
+    "/img/pictures/Logo.avif",
+    "/img/pictures/tickets.png",
+    "/img/pictures/hand-w-microphone.avif",
+  ],
+  [
+    "/img/pictures/waffles.avif",
+    "/img/pictures/mug.avif",
+    "/img/pictures/Logo.avif",
+  ],
+  [
+    "/img/pictures/waffles.avif",
+    "/img/pictures/greenmindMockup.avif",
+    "/img/pictures/Logo.avif",
+  ],
+  [
+    "/img/pictures/waffles.avif",
+    "/img/pictures/mug.avif",
+    "/img/pictures/Logo.avif",
+  ],
+];
 
 const cards = [
   {
@@ -50,6 +79,7 @@ const cards = [
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
     keyword: "internship",
+    tags: ["CMS", "", "A11Y"],
     description:
       "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
   },
@@ -70,6 +100,8 @@ export default function Home() {
   const aboutArticleRef = useRef<HTMLElement>(null);
   const aboutHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const aboutParagraphRef = useRef<HTMLParagraphElement | null>(null);
+  // State to manage hover effects on the projects
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   //Scroll Smooth
   useEffect(() => {
@@ -180,7 +212,7 @@ export default function Home() {
 
   return (
     <div id="smooth-wrapper">
-      <div className="space-y-negative mb-negative" id="smooth-content">
+      <div className="space-y-negative mb-negative relative" id="smooth-content">
         <main className="space-y-negative">
           <section className="flex flex-col items-center content-center gap-medium mx-large">
             <header className="text-center">
@@ -292,15 +324,64 @@ export default function Home() {
               </section>
             </div>
           </section>
-          <section className="mx-large relative flex flex-col ">
+          <section className="mx-large relative flex flex-col"> 
             <header className="sm:sticky sm:top-0 sm:z-10 sm:p-medium sm:my-large sm:bg-white md:bg-primary sm:blue-shadow sm:rounded-2xl">
               <h2>Latest Projects</h2>
             </header>
             <ul className="hidden md:flex md:flex-col md:gap-y-medium">
               {cards.map((card, i) => (
-                <Project key={i} title={card.title} keyword={card.keyword}/>
+                <Project
+                  key={i}
+                  title={card.title}
+                  keyword={card.keyword}
+                  tags={card.tags} // <-- add this
+                  onHover={() => setHoveredProject(i)}
+                  onLeave={() => setHoveredProject(null)}
+                />
               ))}
             </ul>
+            {hoveredProject !== null && (
+              <div
+                className="relative flex gap-2 z-50 pointer-events-none w-full h-full"
+                style={{ width: '100%', height: '100%', position: 'absolute' }}
+                
+                
+              >
+                {projectImgs[hoveredProject]?.map((src, i) => (
+                  <img
+                    key={src}
+                    src={src}
+                    alt={`Preview ${i + 10}`}
+                    className="relative rounded object-contain transition-all duration-700 ease-out"
+                    style={{
+                      width: '20%',
+                      height: 'auto',
+                      left: i === 2 ? '20%' : i === 1 ? '30%' : '10%',
+                      top: i === 2 ? '50%' : i === 1 ? '20%' : '-5%',
+                      opacity: 1,
+                      transform: `scale(1)`,
+                      transition: 'opacity 0.5s, transform 0.5s',
+                      zIndex: 10 + i,
+                      // Animate in: scale/opacity on mount
+                      animation: 'imgFadeIn 0.8s cubic-bezier(0.4,0,0.2,1) both',
+                      animationDelay: `${i * 0.2}s`,
+                    }}
+                  />
+                ))}
+                <style jsx global>{`
+                  @keyframes imgFadeIn {
+                    from {
+                      opacity: 0;
+                      transform: scale(0.8);
+                    }
+                    to {
+                      opacity: 1;
+                      transform: scale(1);
+                    }
+                  }
+                `}</style>
+              </div>
+            )}
             <ul
               className="grid grid-cols-1 gap-y-large justify-items-center md:hidden"
               tabIndex={0}

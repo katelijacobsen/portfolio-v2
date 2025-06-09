@@ -16,26 +16,32 @@ import Footer from "./components/Footer";
 import TechSkills from "./components/TechSkills";
 import SoftSkills from "./components/SoftSkills";
 import Card from "./components/Card";
+import Project from "./components/Project";
 
 const cards = [
-  {
-    title: "Foo Fest",
-    imgSrc: "/img/pictures/Logo.avif",
-    imgAlt: "Project thumbnail",
-    description:
-      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and UI/UX",
-  },
   {
     title: "Kær Kaffebar",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
+    keyword: "final exam",
+    tags: ["UI/UX", "Illustrations", "API", "Designsystem"],
     description:
       "For the group final exam project, I was responsible for illustrations, UI/UX design, designsystem and backend development, including API endpoints and database management with Supabase. I helped create a user-friendly interface supported by effective data management.",
+  },
+  {
+    title: "Foo Fest",
+    imgSrc: "/img/pictures/Logo.avif",
+    imgAlt: "Project thumbnail",
+    keyword: "3rd semester exam",
+    tags: ["UI/UX", "A11Y", "Frontend"],
+    description:
+      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and UI/UX",
   },
   {
     title: "Foody",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
+    keyword: "side project",
     description:
       "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
   },
@@ -43,13 +49,15 @@ const cards = [
     title: "Prototypes",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
+    keyword: "internship",
     description:
       "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
   },
   {
-    title: "Foo Fest",
+    title: "Frontend",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
+    keyword: "3rd semester",
     description:
       "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
   },
@@ -62,7 +70,6 @@ export default function Home() {
   const aboutArticleRef = useRef<HTMLElement>(null);
   const aboutHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const aboutParagraphRef = useRef<HTMLParagraphElement | null>(null);
-  const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   //Scroll Smooth
   useEffect(() => {
@@ -171,8 +178,6 @@ export default function Home() {
     return () => ctx.revert();
   }, []);
 
-  // Animation for project Cards
-
   return (
     <div id="smooth-wrapper">
       <div className="space-y-negative mb-negative" id="smooth-content">
@@ -183,8 +188,10 @@ export default function Home() {
                 <h1 className="text">Hej I'm Katja</h1>
               </div>
               <h2 className="-tracking-widest font-header text">
-                <strong className="italic font-subheader">Frontend Developer</strong> &{" "}
-                <strong className="font-subheader">UI/UX</strong>
+                <strong className="italic font-subheader">
+                  Frontend Developer
+                </strong>{" "}
+                & <strong className="font-subheader">UI/UX</strong>
               </h2>
             </header>
             <figure className="asset-moon asset-wheel relative">
@@ -285,24 +292,22 @@ export default function Home() {
               </section>
             </div>
           </section>
-          <section
-            className="mx-large relative flex flex-col items-center justify-center"
-            aria-labelledby="projects-heading"
-          >
-            <header
-              className="sticky top-0 z-10 py-large bg-fuchsia-500"
-              id="projects-heading"
-            >
+          <section className="mx-large relative flex flex-col ">
+            <header className="sm:sticky sm:top-0 sm:z-10 sm:p-medium sm:my-large sm:bg-white md:bg-primary sm:blue-shadow sm:rounded-2xl">
               <h2>Latest Projects</h2>
             </header>
-            <div
-              ref={cardsContainerRef}
-              className="grid grid-cols-1 gap-y-large overflow-y-auto h-screen snap-y snap-mandatory md:hidden"
+            <ul className="hidden md:flex md:flex-col md:gap-y-medium">
+              {cards.map((card, i) => (
+                <Project key={i} title={card.title} keyword={card.keyword}/>
+              ))}
+            </ul>
+            <ul
+              className="grid grid-cols-1 gap-y-large justify-items-center md:hidden"
               tabIndex={0}
               aria-label="Project Cards"
             >
               {cards.map((card, i) => (
-                <div key={i}  className="snap-start h-screen flex items-center justify-center">
+                <div key={i} className="">
                   <Card
                     key={i}
                     title={card.title}
@@ -313,7 +318,7 @@ export default function Home() {
                   />
                 </div>
               ))}
-            </div>
+            </ul>
           </section>
         </main>
         <Footer />

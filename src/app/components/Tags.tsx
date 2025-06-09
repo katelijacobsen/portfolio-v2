@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 interface TagsProps {
-  skill: string;
+  skill?: string;
   icon?: ReactNode; 
   bgColor?: string;
   txtColor?: string;

@@ -9,77 +9,40 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
   text: string;
-  variant: "primary" | "secondary";
-  icon?: ReactNode;
+  icon?: boolean;
   className?: string;
+  variant: "primary" | "secondary";
 }
 
 const Button = ({ text, variant, icon, className }: Props) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const textRef = useRef<HTMLSpanElement>(null);
-  const iconRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    if (!buttonRef.current) return;
-
-    gsap.from(buttonRef.current, {
-      scrollTrigger: {
-        trigger: buttonRef.current,
-        start: "top 60%",
-        toggleActions: "play none none none",
-        markers: false,
-      },
-      width: 0,
-      opacity: 0,
-      delay: 2,
-      duration: 0.8,
-      ease: "power4.out",
-    });
-
-    gsap.from(textRef.current, {
-      scrollTrigger: {
-        trigger: buttonRef.current,
-        start: "top 60%",
-        toggleActions: "play none none none",
-      },
-      y: 20,
-      opacity: 0,
-      delay: 2.6,
-      duration: 0.6,
-    });
-
-    gsap.from(iconRef.current, {
-      scrollTrigger: {
-        trigger: buttonRef.current,
-        start: "top 60%",
-        toggleActions: "play none none none",
-      },
-      y: 20,
-      opacity: 0,
-      delay: 2.8,
-      duration: 0.6,
-    });
-  }, []);
-
   let variantClass = "";
 
   switch (variant) {
     case "primary":
-      variantClass =
-        "flex items-center justify-center gap-medium w-full md:w-[15rem] h-[4rem] bg-[linear-gradient(244deg,_#2854E3_13.87%,_#96ABEE_175.35%)] text-primary text-button p-button rounded-full blue-shadow";
+      variantClass = "";
       break;
     case "secondary":
       variantClass =
-        "flex items-center gap-medium bg-neutral text-button text-accent p-button rounded-full border-2 border-accent blue-shadow";
+        "cursor-pointer flex items-center gap-medium bg-neutral text-button text-accent p-button rounded-full border-2 border-accent blue-shadow";
       break;
   }
 
   return (
-    <button ref={buttonRef} className={`${variantClass} ${className} relative z-10`}>
-      <span ref={textRef}>{text}</span>
-      <span ref={iconRef}>{icon}</span>
+    <button className="w-full sm:w-auto h-full group top-0 transition-transform duration-200 relative block uppercase cursor-pointer align-middle font-butto text-primary-1 p-button rounded-full border-primary-1 border transform-3d z-20">
+      {text}
+      <span className="active:translate-y-[12%] top-0 right-0 left-0 bottom-0 transition-transform duration-200 absolute inline-block w-full h-full z-80">
+        <span className="absolute transition-transform duration-200 top-[25%] right-0 left-0 bottom-0 rounded-full z-50 group-hover:translate-y-1 text-primary-1 ">
+          {" "}
+          {text}{" "}
+        </span>
+        <span className="absolute transition-transform duration-200 top-0 right-0 left-0 bottom-0 bg-accent-1 border-2 border-primary-2 rounded-full z-10 group-hover:translate-y-1"></span>
+      </span>
+      <span className="absolute transition-transform duration-200 w-full h-full top-[20%] right-0 left-0 bottom-0 bg-accent-2 rounded-full z-0"></span>
     </button>
   );
 };
 
 export default Button;
+{
+  /*className={`${variantClass} ${className}`} */
+}

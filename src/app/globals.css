@@ -1,37 +1,15 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Radon";
-  src: url("/fonts/RadonRegular.woff2") format("woff2");
+  font-family: "TransformaBold";
+  src: url("/fonts/TransformaMix_SemiBold.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Archia";
-  src: url("/fonts/Archia-Regular.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Apple Garamond Bold";
-  src: url("/fonts/AppleGaramond-Bold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Apple Garamond Bold Italic";
-  src: url("/fonts/AppleGaramond-BoldItalic.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Apple Garamond";
-  src: url("/fonts/AppleGaramond.woff2") format("woff2");
-  font-weight: 800;
+  font-family: "SF Pro Regular";
+  src: url("/fonts/SFPRODISPLAYREGULAR.woff2") format("woff2");
   font-style: normal;
   font-display: swap;
 }
@@ -42,14 +20,16 @@
 
 @theme inline {
   /*===== Colorpalette =====*/
-  --color-primary: #faf7ee;
-  --color-secondary: #1d3557;
-  --color-accent: #2854e3;
-  --color-accent-gradient: linear-gradient(244deg, #2854e3, #96abee);
-  --color-neutral: #fbfbfb;
-  --color-text: var(--color-secondary);
-  --color-pill: var(--color-accent-gradient);
-  --color-btn-text: ;
+  --color-body-text: #463530;
+  --color-primary-1: #fffefd;
+  --color-primary-2: #faf7ee;
+  --color-primary-3: #d3cfc4;
+  --color-secondary-1: #ed95ba;
+  --color-secondary-2: #e35029;
+  --color-secondary-3: #f8d505;
+  --color-secondary-4: #8ee329;
+  --color-accent-1: #2954e3;
+  --color-accent-2: #2545b2;
 
   /*===== Spacing =====*/
   --spacing-xx-small: 2px;
@@ -63,7 +43,7 @@
   --spacing-button: 0.7rem 1.4rem;
 
   /*===== Font =====*/
-  --font-header: "RadonRegular", serif;
+  --font-header: "TransformaBold", serif;
   --font-subheader: "AppleGaramond", serif;
   --font-subheader-bold: "AppleGaramond-Bold", serif;
   --font-subheader-bold-italic: "AppleGaramond-BoldItalic", serif;
@@ -84,32 +64,19 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/*@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-primary);
-  }
-}*/
-
 /*===== Fixed Rules =====*/
 body {
-  background: var(--color-primary);
-}
-
-h1,
-h2,
-h3,
-blockquote {
-  color: var(--color-secondary);
+  background: var(--color-primary-1);
 }
 
 h1 {
   font-size: var(--text-h1);
-  font-family: "Radon";
+  font-family: "TransformaBold";
 }
 
 header > h2:only-child {
   font-size: var(--text-h2);
-  font-family: "Radon";
+  font-family: "TransformaBold";
 }
 header div + h2 {
   font-size: var(--text-h2);
@@ -127,19 +94,19 @@ a,
 p,
 li,
 h4 {
-  font-family: "Archia";
+  font-family: "SF Pro Regular";
 }
 
 li {
   list-style: none;
 }
 
-.blue-shadow {
-  box-shadow: -16px 125px 35px 0px rgba(111, 140, 236, 0),
-    -10px 80px 32px 0px rgba(111, 140, 236, 0.01),
-    -6px 45px 27px 0px rgba(111, 140, 236, 0.03),
-    -3px 20px 20px 0px rgba(111, 140, 236, 0.04),
-    -1px 5px 11px 0px rgba(111, 140, 236, 0.05);
+.brown-shadow {
+  box-shadow: 0px 15px 4px 0px rgba(70, 53, 48, 0),
+    0px 9px 4px 0px rgba(70, 53, 48, 0.01),
+    0px 5px 3px 0px rgba(70, 53, 48, 0.05),
+    0px 2px 2px 0px rgba(70, 53, 48, 0.09),
+    0px 1px 1px 0px rgba(70, 53, 48, 0.1);
 }
 
 /*===== GSAP Classes =====*/
@@ -242,19 +209,3 @@ li {
     transform: rotate(0deg);
   }
 }
-/*
-.blur-overlay {
-  z-index: 0;
-  background: rgba(255, 0, 0, 0);
-  width: 400px;
-  height: 600px;
-  inset: auto auto -10% -15%;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  mask: linear-gradient(15deg, rgb(0, 0, 0) 15%, rgba(0, 0, 0, 0) 40%);
-  -webkit-mask: linear-gradient(
-    15deg,
-    rgb(0, 0, 0) 25.5%,
-    rgba(0, 0, 0, 0) 80%
-  );
-}*/

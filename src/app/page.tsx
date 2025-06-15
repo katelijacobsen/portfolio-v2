@@ -3,7 +3,6 @@
 import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import ScrollSmoother from "gsap/ScrollSmoother";
 import { useEffect, useRef, useState } from "react";
 
 //Icons
@@ -18,6 +17,7 @@ import SoftSkills from "./components/SoftSkills";
 import Card from "./components/Card";
 import Project from "./components/Project";
 import Link from "next/link";
+import FloatingBrick from "./components/FloatingBrick";
 
 // constant to create a list of images for projects
 const projectImgs = [
@@ -67,7 +67,7 @@ const cards = [
     keyword: "RELESYS",
     tags: ["CMS", "A11Y", "UI/UX"],
     description:
-    "As a Digital Designer Intern at Relesys, I contributed to diverse digital product development tasks. My role involved rapid app prototyping in Figma and applying front-end skills (CSS/HTML) for app customization. I also honed my design argumentation skills, translating brand identities into impactful app prototypes using tools like Figma.",
+      "As a Digital Designer Intern at Relesys, I contributed to diverse digital product development tasks. My role involved rapid app prototyping in Figma and applying front-end skills (CSS/HTML) for app customization. I also honed my design argumentation skills, translating brand identities into impactful app prototypes using tools like Figma.",
   },
   {
     title: "Foo Fest",
@@ -87,7 +87,7 @@ const cards = [
     keyword: "3RD SEMESTER",
     tags: ["Astro", "CSS", "UI/UX"],
     description:
-    "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
+      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
   },
   {
     title: "Ducky's Diner",
@@ -100,7 +100,7 @@ const cards = [
       "During my first semester, I gained foundational skills in JavaScript and CSS animations, which I applied to develop 'Ducky's Diner,' a game that combines engaging gameplay with playful animation. The project also introduced me to basic game design principles, enabling me to create an interactive and entertaining experience",
   },
 ];
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   // Reference the values
@@ -111,29 +111,11 @@ export default function Home() {
   // State to manage hover effects on the projects
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
-  //Scroll Smooth
-  useEffect(() => {
-    let smoother: ScrollSmoother | null = null;
-
-    if (typeof window !== "undefined") {
-      smoother = ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 1.3,
-      });
-    }
-
-    return () => {
-      if (smoother) smoother.kill();
-    };
-  }, []);
-
   //Animation H1 with GSAP by splitting characters
   useEffect(() => {
-    //"Promise"
+    let split: any = null;
     document.fonts.ready.then(() => {
-      //Variant
-      let split = SplitText.create(".text", {
+      split = SplitText.create(".text", {
         type: "chars",
       });
 
@@ -149,10 +131,15 @@ export default function Home() {
         },
       });
     });
+    return () => {
+      if (split && typeof split.revert === "function") split.revert();
+    };
   }, []);
 
   // Animation for 'About me' section with GSAP
   useEffect(() => {
+    let splitHeading: any = null;
+    let splitParagraph: any = null;
     const ctx = gsap.context(() => {
       // Background animation
       gsap.from(aboutArticleRef.current, {
@@ -172,7 +159,7 @@ export default function Home() {
       // Split H2 Animation
       if (aboutHeadingRef.current && aboutParagraphRef.current) {
         // Heading animation
-        const splitHeading = new SplitText(aboutHeadingRef.current, {
+        splitHeading = new SplitText(aboutHeadingRef.current, {
           type: "words",
         });
 
@@ -192,7 +179,7 @@ export default function Home() {
         });
 
         // Paragraph animation
-        const splitParagraph = new SplitText(aboutParagraphRef.current, {
+        splitParagraph = new SplitText(aboutParagraphRef.current, {
           type: "words",
           wordsClass: "word-item",
         });
@@ -210,212 +197,175 @@ export default function Home() {
           stagger: 0.05,
           duration: 0.6,
           ease: "power2.out",
-          onComplete: () => splitParagraph.revert(), // Clean up after animation
         });
       }
     }, aboutSectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      if (splitHeading && typeof splitHeading.revert === "function")
+        splitHeading.revert();
+      if (splitParagraph && typeof splitParagraph.revert === "function")
+        splitParagraph.revert();
+    };
   }, []);
 
   return (
-    <div id="smooth-wrapper">
-      <div
-        className="space-y-negative mb-negative relative"
-        id="smooth-content"
-      >
-        <main className="space-y-negative">
-          <section className="flex flex-col items-center content-center gap-medium mx-large">
-            <header className="text-center">
-              <div className="line">
-                <h1 className="text">Hej I'm Katja</h1>
-              </div>
-              <h2 className="-tracking-widest font-header text">
-                <strong className="italic font-subheader">
-                  Frontend Developer
-                </strong>{" "}
-                & <strong className="font-subheader">UI/UX</strong>
-              </h2>
-            </header>
-            <figure className="asset-moon asset-wheel relative">
-              <Image
-                src="/img/pictures/testimg.png"
-                width={300}
-                height={300}
-                alt="Picture of the designer"
-                loading="lazy"
-                className="rounded-full blue-shadow relative asset-after"
-              />
-              <div className=" rounded-full absolute blur-overlay"></div>
-            </figure>
-            <Button
-              variant="primary"
-              text="Take a look"
-              icon={<LuArrowUpRight className="w-8 h-auto" />}
+    <main className="space-y-large mx-large">
+      <header>
+        <div className="grid grid-cols-[auto_auto_auto] grid-rows-3">
+        <h1 className="row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">Por<span className="text-accent-1">t</span>fol<span className="text-accent-1">i</span>o</h1>
+        <div className="flex items-center justify-center col-start-2">
+          <h2 className="">Frontend</h2>
+          <Image
+            width={100}
+            height={100}
+            src="/img/shapes/flower.svg"
+            alt="orange flower"
+            className="w-8 h-8 mx-auto"
+            loading="lazy"
+          />
+          <Image
+            width={100}
+            height={100}
+            src="/img/shapes/flower.svg"
+            alt="orange flower"
+            className="w-8 h-8 mx-auto"
+            loading="lazy"
+          />
+          <Image
+            width={100}
+            height={100}
+            src="/img/shapes/flower.svg"
+            alt="orange flower"
+            className="w-8 h-8 mx-auto"
+            loading="lazy"
+          />
+        <h2 className="">UI/UX</h2>
+        </div>
+        <div className="flex items-center justify-center col-start-2">
+          <h2 className="">2025</h2>
+          <Image
+            width={100}
+            height={100}
+            src="/img/shapes/star.svg"
+            
+            alt="yellow star"
+            className="w-8 h-8 mx-auto"
+            loading="lazy"
             />
-          </section>
-          <section ref={aboutSectionRef} className="mx-large">
-            <article
-              ref={aboutArticleRef}
-              className="bg-white lg:mx-large p-medium rounded-2xl blue-shadow"
-            >
-              <header>
-                <h2 ref={aboutHeadingRef}>About me</h2>
-              </header>
-              <div className="line">
-                <p
-                  ref={aboutParagraphRef}
-                  className="text-body-text/10 text-paragraph"
-                >
-                  I’m a educated multimedia designer that has strong focus on
-                  creating and implementing designs. To me, it's not just about
-                  aesthetics. It's about crafting solutions that are both
-                  intuitive and engaging.
-                </p>
-              </div>
-            </article>
-          </section>
-          <section className="mx-large relative block">
-            <blockquote className="font-subheader text-center asset-moon2 asset-misc relative">
-              This is the section where I'm
-              <i className="italic font-bold"> supposed </i> to impress you with
-              my portfolio
-            </blockquote>
-            <div className="grid grid-cols-4 relative">
-              <div>
-                <Image
-                  src="/img/icons/moon3.avif"
-                  width={160}
-                  height={160}
-                  alt="abstract flower with four pattels with blue gradient"
-                  loading="lazy"
-                />
-              </div>
-              <div>
-                <Image
-                  src="/img/icons/flower3.avif"
-                  width={160}
-                  height={160}
-                  alt="abstract flower with four pattels with blue gradient"
-                  loading="lazy"
-                />
-              </div>
-              <div>
-                <Image
-                  src="/img/icons/misc8.avif"
-                  width={160}
-                  height={160}
-                  alt="abstract flower with four pattels with blue gradient"
-                  loading="lazy"
-                />
-              </div>
-              <div>
-                <Image
-                  src="/img/icons/misc5.avif"
-                  width={160}
-                  height={160}
-                  alt="abstract flower with four pattels with blue gradient"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </section>
-          <section className="mx-large" aria-labelledby="skills-heading">
-            <header>
-              <h2 id="skills-heading">Skills</h2>
-            </header>
-            <div className="grid grid-cols-1 gap-y-large gap-x-large lg:gap-y-medium lg:grid-cols-2 lg:grid-rows-2">
-              <section>
-                <h3>Technical Skills</h3>
-                <TechSkills />
-              </section>
-              <section className="lg:col-start-2 lg:row-start-2">
-                <h3 className="text-right">Soft Skills</h3>
-                <SoftSkills />
-              </section>
-            </div>
-          </section>
-          <section className="mx-large relative flex flex-col">
-            <header className="sm:sticky sm:top-0 sm:z-10 sm:p-medium sm:my-large sm:bg-white md:bg-primary sm:blue-shadow sm:rounded-2xl">
-              <h2>Latest Projects</h2>
-            </header>
-            <ul className="hidden md:flex md:flex-col md:gap-y-medium">
-              {cards.map((card, i) => (
-                <Link key={i} href={`/projects/${card.slug}`}>
-                  <Project
-                    key={i}
-                    title={card.title}
-                    keyword={card.keyword}
-                    tags={card.tags} // <-- add this
-                    onHover={() => setHoveredProject(i)}
-                    onLeave={() => setHoveredProject(null)}
-                  />
-                </Link>
-              ))}
-            </ul>
-            {hoveredProject !== null && (
-              <div
-                className="relative flex gap-2 z-50 pointer-events-none w-full h-full"
-                style={{ width: "100%", height: "100%", position: "absolute" }}
-              >
-                {projectImgs[hoveredProject]?.map((src, i) => (
-                  <img
-                    key={src}
-                    src={src}
-                    alt={`Preview ${i + 10}`}
-                    className="relative rounded object-contain transition-all duration-700 ease-out"
-                    style={{
-                      width: "20%",
-                      height: "auto",
-                      left: i === 2 ? "20%" : i === 1 ? "30%" : "10%",
-                      top: i === 2 ? "50%" : i === 1 ? "20%" : "-5%",
-                      opacity: 1,
-                      transform: `scale(1)`,
-                      transition: "opacity 0.5s, transform 0.5s",
-                      zIndex: 10 + i,
-                      // Animate in: scale/opacity on mount
-                      animation:
-                        "imgFadeIn 0.8s cubic-bezier(0.4,0,0.2,1) both",
-                      animationDelay: `${i * 0.2}s`,
-                    }}
-                  />
-                ))}
-                <style jsx global>{`
-                  @keyframes imgFadeIn {
-                    from {
-                      opacity: 0;
-                      transform: scale(0.8);
-                    }
-                    to {
-                      opacity: 1;
-                      transform: scale(1);
-                    }
-                  }
-                `}</style>
-              </div>
-            )}
-            <ul
-              className="grid grid-cols-1 gap-y-large justify-items-center md:hidden"
-              tabIndex={0}
-              aria-label="Project Cards"
-            >
-              {cards.map((card, i) => (
-                <Link key={i} href={`/projects/${card.slug}`}>
-                  <Card
-                    key={i}
-                    title={card.title}
-                    imgSrc={card.imgSrc}
-                    imgAlt={card.imgAlt}
-                    description={card.description}
-                    rotation={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
-                  />
-                </Link>
-              ))}
-            </ul>
-          </section>
-        </main>
-        <Footer />
-      </div>
-    </div>
+          <Image
+            width={100}
+            height={100}
+            src="/img/shapes/star.svg"
+            alt="yellow star"
+            className="w-8 h-8 mx-auto"
+            loading="lazy"
+            />
+          <Image
+            width={100}
+            height={100}
+            src="/img/shapes/star.svg"
+            alt="yellow star"
+            className="w-8 h-8 mx-auto"
+            loading="lazy"
+            />
+        <h2 className="">Katja Mähleke</h2>
+        </div>
+        </div>
+        <div className="flex flex-col md:flex-row gap-small justify-center items-center">
+        <Button variant="primary" text="See my work" />
+        <Button variant="primary" text="Get in touch" />
+        </div>
+      </header>
+      <article>
+        <section>
+          <Image
+            width={500}
+            height={500}
+            src="/img/pictures/portrait.avif"
+            alt=""
+            loading="lazy"
+          />
+        </section>
+        <section>
+          <h3>About me</h3>
+          <p>
+            Hi I’m Katja! I’m a multimedia designer with a strong passion for
+            webdesign that are accessible for all types of users. My focus is to
+            use my UI/UX skills to create intuitive straightforward digital
+            experiences, including responsive design to ensure consistent
+            performance across all devices. I also think that when tackling
+            complex problems it requires to break a solution down with
+            simplicity to deliver universal accessibility web solutions that
+            connect with diverse users.
+          </p>
+        </section>
+        <section>
+          <Image
+            width={500}
+            height={500}
+            src="/img/pictures/portrait.avif"
+            alt=""
+            loading="lazy"
+          />
+        </section>
+        <section>
+          <cite>The most complex tools should feel intuitive</cite>
+        </section>
+        <section>
+          <h3>My CV</h3>
+        </section>
+        <section>
+          <ul>
+            <FloatingBrick text="Baking" />
+            <FloatingBrick text="Hiking" />
+            <FloatingBrick text="Drawing" />
+            <FloatingBrick text="Games" />
+            <FloatingBrick text="Movies" />
+          </ul>
+        </section>
+        <section>
+          <Image
+            width={500}
+            height={500}
+            src="/img/pictures/portrait.avif"
+            alt=""
+            loading="lazy"
+          />
+        </section>
+      </article>
+      <section>
+        <h3>Project</h3>
+        <ul>
+          {cards.map((card, i) => (
+            <Link key={i} href={`/projects/${card.slug}`}>
+              <Card
+                key={i}
+                title={card.title}
+                imgSrc={card.imgSrc}
+                imgAlt={card.imgAlt}
+                description={card.description}
+                rotation={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
+              />
+            </Link>
+          ))}
+        </ul>
+      </section>
+      <section>
+        <h3>Experience</h3>
+        <Image
+          width={500}
+          height={500}
+          src="/img/pictures/portrait.avif"
+          alt=""
+          loading="lazy"
+        />
+      </section>
+      <section>{/* Add Coding Animation Here */}</section>
+      <section>
+        <h3> Thank you for your time</h3>
+      </section>
+    </main>
   );
 }

@@ -2,13 +2,19 @@ const Footer = () => {
   return (
     <footer className="w-full text-white bg-accent py-negative px-large rounded-tr-3xl rounded-tl-3xl">
       <div className="grid lg:grid-cols-2 gap-x-medium">
+        {/* Contact Information */}
         <address className="not-italic">
           <h4 className="border-b-2 border-white grid text-h2 ">Contact</h4>
-          <a href="mailto:your@email.com" className="text-h3">katjamaehleke98gmail.com</a>
+          <a href="mailto:your@email.com" className="text-h3">
+            katjamaehleke98gmail.com
+          </a>
           <br />
-              
-          <a href="tel:+123456789" className="text-h3">+1 234 567 89</a>
+
+          <a href="tel:+123456789" className="text-h3">
+            +1 234 567 89
+          </a>
         </address>
+        {/* My Social Media */}
         <nav aria-label="Social media">
           <h4 className="border-b-2 border-white grid text-h2  ">Follow me</h4>
           <ul>
@@ -18,7 +24,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-h3"
-                >
+              >
                 Twitter
               </a>
             </li>

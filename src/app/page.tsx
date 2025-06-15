@@ -54,49 +54,50 @@ const cards = [
     slug: "kaer-kaffebar",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
-    keyword: "final exam",
+    keyword: "FINAL EXAM",
     tags: ["UI/UX", "Illustrations", "API", "Designsystem"],
     description:
       "For the group final exam project, I was responsible for illustrations, UI/UX design, designsystem and backend development, including API endpoints and database management with Supabase. I helped create a user-friendly interface supported by effective data management.",
+  },
+  {
+    title: "Internship",
+    slug: "prototypes",
+    imgSrc: "/img/pictures/Logo.avif",
+    imgAlt: "Project thumbnail",
+    keyword: "RELESYS",
+    tags: ["CMS", "A11Y", "UI/UX"],
+    description:
+    "As a Digital Designer Intern at Relesys, I contributed to diverse digital product development tasks. My role involved rapid app prototyping in Figma and applying front-end skills (CSS/HTML) for app customization. I also honed my design argumentation skills, translating brand identities into impactful app prototypes using tools like Figma.",
   },
   {
     title: "Foo Fest",
     slug: "foo-fest",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
-    keyword: "3rd semester exam",
+    keyword: "3RD SEMESTER EXAM",
     tags: ["UI/UX", "A11Y", "Frontend", "Logo"],
     description:
       "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and UI/UX",
-  },
-  {
-    title: "Foody",
-    slug: "foody",
-    imgSrc: "/img/pictures/Logo.avif",
-    imgAlt: "Project thumbnail",
-    keyword: "side project",
-    description:
-      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
-  },
-  {
-    title: "Prototypes",
-    slug: "prototypes",
-    imgSrc: "/img/pictures/Logo.avif",
-    imgAlt: "Project thumbnail",
-    keyword: "internship",
-    tags: ["CMS", "A11Y", "UI/UX"],
-    description:
-      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
   },
   {
     title: "Frontend",
     slug: "frontend",
     imgSrc: "/img/pictures/Logo.avif",
     imgAlt: "Project thumbnail",
-    keyword: "3rd semester",
+    keyword: "3RD SEMESTER",
     tags: ["Astro", "CSS", "UI/UX"],
     description:
-      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
+    "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and a good user experience.",
+  },
+  {
+    title: "Ducky's Diner",
+    slug: "duckys-diner",
+    imgSrc: "/img/pictures/Logo.avif",
+    imgAlt: "Project thumbnail",
+    keyword: "2ND SEMESTER",
+    tags: ["GAME DESIGN", "JAVASCRIPT", "CSS", "ANIMATION"],
+    description:
+      "During my first semester, I gained foundational skills in JavaScript and CSS animations, which I applied to develop 'Ducky's Diner,' a game that combines engaging gameplay with playful animation. The project also introduced me to basic game design principles, enabling me to create an interactive and entertaining experience",
   },
 ];
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -118,7 +119,7 @@ export default function Home() {
       smoother = ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
         content: "#smooth-content",
-        smooth: 1.5,
+        smooth: 1.3,
       });
     }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Button from "./components/Button";
+import Header from "./components/Header";
 
 export const metadata: Metadata = {
   title: "Katja Mähleke",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header/>
         {children}
         <Footer />
       </body>

@@ -6,16 +6,14 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 
 //Icons
-import { LuArrowUpRight } from "react-icons/lu";
+import { FiArrowUpRight } from "react-icons/fi";
 
 // Components
 import Image from "next/image";
 import Button from "./components/Button";
-import Footer from "./components/Footer";
 import TechSkills from "./components/TechSkills";
 import SoftSkills from "./components/SoftSkills";
 import Card from "./components/Card";
-import Project from "./components/Project";
 import Link from "next/link";
 import FloatingBrick from "./components/FloatingBrick";
 
@@ -108,8 +106,6 @@ export default function Home() {
   const aboutArticleRef = useRef<HTMLElement>(null);
   const aboutHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const aboutParagraphRef = useRef<HTMLParagraphElement | null>(null);
-  // State to manage hover effects on the projects
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   //Animation H1 with GSAP by splitting characters
   useEffect(() => {
@@ -211,85 +207,112 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="space-y-large mx-large">
-      <header>
+    <main className="space-y-large ">
+      {/* Header Section with Grid Layout and Buttons */}
+
+      <header className="w-auto h-[80dvh] flex flex-col justify-center md:gap-small lg:gap-medium mx-large">
         <div className="grid grid-cols-[auto_auto_auto] grid-rows-3">
-        <h1 className="row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">Por<span className="text-accent-1">t</span>fol<span className="text-accent-1">i</span>o</h1>
-        <div className="flex items-center justify-center col-start-2">
-          <h2 className="">Frontend</h2>
-          <Image
-            width={100}
-            height={100}
-            src="/img/shapes/flower.svg"
-            alt="orange flower"
-            className="w-8 h-8 mx-auto"
-            loading="lazy"
-          />
-          <Image
-            width={100}
-            height={100}
-            src="/img/shapes/flower.svg"
-            alt="orange flower"
-            className="w-8 h-8 mx-auto"
-            loading="lazy"
-          />
-          <Image
-            width={100}
-            height={100}
-            src="/img/shapes/flower.svg"
-            alt="orange flower"
-            className="w-8 h-8 mx-auto"
-            loading="lazy"
-          />
-        <h2 className="">UI/UX</h2>
-        </div>
-        <div className="flex items-center justify-center col-start-2">
-          <h2 className="">2025</h2>
-          <Image
-            width={100}
-            height={100}
-            src="/img/shapes/star.svg"
-            
-            alt="yellow star"
-            className="w-8 h-8 mx-auto"
-            loading="lazy"
+          <h1 className="uppercase row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">
+            Por<span className="text-accent-1">t</span>fol
+            <span className="text-accent-1">i</span>o
+          </h1>
+          <div className="flex items-center justify-center col-start-2 font-semibold">
+            <h2 className="">Frontend</h2>
+            <Image
+              width={100}
+              height={100}
+              src="/img/shapes/flower.svg"
+              alt="orange flower"
+              className="w-8 h-8 mx-auto"
+              loading="lazy"
             />
-          <Image
-            width={100}
-            height={100}
-            src="/img/shapes/star.svg"
-            alt="yellow star"
-            className="w-8 h-8 mx-auto"
-            loading="lazy"
+            <Image
+              width={100}
+              height={100}
+              src="/img/shapes/flower.svg"
+              alt="orange flower"
+              className="w-8 h-8 mx-auto"
+              loading="lazy"
             />
-          <Image
-            width={100}
-            height={100}
-            src="/img/shapes/star.svg"
-            alt="yellow star"
-            className="w-8 h-8 mx-auto"
-            loading="lazy"
+            <Image
+              width={100}
+              height={100}
+              src="/img/shapes/flower.svg"
+              alt="orange flower"
+              className="w-8 h-8 mx-auto"
+              loading="lazy"
             />
-        <h2 className="">Katja Mähleke</h2>
+            <h2 className="">UI/UX</h2>
+          </div>
+          <div className="flex items-center justify-center col-start-2 font-semibold">
+            <h2 className="">2025</h2>
+            <Image
+              width={100}
+              height={100}
+              src="/img/shapes/star.svg"
+              alt="yellow star"
+              className="w-8 h-8 mx-auto"
+              loading="lazy"
+            />
+            <Image
+              width={100}
+              height={100}
+              src="/img/shapes/star.svg"
+              alt="yellow star"
+              className="w-8 h-8 mx-auto"
+              loading="lazy"
+            />
+            <Image
+              width={100}
+              height={100}
+              src="/img/shapes/star.svg"
+              alt="yellow star"
+              className="w-8 h-8 mx-auto"
+              loading="lazy"
+            />
+            <h2 className="">Katja Mähleke</h2>
+          </div>
         </div>
-        </div>
-        <div className="flex flex-col md:flex-row gap-small justify-center items-center">
-        <Button text="See my work" />
-        <Button text="Get in touch" bg="bg-primary-2" bg2="bg-primary-3" textclr="text-accent-1" borderclr="border-accent-1"/>
+        <div className="flex flex-col md:flex-row gap-medium justify-center items-center">
+          <Button text="See my work" />
+          <Button
+            text="Get in touch"
+            bg="bg-primary-1"
+            bg2="bg-primary-3"
+            textclr="text-accent-1"
+            borderclr="border-accent-1"
+          />
         </div>
       </header>
-      <article>
-        <section>
+
+      {/* Article Section about me */}
+
+      <article className="flex flex-col relative gap-medium bg-secondary-1 p-10 rounded-3xl lg:grid lg:grid-cols-7 lg:grid-rows-[auto_12rem_18rem] lg:px-negative">
+        <section className="flex lg:hidden absolute -my-50 right-10 ">
           <Image
-            width={500}
-            height={500}
+            width={512}
+            height={512}
             src="/img/pictures/portrait.avif"
             alt=""
             loading="lazy"
+            className="rounded-full border-4 border-primary-2 brown-shadow w-[240px] h-auto lg:h-full object-cover"
           />
         </section>
-        <section>
-          <h3>About me</h3>
+        <section className="lg:col-start-1 lg:col-end-4 lg:h-full hidden lg:flex">
+          <Image
+            width={512}
+            height={512}
+            src="/img/pictures/portrait.avif"
+            alt=""
+            loading="lazy"
+            className="rounded-2xl border-4 border-primary-2 brown-shadow w-full h-auto lg:h-full object-cover"
+          />
+        </section>
+
+        <section className="lg:col-start-4 lg:col-span-full lg:row-start-1 bg-primary-1 p-medium brown-shadow rounded-2xl">
+          <h3 className="font-subheader font-semibold tracking-wide">
+            About me
+          </h3>
           <p>
             Hi I’m Katja! I’m a multimedia designer with a strong passion for
             webdesign that are accessible for all types of users. My focus is to
@@ -301,41 +324,84 @@ export default function Home() {
             connect with diverse users.
           </p>
         </section>
-        <section>
+
+        <section className="lg:col-span-2 lg:row-start-2 flex items-center justify-center rounded-2xl gap-medium bg-primary-1 p-medium brown-shadow">
           <Image
             width={500}
             height={500}
-            src="/img/pictures/portrait.avif"
-            alt=""
+            src="/img/shapes/moon.png"
+            alt="yellow-orange-blue gradient geometric moon"
             loading="lazy"
+            className="w-full h-auto lg:h-full object-contain"
           />
         </section>
-        <section>
-          <cite>The most complex tools should feel intuitive</cite>
-        </section>
-        <section>
-          <h3>My CV</h3>
-        </section>
-        <section>
-          <ul>
-            <FloatingBrick text="Baking" />
-            <FloatingBrick text="Hiking" />
-            <FloatingBrick text="Drawing" />
-            <FloatingBrick text="Games" />
-            <FloatingBrick text="Movies" />
+          <section className="col-start-3 col-span-3 row-start-2 hidden md:flex items-center justify-center rounded-2xl gap-medium bg-primary-1 p-medium brown-shadow">
+            <Image
+              width={500}
+              height={500}
+              src="/img/shapes/moon.png"
+              alt="yellow-orange-blue gradient geometric moon"
+              loading="lazy"
+              className="w-full h-auto lg:h-full object-contain"
+            />
+          </section>
+
+          <a className="lg:col-start-6 lg:col-span-full lg:row-start-2 bg-primary-1 p-medium text-h3 font-header brown-shadow rounded-2xl flex flex-col justify-between text-left">
+            <FiArrowUpRight className="ms-auto w-10 h-10 text-accent-1" />
+            My CV
+          </a>
+
+        <section className="lg:col-span-4 lg:row-start-3 bg-primary-1 p-medium brown-shadow rounded-2xl relative">
+          <h3 className="font-subheader font-semibold tracking-wide my-2">
+            Things I like to do
+          </h3>
+          <ul className="relative w-full sm:h-auto md:h-auto lg:h-50 max-h-full aspect-[1.7/1] md:aspect-[2/1]">
+            <FloatingBrick
+              text="Baking"
+              bg="bg-secondary-3"
+              rotate="rotate-[3deg]"
+              style={{ top: "28%", left: "30%" }}
+            />
+            <FloatingBrick
+              text="Hiking"
+              bg="bg-accent-1"
+              textclr="text-primary-1"
+              rotate="rotate-[24deg]"
+              style={{ top: "55%", left: "2%" }}
+            />
+            <FloatingBrick
+              text="Drawing"
+              bg="bg-secondary-4"
+              rotate="rotate-[8deg]"
+              style={{ top: "0%", left: "50%" }}
+            />
+            <FloatingBrick
+              text="Games"
+              bg="bg-secondary-1"
+              rotate="rotate-[-12deg]"
+              style={{ top: "60%", left: "60%" }}
+            />
+            <FloatingBrick
+              text="DIY"
+              bg="bg-secondary-2"
+              textclr="text-primary-1"
+              rotate="rotate-[-24deg]"
+              style={{ top: "5%", left: "8%" }}
+            />
           </ul>
         </section>
-        <section>
+        <section className="lg:col-start-5 lg:col-span-full lg:row-start-3 flex items-center justify-center rounded-2xl gap-medium bg-primary-1 p-medium brown-shadow">
           <Image
             width={500}
             height={500}
-            src="/img/pictures/portrait.avif"
-            alt=""
+            src="/img/shapes/moon.png"
+            alt="yellow-orange-blue gradient geometric moon"
             loading="lazy"
+            className="w-full h-auto lg:h-full object-contain"
           />
         </section>
       </article>
-      <section>
+      <section className="mx-large">
         <h3>Project</h3>
         <ul>
           {cards.map((card, i) => (
@@ -364,7 +430,7 @@ export default function Home() {
       </section>
       <section>{/* Add Coding Animation Here */}</section>
       <section>
-        <h3> Thank you for your time</h3>
+        <h2 className="font-header text-h2 text-center text-body-text"> Thank you for your time</h2>
       </section>
     </main>
   );

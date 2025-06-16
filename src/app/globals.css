@@ -44,14 +44,15 @@
 
   /*===== Font =====*/
   --font-header: "TransformaBold", serif;
-  --font-subheader: "AppleGaramond", serif;
-  --font-subheader-bold: "AppleGaramond-Bold", serif;
+  --font-subheader: "SF Pro Regular", serif;
+  --font-subheader-bold: "SF Pro Regular", serif;
   --font-subheader-bold-italic: "AppleGaramond-BoldItalic", serif;
-  --font-body-text: "Archia-Regular", sans-serif;
+  --font-body-text: "SF Pro Regular", sans-serif;
   /*===== Font-size =====*/
   --text-h1: clamp(2.4413rem, 1.1798rem + 6.3071vw, 6.8563rem);
   --text-h2: clamp(1.9531rem, 1.3004rem + 3.2634vw, 4.2375rem);
   --text-h3: clamp(1.5625rem, 1.2607rem + 1.5089vw, 2.6188rem);
+  --text-h4: clamp(1.5625rem, 1.2607rem + 1.5089vw, 1.5188rem);
   --text-paragraph: 1.6rem;
   --text-button: var(--text-paragraph);
   --text-label: var(--text-paragraph);
@@ -66,7 +67,7 @@
 
 /*===== Fixed Rules =====*/
 body {
-  background: var(--color-primary-1);
+  background: var(--color-primary-2);
 }
 
 h1 {
@@ -90,7 +91,6 @@ blockquote {
 }
 
 button,
-a,
 p,
 li,
 h4 {

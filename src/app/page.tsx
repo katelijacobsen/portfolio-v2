@@ -4,7 +4,6 @@ import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
-
 //Icons
 import { FiArrowUpRight } from "react-icons/fi";
 
@@ -16,6 +15,8 @@ import SoftSkills from "./components/SoftSkills";
 import Card from "./components/Card";
 import Link from "next/link";
 import FloatingBrick from "./components/FloatingBrick";
+import Gradient from "./components/Gradient";
+import AboutMe from "./components/AboutMe";
 
 // constant to create a list of images for projects
 const projectImgs = [
@@ -286,121 +287,12 @@ export default function Home() {
       </header>
 
       {/* Article Section about me */}
-
-      <article className="flex flex-col relative gap-medium bg-secondary-1 p-10 rounded-3xl lg:grid lg:grid-cols-7 lg:grid-rows-[auto_12rem_18rem] lg:px-negative">
-        <section className="flex lg:hidden absolute -my-50 right-10 ">
-          <Image
-            width={512}
-            height={512}
-            src="/img/pictures/portrait.avif"
-            alt=""
-            loading="lazy"
-            className="rounded-full border-4 border-primary-2 brown-shadow w-[240px] h-auto lg:h-full object-cover"
-          />
-        </section>
-        <section className="lg:col-start-1 lg:col-end-4 lg:h-full hidden lg:flex">
-          <Image
-            width={512}
-            height={512}
-            src="/img/pictures/portrait.avif"
-            alt=""
-            loading="lazy"
-            className="rounded-2xl border-4 border-primary-2 brown-shadow w-full h-auto lg:h-full object-cover"
-          />
-        </section>
-
-        <section className="lg:col-start-4 lg:col-span-full lg:row-start-1 bg-primary-1 p-medium brown-shadow rounded-2xl">
-          <h3 className="font-subheader font-semibold tracking-wide">
-            About me
-          </h3>
-          <p>
-            Hi I’m Katja! I’m a multimedia designer with a strong passion for
-            webdesign that are accessible for all types of users. My focus is to
-            use my UI/UX skills to create intuitive straightforward digital
-            experiences, including responsive design to ensure consistent
-            performance across all devices. I also think that when tackling
-            complex problems it requires to break a solution down with
-            simplicity to deliver universal accessibility web solutions that
-            connect with diverse users.
-          </p>
-        </section>
-
-        <section className="lg:col-span-2 lg:row-start-2 flex items-center justify-center rounded-2xl gap-medium bg-primary-1 p-medium brown-shadow">
-          <Image
-            width={500}
-            height={500}
-            src="/img/shapes/moon.png"
-            alt="yellow-orange-blue gradient geometric moon"
-            loading="lazy"
-            className="w-full h-auto lg:h-full object-contain"
-          />
-        </section>
-          <section className="col-start-3 col-span-3 row-start-2 hidden md:flex items-center justify-center rounded-2xl gap-medium bg-primary-1 p-medium brown-shadow">
-            <Image
-              width={500}
-              height={500}
-              src="/img/shapes/moon.png"
-              alt="yellow-orange-blue gradient geometric moon"
-              loading="lazy"
-              className="w-full h-auto lg:h-full object-contain"
-            />
-          </section>
-
-          <a className="lg:col-start-6 lg:col-span-full lg:row-start-2 bg-primary-1 p-medium text-h3 font-header brown-shadow rounded-2xl flex flex-col justify-between text-left">
-            <FiArrowUpRight className="ms-auto w-10 h-10 text-accent-1" />
-            My CV
-          </a>
-
-        <section className="lg:col-span-4 lg:row-start-3 bg-primary-1 p-medium brown-shadow rounded-2xl relative">
-          <h3 className="font-subheader font-semibold tracking-wide my-2">
-            Things I like to do
-          </h3>
-          <ul className="relative w-full sm:h-auto md:h-auto lg:h-50 max-h-full aspect-[1.7/1] md:aspect-[2/1]">
-            <FloatingBrick
-              text="Baking"
-              bg="bg-secondary-3"
-              rotate="rotate-[3deg]"
-              style={{ top: "28%", left: "30%" }}
-            />
-            <FloatingBrick
-              text="Hiking"
-              bg="bg-accent-1"
-              textclr="text-primary-1"
-              rotate="rotate-[24deg]"
-              style={{ top: "55%", left: "2%" }}
-            />
-            <FloatingBrick
-              text="Drawing"
-              bg="bg-secondary-4"
-              rotate="rotate-[8deg]"
-              style={{ top: "0%", left: "50%" }}
-            />
-            <FloatingBrick
-              text="Games"
-              bg="bg-secondary-1"
-              rotate="rotate-[-12deg]"
-              style={{ top: "60%", left: "60%" }}
-            />
-            <FloatingBrick
-              text="DIY"
-              bg="bg-secondary-2"
-              textclr="text-primary-1"
-              rotate="rotate-[-24deg]"
-              style={{ top: "5%", left: "8%" }}
-            />
-          </ul>
-        </section>
-        <section className="lg:col-start-5 lg:col-span-full lg:row-start-3 flex items-center justify-center rounded-2xl gap-medium bg-primary-1 p-medium brown-shadow">
-          <Image
-            width={500}
-            height={500}
-            src="/img/shapes/moon.png"
-            alt="yellow-orange-blue gradient geometric moon"
-            loading="lazy"
-            className="w-full h-auto lg:h-full object-contain"
-          />
-        </section>
-      </article>
+      <section className="relative my-negative text-body-text">
+        <AboutMe />
+        <Gradient
+          projectId={"Rmw56LZnSfkqFxfyAcyB?"}
+        />
+      </section>
       <section className="mx-large">
         <h3>Project</h3>
         <ul>
@@ -430,7 +322,10 @@ export default function Home() {
       </section>
       <section>{/* Add Coding Animation Here */}</section>
       <section>
-        <h2 className="font-header text-h2 text-center text-body-text"> Thank you for your time</h2>
+        <h2 className="font-header text-h2 text-center text-body-text">
+          {" "}
+          Thank you for your time
+        </h2>
       </section>
     </main>
   );

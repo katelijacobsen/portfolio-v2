@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "./components/Footer";
+import Button from "./components/Button";
 
 export const metadata: Metadata = {
   title: "Katja Mähleke",

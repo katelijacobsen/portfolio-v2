@@ -274,8 +274,8 @@ export default function Home() {
         </div>
         </div>
         <div className="flex flex-col md:flex-row gap-small justify-center items-center">
-        <Button variant="primary" text="See my work" />
-        <Button variant="primary" text="Get in touch" />
+        <Button text="See my work" />
+        <Button text="Get in touch" bg="bg-primary-2" bg2="bg-primary-3" textclr="text-accent-1" borderclr="border-accent-1"/>
         </div>
       </header>
       <article>

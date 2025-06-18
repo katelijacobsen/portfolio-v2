@@ -26,7 +26,7 @@ const cards = [
     tags: ["UI/UX", "Illustrations", "API", "Designsystem"],
     externalUrl: "https://kaerkaffebar.netlify.app/",
     description:
-      "For the group final exam project, I was responsible for illustrations, UI/UX design, designsystem and backend development, including API endpoints and database management with Supabase. I helped create a user-friendly interface supported by effective data management.",
+      "For the group final exam project, I was responsible for illustrations, UI/UX design, designsystem and backend development, including i18n configuration and database management with Supabase. I helped create a user-friendly interface supported by effective data management.",
   },
   {
     title: "Ducky's Diner",

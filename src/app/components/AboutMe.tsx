@@ -96,8 +96,8 @@ function AboutMe() {
           />
         </section>
 
-        <a className="bento-box col-start-3 col-span-full bg-primary-1 p-medium text-h3 font-header brown-shadow rounded-2xl flex flex-col justify-between text-left">
-          <FiArrowUpRight className="ms-auto w-10 h-10 text-accent-1" />
+        <a href="" className="bento-box col-start-3 col-span-full bg-primary-1 p-medium text-h3 font-header brown-shadow rounded-2xl flex flex-col justify-between text-left group">
+          <FiArrowUpRight className="ms-auto w-10 h-10 text-accent-1 transition-transform duration-400 ease-out group-hover:-translate-y-2 group-hover:translate-x-2" />
           My CV
         </a>
       </div>

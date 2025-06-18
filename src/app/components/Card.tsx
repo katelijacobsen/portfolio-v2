@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   rotation?: string;
   className?: string;
+  externalUrl?: string;
 }
 
 function Card({
@@ -17,14 +18,23 @@ function Card({
   description,
   rotation,
   className,
+  externalUrl,
 }: Props) {
   return (
     <li>
+      <a
+        href={externalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
         <article
           className={`group bg-primary-1 text-body-text p-medium w-full rounded-3xl flex flex-col gap-medium shadow-sm duration-400 transform transition-transform hover:scale-102 ${rotation} ${className}`}
         >
           <header className="flex items-end justify-between">
-            <h3 className="font-subheader font-semibold tracking-wider">{title}</h3>
+            <h3 className="font-subheader font-semibold tracking-wider">
+              {title}
+            </h3>
             <span>
               <FiArrowUpRight className="w-18 h-auto transition-transform duration-400 ease-out group-hover:-translate-y-2 group-hover:translate-x-2 text-accent-1" />
             </span>
@@ -39,6 +49,7 @@ function Card({
           />
           <p>{description}</p>
         </article>
+      </a>
     </li>
   );
 }

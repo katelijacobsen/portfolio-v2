@@ -20,14 +20,14 @@ function AboutMe() {
       gsap.from(boxes, {
         scrollTrigger: {
           trigger: bentoRef.current,
-          start: "top 60%", // trigger when top of bento hits 80% of viewport
+          start: "top 60%",
           toggleActions: "play none none none",
         },
         opacity: 0,
         duration: 2,
         ease: "elastic.out(1,0.9)",
         y: 100,
-        stagger: 0.2,
+        stagger: 0.1,
       });
     }
   }, []);

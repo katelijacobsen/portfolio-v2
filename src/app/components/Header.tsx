@@ -8,8 +8,6 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [renderMenu, setRenderMenu] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
-  const buttonRef = useRef(null);
-
   const toggleMenu = () => {
 
 

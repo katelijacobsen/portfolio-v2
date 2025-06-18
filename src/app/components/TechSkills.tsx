@@ -16,7 +16,7 @@ import { PiCirclesFourFill } from "react-icons/pi";
 import { SiJira } from "react-icons/si";
 const TechSkills = () => {
   return (
-    <ul className="flex flex-wrap gap-x-small gap-y-small list-none w-full bg-white p-medium rounded-lg blue-shadow">
+    <ul className="font-semibold flex flex-wrap gap-x-small gap-y-small list-none w-full bg-primary-1 p-medium rounded-lg brown-shadow">
       <li>
         <Tags
           skill="HTML"

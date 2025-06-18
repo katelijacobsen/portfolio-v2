@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { RiArrowRightUpLine } from "react-icons/ri";
+import { FiArrowUpRight } from "react-icons/fi";
 
 interface Props {
   title: string;
@@ -21,12 +21,12 @@ function Card({
   return (
     <li>
         <article
-          className={`group bg-slate-50 p-medium w-full rounded-3xl flex flex-col gap-medium shadow-sm duration-400 transform transition-transform hover:scale-102 ${rotation} ${className}`}
+          className={`group bg-primary-1 text-body-text p-medium w-full rounded-3xl flex flex-col gap-medium shadow-sm duration-400 transform transition-transform hover:scale-102 ${rotation} ${className}`}
         >
           <header className="flex items-end justify-between">
-            <h3>{title}</h3>
+            <h3 className="font-subheader font-semibold tracking-wider">{title}</h3>
             <span>
-              <RiArrowRightUpLine className="w-18 h-auto transition-transform duration-400 ease-out group-hover:-translate-y-2 group-hover:translate-x-2" />
+              <FiArrowUpRight className="w-18 h-auto transition-transform duration-400 ease-out group-hover:-translate-y-2 group-hover:translate-x-2 text-accent-1" />
             </span>
           </header>
           <Image
@@ -35,7 +35,7 @@ function Card({
             width={300}
             height={200}
             loading="lazy"
-            className="bg-slate-900 w-full h-42 object-contain p-small rounded-2xl"
+            className="object-cover p-small rounded-2xl aspect-[2/1] w-full h-auto"
           />
           <p>{description}</p>
         </article>

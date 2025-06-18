@@ -10,7 +10,7 @@ interface TagsProps {
 
 const Tags: React.FC<TagsProps> = ({ skill, icon, bgColor, txtColor, className }) => {
   return (
-    <p className={`flex items-center gap-xx-small p-small rounded-2xl ${className} ${bgColor} ${txtColor}`}>
+    <p className={`uppercase font-semibold flex items-center gap-x-small p-small rounded-2xl tracking-wide ${className} ${bgColor} ${txtColor}`}>
       {icon}{skill}
     </p>
   );

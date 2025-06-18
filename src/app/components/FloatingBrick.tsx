@@ -15,9 +15,8 @@ function FloatingBrick({ text, textclr, bg, rotate, top, left, right, bottom, st
     <li
       className={`
         uppercase font-semibold
-        text-h4
+        text-h3
         px-[clamp(0.5rem,2vw,1.5rem)]
-        py-[clamp(0.25rem,1vw,0.75rem)]
         inline-block tracking-[.1ch] rounded-xl
         absolute
         ${textclr || ""}

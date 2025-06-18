@@ -53,7 +53,7 @@
   --text-h2: clamp(1.9531rem, 1.3004rem + 3.2634vw, 4.2375rem);
   --text-h3: clamp(1.5625rem, 1.2607rem + 1.5089vw, 2.6188rem);
   --text-h4: clamp(1.5625rem, 1.2607rem + 1.5089vw, 1.5188rem);
-  --text-paragraph: 1.6rem;
+  --text-paragraph: 1rem;
   --text-button: var(--text-paragraph);
   --text-label: var(--text-paragraph);
   --text-blockquote: clamp(1.62rem, 1.1474rem + 2.3195vw, 2.945rem);
@@ -90,11 +90,12 @@ blockquote {
   font-size: var(--text-blockquote);
 }
 
+
 button,
 p,
-li,
 h4 {
   font-family: "SF Pro Regular";
+  font-size: var(--text-paragraph);
 }
 
 li {
@@ -117,31 +118,26 @@ li {
 
 /*===== Pesudo Elements =====*/
 
-.asset-moon::before {
+.asset-moon::after {
   content: "";
   position: absolute;
-  inset: 15% 0 0 -11%;
+  margin-inline-start: 6rem;
   width: 5rem;
   height: 5rem;
   pointer-events: none;
-  background: url("/img/icons/moon.svg") no-repeat center / contain;
-  z-index: 1;
-  animation: fadeIn 4s ease 2s normal forwards, rotation 25s linear infinite;
-  opacity: 0;
-  transform: scale(0.5);
+  background: url("/img/shapes/redMoon.svg") no-repeat center / contain;
 }
 
-.asset-wheel::after {
+.asset-wheel::before {
   content: "";
   position: absolute;
-  inset: 65% 0 0 85%;
+  margin-inline-start: -8rem;
+  margin-block-start: 8rem;
   width: 5rem;
   height: 5rem;
   pointer-events: none;
-  background: url("/img/icons/wheel.svg") no-repeat center / contain;
-  animation: fadeIn2 6s ease 3s normal forwards, rotation2 25s linear infinite;
-  opacity: 0;
-  transform: scale(0.5);
+  background: url("/img/shapes/pinkFlower.svg") no-repeat center / contain;
+
 }
 .asset-moon2::before {
   content: "";
@@ -208,4 +204,14 @@ li {
   100% {
     transform: rotate(0deg);
   }
+}
+
+.text {
+  font-family: 'TransformaBold';
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: ease-out;
 }

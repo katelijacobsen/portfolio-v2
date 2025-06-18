@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="w-full text-white bg-accent py-negative px-large rounded-tr-3xl rounded-tl-3xl">
+    <footer id="contact-information" className="w-full text-white bg-accent py-negative px-large rounded-tr-3xl rounded-tl-3xl">
       <div className="grid lg:grid-cols-2 gap-x-medium">
         {/* Contact Information */}
         <address className="not-italic">

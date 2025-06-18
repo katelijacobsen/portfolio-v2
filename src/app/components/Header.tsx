@@ -90,16 +90,16 @@ function Header() {
           className="font-header text-h3 md:text-h2 text-primary-2 bg-accent-1 w-1/2 md:w-1/3 px-8 md:px-16 py-24 md:py-16 absolute top-0 right-0 space-y-12 md:space-y-20 brown-shadow rounded-bl-none md:rounded-bl-2xl rounded-tl-none md:rounded-tl-2xl h-screen flex flex-col justify-center z-40"
         >
           <li>
-            <a href="#Home">Home</a>
+            <a href="#home">Home</a>
           </li>
           <li>
-            <a href="#About">About</a>
+            <a href="#about-me">About</a>
           </li>
           <li>
-            <a href="#Projects">Projects</a>
+            <a href="#projects">Projects</a>
           </li>
           <li>
-            <a href="#Contact">Contact</a>
+            <a href="#contact-information">Contact</a>
           </li>
         </ul>
       )}

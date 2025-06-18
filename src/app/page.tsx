@@ -14,6 +14,7 @@ import Card from "./components/Card";
 import Gradient from "./components/Gradient";
 import AboutMe from "./components/AboutMe";
 import Preloader from "./components/Preloader";
+import Anchor from "./components/Anchor";
 
 const cards = [
   {
@@ -25,7 +26,7 @@ const cards = [
     tags: ["UI/UX", "Illustrations", "API", "Designsystem"],
     externalUrl: "https://kaerkaffebar.netlify.app/",
     description:
-    "For the group final exam project, I was responsible for illustrations, UI/UX design, designsystem and backend development, including API endpoints and database management with Supabase. I helped create a user-friendly interface supported by effective data management.",
+      "For the group final exam project, I was responsible for illustrations, UI/UX design, designsystem and backend development, including API endpoints and database management with Supabase. I helped create a user-friendly interface supported by effective data management.",
   },
   {
     title: "Ducky's Diner",
@@ -36,7 +37,7 @@ const cards = [
     tags: ["GAME DESIGN", "JAVASCRIPT", "CSS", "ANIMATION"],
     externalUrl: "https://katjajacobsen.dk/website_ducky/spil.html",
     description:
-    "During my first semester, I gained foundational skills in JavaScript and CSS animations, which I applied to develop 'Ducky's Diner,' a game that combines engaging gameplay with playful animation. The project also introduced me to basic game design principles, enabling me to create an interactive and entertaining experience",
+      "During my first semester, I gained foundational skills in JavaScript and CSS animations, which I applied to develop 'Ducky's Diner,' a game that combines engaging gameplay with playful animation. The project also introduced me to basic game design principles, enabling me to create an interactive and entertaining experience",
   },
   {
     title: "Foo Fest",
@@ -47,7 +48,7 @@ const cards = [
     tags: ["UI/UX", "A11Y", "Frontend", "Logo"],
     externalUrl: "https://foo-fest-optimized.vercel.app/",
     description:
-    "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and UI/UX",
+      "In a 3rd semester group project, I worked on the booking flow and made the logo. We built the website using React, Next.js, and Tailwind, with focus on accessibility and UI/UX",
   },
   {
     title: "CPH Light Festival",
@@ -58,7 +59,7 @@ const cards = [
     tags: ["Astro", "CSS", "UI/UX"],
     externalUrl: "https://clf11.netlify.app/",
     description:
-    "In this 2nd semester project I redesigned the website for Copenhagen Light Festival to improve its UI/UX using a design system and the Astro framework. The goal was to create a modern, user-friendly site that better showcased their art installations and events. ",
+      "In this 2nd semester project I redesigned the website for Copenhagen Light Festival to improve its UI/UX using a design system and the Astro framework. The goal was to create a modern, user-friendly site that better showcased their art installations and events. ",
   },
   {
     title: "Previous Portfolio",
@@ -68,7 +69,7 @@ const cards = [
     keyword: "3RD SEMESTER",
     tags: ["Astro", "CSS", "UI/UX"],
     description:
-    "In this 2nd semester project I redesigned the website for Copenhagen Light Festival to improve its UI/UX using a design system and the Astro framework. The goal was to create a modern, user-friendly site that better showcased their art installations and events. ",
+      "In this 2nd semester project I redesigned the website for Copenhagen Light Festival to improve its UI/UX using a design system and the Astro framework. The goal was to create a modern, user-friendly site that better showcased their art installations and events. ",
   },
   {
     title: "First Website",
@@ -163,7 +164,7 @@ export default function Home() {
       });
 
       if (btnsRef.current) {
-        const buttons = btnsRef.current.querySelectorAll("button");
+        const buttons = btnsRef.current.querySelectorAll("a");
 
         gsap.to(buttons, {
           opacity: 1,
@@ -207,7 +208,7 @@ export default function Home() {
       >
         {/* Header Section with Grid Layout and Buttons */}
 
-        <header className="w-auto h-[80dvh] flex flex-col justify-center md:gap-small lg:gap-medium mx-large">
+        <header id="home" className="w-auto h-[80dvh] flex flex-col justify-center md:gap-small lg:gap-medium mx-large">
           <div className="grid grid-cols-[auto_auto_auto] grid-rows-3">
             <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">
               KAT<span className="text-accent-1">J</span>A <br /> MÄH
@@ -274,20 +275,22 @@ export default function Home() {
             ref={btnsRef}
             className="flex flex-col md:flex-row gap-medium justify-center items-center "
           >
-            <Button text="See my work" fadeIn="fade-in" />
-            <Button
+            <Anchor text="See my work" fadeIn="fade-in" href="#projects"/>
+            <Anchor
               text="Get in touch"
               bg="bg-primary-1"
               bg2="bg-primary-3"
               textclr="text-accent-1"
               borderclr="border-accent-1"
               fadeIn="fade-in"
+              href="#contact-information"
+              
             />
           </div>
         </header>
 
         {/* Article Section about me */}
-        <section ref={aboutRef} className="relative my-negative text-body-text">
+        <section id="about-me" ref={aboutRef} className="relative my-negative text-body-text">
           <AboutMe />
           <Gradient projectId={"Rmw56LZnSfkqFxfyAcyB?"} />
         </section>
@@ -309,22 +312,22 @@ export default function Home() {
             <SoftSkills />
           </section>
         </section>
-        <section className="mx-large text-body-text">
+        <section className="mx-large text-body-text" id="projects">
           <h2 className="font-header text-h2 my-medium">
             Pro<span className="text-accent-1">j</span>ect
             <span className="text-accent-1">s</span>
           </h2>
           <ul className="grid grid-cols-1  md:grid-cols-2 gap-8">
             {cards.map((card, i) => (
-                <Card
-                  key={i}
-                  title={card.title}
-                  imgSrc={card.imgSrc}
-                  imgAlt={card.imgAlt}
-                  externalUrl={card.externalUrl}
-                  description={card.description}
-                  rotation={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
-                />
+              <Card
+                key={i}
+                title={card.title}
+                imgSrc={card.imgSrc}
+                imgAlt={card.imgAlt}
+                externalUrl={card.externalUrl}
+                description={card.description}
+                rotation={i % 2 === 0 ? "-rotate-2" : "rotate-2"}
+              />
             ))}
           </ul>
         </section>
@@ -342,10 +345,10 @@ export default function Home() {
             className="w-1/2 h-full object-cover brown-shadow rounded-2xl grid-start-1 row-start-2 col-span-full"
           />
           <div className=" col-start-3 col-span-full bg-primary-1 p-medium brown-shadow rounded-2xl text-body-text row-start-2">
-            <h3 className="font-subheader">
+            <h3 className="font-subheader font-semibold">
               Digital Design Intern <br /> at Relesys
             </h3>
-            <h4 className="font-semibold py-2">01/2025 - 04/2025</h4>
+            <h4 className="font-bold py-2">01/2025 - 04/2025</h4>
             <p>
               As a Digital Designer Intern at Relesys, I contributed to diverse
               digital product development tasks. My role involved rapid app

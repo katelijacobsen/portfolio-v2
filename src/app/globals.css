@@ -231,3 +231,8 @@ li {
   content:"Loading..."
 }
 @keyframes l4 {to{clip-path: inset(0 -1ch 0 0)}}
+
+.text-border {
+    text-shadow: 2px 0 var(--color-accent-1), -2px 0 var(--color-accent-1), 0 2px var(--color-accent-1), 0 -2px var(--color-accent-1),
+               1px 1px var(--color-accent-1), -1px -1px var(--color-accent-1), 1px -1px var(--color-accent-1), -1px 1px var(--color-accent-1);
+}

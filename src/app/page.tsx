@@ -208,8 +208,11 @@ export default function Home() {
       >
         {/* Header Section with Grid Layout and Buttons */}
 
-        <header id="home" className="w-auto h-[80dvh] flex flex-col justify-center md:gap-small lg:gap-medium mx-large">
-          <div className="grid grid-cols-[auto_auto_auto] grid-rows-3">
+        <header
+          id="home"
+          className="w-auto h-[100dvh] flex flex-col justify-center gap-medium lg:gap-y-10 mx-large"
+        >
+          <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14">
             <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">
               KAT<span className="text-accent-1">J</span>A <br /> MÄH
               <span className="text-accent-1">L</span>EKE
@@ -275,7 +278,7 @@ export default function Home() {
             ref={btnsRef}
             className="flex flex-col md:flex-row gap-medium justify-center items-center "
           >
-            <Anchor text="See my work" fadeIn="fade-in" href="#projects"/>
+            <Anchor text="See my work" fadeIn="fade-in" href="#projects" />
             <Anchor
               text="Get in touch"
               bg="bg-primary-1"
@@ -284,17 +287,20 @@ export default function Home() {
               borderclr="border-accent-1"
               fadeIn="fade-in"
               href="#contact-information"
-              
             />
           </div>
         </header>
 
         {/* Article Section about me */}
-        <section id="about-me" ref={aboutRef} className="relative my-negative text-body-text">
+        <section
+          id="about-me"
+          ref={aboutRef}
+          className="relative my-negative text-body-text flex items-center justify-center"
+        >
           <AboutMe />
           <Gradient projectId={"Rmw56LZnSfkqFxfyAcyB?"} />
         </section>
-        <section className="mx-large grid grid-cols-6 grid-rows-2 gap-medium">
+        <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-6 grid-rows-2 gap-medium ">
           <section className="col-start-1 col-end-5 relative">
             <h2 className="font-header text-body-text text-h2 asset-moon">
               Tec<span className="text-accent-1">h</span>nic
@@ -312,12 +318,12 @@ export default function Home() {
             <SoftSkills />
           </section>
         </section>
-        <section className="mx-large text-body-text" id="projects">
+        <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] text-body-text " id="projects">
           <h2 className="font-header text-h2 my-medium">
             Pro<span className="text-accent-1">j</span>ect
             <span className="text-accent-1">s</span>
           </h2>
-          <ul className="grid grid-cols-1  md:grid-cols-2 gap-8">
+          <ul className="grid grid-cols-1  md:grid-cols-2 gap-8 ">
             {cards.map((card, i) => (
               <Card
                 key={i}
@@ -331,7 +337,7 @@ export default function Home() {
             ))}
           </ul>
         </section>
-        <section className="mx-large grid grid-cols-4 grid-rows-[auto_auto] gap-x-10">
+        <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-4 grid-rows-[auto_auto] gap-x-10">
           <h2 className="font-header text-body-text text-h2 row-start-1">
             Exp<span className="text-accent-1">e</span>rie
             <span className="text-accent-1">n</span>ce

@@ -38,7 +38,7 @@ function Anchor({
       {text}
       <span className="active:translate-y-[10%] top-0 right-0 left-0 bottom-0 transition-transform duration-200 absolute inline-block w-full h-full z-80">
         <span
-          className={`absolute transition-all duration-200 top-[20%] right-0 left-5 bottom-0 rounded-full z-50 group-hover:translate-y-1 ${textclr} `}
+          className={`absolute transition-all duration-200 top-[20%] right-0 left-0 text-center bottom-0 rounded-full z-50 group-hover:translate-y-1 ${textclr} `}
         >
 
           {text}

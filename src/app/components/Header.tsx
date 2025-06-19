@@ -78,7 +78,7 @@ function Header() {
           w="w-auto"
           onClick={toggleMenu}
           bg={menuOpen ? "bg-primary-1" : "bg-accent-1"}
-          bg2={menuOpen ? "bg-primary-3" : "bg-accent-1"}
+          bg2={menuOpen ? "bg-primary-3" : "bg-accent-2"}
           textclr={menuOpen ? "text-accent-1" : "text-primary-2"}
           borderclr={menuOpen ? "border-accent-1" : "border-primary-1"}
         />

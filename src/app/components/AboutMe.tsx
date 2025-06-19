@@ -35,7 +35,7 @@ function AboutMe() {
   return (
     <article
       ref={bentoRef}
-      className="z-90 flex flex-col relative gap-medium  p-10 rounded-3xl lg:grid lg:grid-cols-7 lg:grid-rows-[auto_12rem_18rem] lg:px-negative"
+      className="z-90 flex flex-col relative gap-medium  p-10 rounded-3xl lg:grid lg:grid-cols-7 lg:grid-rows-[auto_12rem_18rem] lg:px-negative max-w-[414px] md:max-w-[414px] lg:max-w-[1240px]"
     >
       <section className="bento-box flex lg:hidden absolute -my-50 right-10 z-90">
         <Image
@@ -96,48 +96,56 @@ function AboutMe() {
           />
         </section>
 
-        <a href="" className="bento-box col-start-3 col-span-full bg-primary-1 p-medium text-h3 font-header brown-shadow rounded-2xl flex flex-col justify-between text-left group">
+        <a
+          href=""
+          className="bento-box col-start-3 col-span-full bg-primary-1 p-medium text-h3 font-header brown-shadow rounded-2xl flex flex-col justify-between text-left group"
+        >
           <FiArrowUpRight className="ms-auto w-10 h-10 text-accent-1 transition-transform duration-400 ease-out group-hover:-translate-y-2 group-hover:translate-x-2" />
           My CV
         </a>
       </div>
 
-      <section className="bento-box lg:col-span-4 lg:row-start-3 bg-primary-1 p-medium brown-shadow rounded-2xl relative">
-        <h3 className="font-subheader font-semibold tracking-wide my-2">
+      <section className="bento-box lg:col-span-4 lg:row-start-3 bg-primary-1 p-medium brown-shadow rounded-2xl relative overflow-hidden ">
+        <h3 className="font-subheader font-semibold tracking-wide">
           Things I like to do
         </h3>
-        <ul className="relative w-full sm:h-auto md:h-auto lg:h-50 max-h-full aspect-[1.7/1] md:aspect-[2/1]">
+        <ul className="relative w-full sm:h-auto md:h-auto lg:h-50 max-h-full aspect-[3.2/1] lg:aspect-[2/1] mt-8">
           <FloatingBrick
             text="Baking"
             bg="bg-secondary-3"
             rotate="rotate-[3deg]"
-            style={{ top: "28%", left: "30%" }}
+            top="top-[24%] lg:top-[22%]"
+            left="left-[25%] lg:left-[27%]"
           />
           <FloatingBrick
             text="Hiking"
             bg="bg-accent-1"
             textclr="text-primary-1"
             rotate="rotate-[24deg]"
-            style={{ top: "55%", left: "2%" }}
+            top="top-[50%] lg:top-[47%]"
+            right="right-[65%] lg:right-[54%]"
           />
           <FloatingBrick
             text="Drawing"
             bg="bg-secondary-4"
             rotate="rotate-[8deg]"
-            style={{ top: "0%", left: "50%" }}
+            bottom="bottom-[70%] lg:bottom-[77%]"
+            left="left-[50%] lg:left-[40%]"
           />
           <FloatingBrick
             text="Games"
             bg="bg-secondary-1"
             rotate="rotate-[-12deg]"
-            style={{ top: "60%", left: "60%" }}
+            top="top-[60%] lg:top-[56%]"
+            left="left-[65%] lg:left-[55%]"
           />
           <FloatingBrick
             text="DIY"
             bg="bg-secondary-2"
             textclr="text-primary-1"
             rotate="rotate-[-24deg]"
-            style={{ top: "5%", left: "8%" }}
+            bottom="bottom-[67%] lg:bottom-[74%]"
+            left="left-[6%] lg:left-[5%]"
           />
         </ul>
       </section>

@@ -5,46 +5,64 @@ const Footer = () => {
   return (
     <footer
       id="contact-information"
-      className="w-full text-body-text bg-accent py-negative px-large rounded-tr-3xl rounded-tl-3xl"
+      className="mt-large w-full bg-accent-1 text-body-text py-8 px-10 rounded-tr-3xl rounded-tl-3xl"
     >
-      <nav aria-label="Social media">
-        <ul>
-          <li className="w-18 h-18 bg-secondary-1 p-2 rounded-full flex items-center justify-center">
+      <nav aria-label="Social media links" className="mb-6">
+        <ul className="flex gap-6 justify-center lg:justify-end">
+          <li>
             <a
               href="https://github.com/katelijacobsen"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub profile of Katja"
+              className="w-12 h-12 bg-secondary-1 rounded-full flex items-center justify-center transition-colors hover:bg-secondary-2 focus:outline-none focus:ring-4 focus:ring-secondary-3"
             >
-              <VscGithubAlt className="w-18 h-16 p-2 aspect-square" />
+              <VscGithubAlt className="w-6 h-6" aria-hidden="true" />
             </a>
           </li>
-          <li className="w-18 h-18 bg-accent-1 text-primary-1 p-2 rounded-full flex items-center justify-center">
+
+          <li>
             <a
               href="https://www.linkedin.com/in/katja-m%C3%A4hleke-16b08328a/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-h3"
+              aria-label="LinkedIn profile of Katja"
+              className="w-12 h-12 bg-accent-1 rounded-full flex items-center justify-center transition-colors hover:bg-accent-2 focus:outline-none focus:ring-4 focus:ring-secondary-3"
             >
-              <SlSocialLinkedin />
+              <SlSocialLinkedin className="w-6 h-6" aria-hidden="true" />
             </a>
           </li>
         </ul>
       </nav>
-      <div className="grid lg:grid-cols-2 gap-x-medium">
-        {/* Contact Information */}
-        <address className="not-italic">
-          <h4 className="border-b-2 border-white grid text-h2 ">Contact</h4>
-          <a href="mailto:your@email.com" className="text-h3">
-            katjamaehleke98gmail.com
-          </a>
-          <br />
 
-          <a href="tel:+4591996396" className="text-h3">
-            91 99 63 96
+      <address
+        className="not-italic text-center lg:text-left space-y-2 text-primary-1"
+      >
+        <h2
+          className="text-h2 font-header border-b-2 border-primary-1 pb-1 mb-3"
+
+        >
+          Contact
+        </h2>
+
+        <p>
+          <a
+            href="mailto:katjamaehleke98@gmail.com"
+            className="text-paragraph hover:text-secondary-4 focus:outline-none focus:ring-2 focus:ring-secondary-4"
+          >
+            katjamaehleke98@gmail.com
           </a>
-        </address>
-        {/* My Social Media */}
-      </div>
+        </p>
+
+        <p>
+          <a
+            href="tel:+4591996396"
+            className="text-paragraph hover:text-secondary-4 focus:outline-none focus:ring-2 focus:ring-secondary-4"
+          >
+            +45 91 99 63 96
+          </a>
+        </p>
+      </address>
     </footer>
   );
 };

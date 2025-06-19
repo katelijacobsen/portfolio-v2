@@ -318,7 +318,10 @@ export default function Home() {
             <SoftSkills />
           </section>
         </section>
-        <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] text-body-text " id="projects">
+        <section
+          className="mx-auto px-large md:px-36 w-full max-w-[1240px] text-body-text "
+          id="projects"
+        >
           <h2 className="font-header text-h2 my-medium">
             Pro<span className="text-accent-1">j</span>ect
             <span className="text-accent-1">s</span>
@@ -337,20 +340,22 @@ export default function Home() {
             ))}
           </ul>
         </section>
-        <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-4 grid-rows-[auto_auto] gap-x-10">
-          <h2 className="font-header text-body-text text-h2 row-start-1">
+        <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-1 md:grid-cols-4 gap-x-10 gap-y-6">
+          <h2 className="font-header text-body-text text-h2 col-span-full md:col-span-4">
             Exp<span className="text-accent-1">e</span>rie
             <span className="text-accent-1">n</span>ce
           </h2>
+
           <Image
             width={500}
             height={500}
             src="/img/pictures/internship.png"
             alt=""
             loading="lazy"
-            className="w-1/2 h-full object-cover brown-shadow rounded-2xl grid-start-1 row-start-2 col-span-full"
+            className="w-full h-full object-cover brown-shadow rounded-2xl col-span-full md:col-span-2"
           />
-          <div className=" col-start-3 col-span-full bg-primary-1 p-medium brown-shadow rounded-2xl text-body-text row-start-2">
+
+          <div className="bg-primary-1 p-medium brown-shadow rounded-2xl text-body-text col-span-full md:col-span-2 flex flex-col justify-center">
             <h3 className="font-subheader font-semibold">
               Digital Design Intern <br /> at Relesys
             </h3>
@@ -365,6 +370,7 @@ export default function Home() {
             </p>
           </div>
         </section>
+
         <section>
           <h2 className="font-header text-h2 text-center text-body-text">
             Tha<span className="text-accent-1">n</span>k y

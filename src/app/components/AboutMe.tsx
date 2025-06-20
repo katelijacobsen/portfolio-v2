@@ -97,7 +97,10 @@ function AboutMe() {
         </section>
 
         <a
-          href=""
+          href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:8d9ea878-f7d8-4156-8f7d-6d5c0cbc93dd"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="CV of Katja"
           className="bento-box col-start-3 col-span-full bg-primary-1 p-medium text-h3 font-header brown-shadow rounded-2xl flex flex-col justify-between text-left group"
         >
           <FiArrowUpRight className="ms-auto w-10 h-10 text-accent-1 transition-transform duration-400 ease-out group-hover:-translate-y-2 group-hover:translate-x-2" />

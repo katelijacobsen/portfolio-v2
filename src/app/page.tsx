@@ -202,7 +202,7 @@ export default function Home() {
     <>
       <Preloader done={done} />
       <main
-        className={`space-y-large transition-opacity duration-500 delay-500 ${
+        className={`space-y-large transition-opacity duration-300 delay-300 ${
           done ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >

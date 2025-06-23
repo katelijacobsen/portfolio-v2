@@ -214,7 +214,7 @@ export default function Home() {
         >
           <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14">
             <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">
-              KATJA MÄHLEKE</h1>
+              KATJA <br/> MÄHLEKE</h1>
             <div className="flex items-center justify-center col-start-2 font-semibold">
               <h2 className="slide-left">Frontend</h2>
               <Image

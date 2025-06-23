@@ -37,14 +37,14 @@ function AboutMe() {
       ref={bentoRef}
       className="z-90 flex flex-col relative gap-medium  p-10 rounded-3xl lg:grid lg:grid-cols-7 lg:grid-rows-[auto_12rem_18rem] lg:px-negative max-w-[414px] md:max-w-[414px] lg:max-w-[1240px]"
     >
-      <section className="bento-box flex lg:hidden absolute -my-50 right-10 z-90">
+      <section className="bento-box flex lg:hidden absolute -my-40 right-0 z-90">
         <Image
           width={512}
           height={512}
           src="/img/pictures/portrait.avif"
           alt=""
           loading="lazy"
-          className="rounded-full border-4 border-primary-2 brown-shadow w-[240px] h-auto lg:h-full object-cover"
+          className="rounded-full border-4 border-primary-2 brown-shadow w-[200px] h-auto lg:h-full object-cover"
         />
       </section>
 

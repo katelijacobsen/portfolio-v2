@@ -214,9 +214,7 @@ export default function Home() {
         >
           <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14">
             <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">
-              KAT<span className="text-accent-1">J</span>A <br /> MÄH
-              <span className="text-accent-1">L</span>EKE
-            </h1>
+              KATJA MÄHLEKE</h1>
             <div className="flex items-center justify-center col-start-2 font-semibold">
               <h2 className="slide-left">Frontend</h2>
               <Image
@@ -303,18 +301,12 @@ export default function Home() {
         <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-6 grid-rows-2 gap-medium ">
           <section className="col-start-1 col-end-5 relative">
             <h2 className="font-header text-body-text text-h2 asset-moon">
-              Tec<span className="text-accent-1">h</span>nic
-              <span className="text-accent-1">a</span>l S
-              <span className="text-accent-1">k</span>ill
-              <span className="text-accent-1">s</span>
-            </h2>
+              TECH SKILLS</h2>
             <TechSkills />
           </section>
           <section className=" col-start-3 col-end-7 row-start-2 relative asset-wheel">
             <h2 className="font-header text-body-text text-h2 text-right ">
-              Sof<span className="text-accent-1">t</span> Sk
-              <span className="text-accent-1">i</span>lls
-            </h2>
+              SOFT SKILLS</h2>
             <SoftSkills />
           </section>
         </section>
@@ -323,9 +315,7 @@ export default function Home() {
           id="projects"
         >
           <h2 className="font-header text-h2 my-medium">
-            Pro<span className="text-accent-1">j</span>ect
-            <span className="text-accent-1">s</span>
-          </h2>
+            PROJECTS</h2>
           <ul className="grid grid-cols-1  md:grid-cols-2 gap-8 ">
             {cards.map((card, i) => (
               <Card
@@ -342,9 +332,7 @@ export default function Home() {
         </section>
         <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-1 md:grid-cols-4 gap-x-10 gap-y-6">
           <h2 className="font-header text-body-text text-h2 col-span-full md:col-span-4">
-            Exp<span className="text-accent-1">e</span>rie
-            <span className="text-accent-1">n</span>ce
-          </h2>
+            EXPERIENCE </h2>
 
           <Image
             width={500}
@@ -373,11 +361,7 @@ export default function Home() {
 
         <section>
           <h2 className="font-header text-h2 text-center text-body-text">
-            Tha<span className="text-accent-1">n</span>k y
-            <span className="text-accent-1">o</span>u <br /> for{" "}
-            <span className="text-accent-1">y</span>our{" "}
-            <span className="text-accent-1">t</span>ime
-          </h2>
+            THANK YOU <br/> FOR YOUR TIME </h2>
         </section>
       </main>
     </>

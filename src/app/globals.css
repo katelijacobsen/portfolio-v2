@@ -92,8 +92,7 @@ blockquote {
 
 
 button,
-p,
-h4 {
+p {
   font-family: "SF Pro Regular";
   font-size: var(--text-paragraph);
 }

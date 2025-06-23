@@ -63,7 +63,7 @@ const Footer = () => {
           </a>
         </p>
       </address>
-      <h5 className="font-header text-h1 text-right text-border text-accent-1 md:mt-0 mt-10">KAT<span className="text-primary-1">J</span>A M<span className="text-primary-1">Ä</span>HLE<span className="text-primary-1">K</span>E</h5>
+      <h4 className="font-header text-h1 text-right text-accent-1 md:mt-0 mt-10">KATJA MÄHLEKE</h4>
     </footer>
   );
 };

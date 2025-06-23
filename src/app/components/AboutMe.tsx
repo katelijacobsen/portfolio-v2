@@ -44,7 +44,7 @@ function AboutMe() {
           src="/img/pictures/portrait.avif"
           alt=""
           loading="lazy"
-          className="rounded-full border-4 border-primary-2 brown-shadow w-[200px] h-auto lg:h-full object-cover"
+          className="rounded-full border-4 border-primary-2 brown-shadow w-[12.5rem] h-auto lg:h-full object-cover"
         />
       </section>
 

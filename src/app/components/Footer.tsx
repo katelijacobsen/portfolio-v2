@@ -1,11 +1,12 @@
 import { VscGithubAlt } from "react-icons/vsc";
 import { SlSocialLinkedin } from "react-icons/sl";
+import Button from "./Button";
 
 const Footer = () => {
   return (
     <footer
       id="contact-information"
-      className="mt-large w-full bg-primary-1 text-body-text py-8 px-10"
+      className="mt-large w-full bg-secondary-4 text-body-text py-8 px-10"
     >
       <nav aria-label="Social media links" className="mb-6">
         <ul className="flex gap-6 justify-center lg:justify-end">
@@ -35,35 +36,14 @@ const Footer = () => {
         </ul>
       </nav>
 
-      <address
-        className="not-italic text-center lg:text-left space-y-2"
-      >
-        <h2
-          className="text-h2 font-header border-b-2 border-accent-1 pb-1 mb-3"
-
-        >
+      <address className="not-italic text-center lg:text-left space-y-2 flex flex-col justify-center items-center">
+        <h2 className="text-h2 font-header border-b-2 border-accent-1 pb-1 mb-3">
           LET'S TALK
         </h2>
-
-        <p>
-          <a
-            href="mailto:katjamaehleke98@gmail.com"
-            className="text-h3 hover:text-accent-1 focus:outline-none focus:ring-2 focus:ring-secondary-4"
-          >
-            katjamaehleke98@gmail.com
-          </a>
-        </p>
-
-        <p>
-          <a
-            href="tel:+4591996396"
-            className="text-h3 hover:text-accent-1 focus:outline-none focus:ring-2 focus:ring-secondary-4"
-          >
-            +45 91 99 63 96
-          </a>
-        </p>
+        <Button text="I'm just an email away" />
+        <Button text="Reach me by sms" />
+        <a href="sms:+4512345678">Send me a SMS</a>
       </address>
-      <h4 className="font-header text-h1 text-right text-accent-1 md:mt-0 mt-10">KATJA MÄHLEKE</h4>
     </footer>
   );
 };

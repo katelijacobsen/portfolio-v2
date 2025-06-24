@@ -153,14 +153,14 @@ function AboutMe() {
         </ul>
       </section>
 
-      <section className="bento-box lg:col-start-5 lg:col-span-full lg:row-start-3 flex items-center justify-center rounded-2xl gap-medium bg-primary-1 p-medium brown-shadow">
+      <section className="bento-box lg:col-start-5 lg:col-span-full lg:row-start-3 flex items-center justify-center rounded-2xl bg-primary-1 brown-shadow">
         <Image
           width={500}
           height={500}
-          src="/img/shapes/moon.png"
+          src="/img/pictures/GMMockup.avif"
           alt="yellow-orange-blue gradient geometric moon"
           loading="lazy"
-          className="w-full h-auto lg:h-full object-contain"
+          className="w-full h-auto lg:h-full object-cover rounded-2xl"
         />
       </section>
     </article>

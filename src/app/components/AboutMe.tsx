@@ -85,14 +85,14 @@ function AboutMe() {
       </section>
 
       <div className="grid grid-cols-4 grid-rows-[12rem] row-start-2 col-span-full gap-medium">
-        <section className="bento-box col-span-2 items-center justify-center rounded-2xl gap-medium bg-primary-1 p-medium brown-shadow">
+        <section className="bento-box col-span-2 items-center justify-center gap-medium">
           <Image
             width={500}
             height={500}
-            src="/img/shapes/moon.png"
+            src="/img/pictures/kaer-kaffebarmockup.avif"
             alt="yellow-orange-blue gradient geometric moon"
             loading="lazy"
-            className="w-full h-full aspect-square lg:h-full object-contain"
+            className="w-full h-full lg:h-full object-cover rounded-2xl border-4 border-primary-2 brown-shadow"
           />
         </section>
 
@@ -160,7 +160,7 @@ function AboutMe() {
           src="/img/pictures/GMMockup.avif"
           alt="yellow-orange-blue gradient geometric moon"
           loading="lazy"
-          className="w-full h-auto lg:h-full object-cover rounded-2xl"
+          className="w-full h-auto lg:h-full object-cover rounded-2xl border-4 border-primary-2"
         />
       </section>
     </article>

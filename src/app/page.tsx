@@ -62,16 +62,6 @@ const cards = [
       "In this 2nd semester project I redesigned the website for Copenhagen Light Festival to improve its UI/UX using a design system and the Astro framework. The goal was to create a modern, user-friendly site that better showcased their art installations and events. ",
   },
   {
-    title: "Previous Portfolio",
-    slug: "frontend",
-    imgSrc: "/img/pictures/old-portfolio.avif",
-    imgAlt: "Project thumbnail",
-    keyword: "3RD SEMESTER",
-    tags: ["Astro", "CSS", "UI/UX"],
-    description:
-      "In this 2nd semester project I redesigned the website for Copenhagen Light Festival to improve its UI/UX using a design system and the Astro framework. The goal was to create a modern, user-friendly site that better showcased their art installations and events. ",
-  },
-  {
     title: "First Website",
     slug: "frontend",
     imgSrc: "/img/pictures/first-website.avif",

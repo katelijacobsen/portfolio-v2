@@ -35,7 +35,7 @@ const cards = [
     imgAlt: "Project thumbnail",
     keyword: "2ND SEMESTER",
     tags: ["GAME DESIGN", "JAVASCRIPT", "CSS", "ANIMATION"],
-    externalUrl: "https://katjajacobsen.dk/website_ducky/spil.html",
+    externalUrl: "https://duckys-diner.netlify.app/",
     description:
       "During my first semester, I gained foundational skills in JavaScript and CSS animations, which I applied to develop 'Ducky's Diner,' a game that combines engaging gameplay with playful animation. The project also introduced me to basic game design principles, enabling me to create an interactive and entertaining experience",
   },
@@ -79,6 +79,7 @@ export default function Home() {
   const [done, setDone] = useState(false);
   const btnsRef = useRef<HTMLDivElement | null>(null);
   const aboutRef = useRef<HTMLDivElement | null>(null);
+  const textScrollTriggerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleLoad = () => {
@@ -183,6 +184,31 @@ export default function Home() {
       });
     }
 
+    if (textScrollTriggerRef.current) {
+      const scrollTriggerText = SplitText.create(
+        textScrollTriggerRef.current.querySelector(".text-split"),
+        {
+          type: "lines",
+        }
+      );
+
+      gsap.from(scrollTriggerText.lines, {
+        scrollTrigger: {
+          trigger: textScrollTriggerRef.current,
+          start: "top 60%",
+          toggleActions: "play none none none",
+        },
+        duration: 1.5,
+        y: 120,
+        opacity: 1,
+        skewY: 6,
+        ease: "power4.out",
+        stagger: {
+          amount: 0.3,
+        },
+      });
+    }
+
     return () => {
       if (split && typeof split.revert === "function") split.revert();
     };
@@ -204,7 +230,8 @@ export default function Home() {
         >
           <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14">
             <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">
-              KATJA <br/> MÄHLEKE</h1>
+              KATJA <br /> MÄHLEKE
+            </h1>
             <div className="flex items-center justify-center col-start-2 font-semibold">
               <h2 className="slide-left">Frontend</h2>
               <Image
@@ -289,14 +316,26 @@ export default function Home() {
           <Gradient projectId={"Rmw56LZnSfkqFxfyAcyB?"} />
         </section>
         <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-6 grid-rows-2 gap-medium ">
-          <section className="col-start-1 col-end-7 md:col-end-5 relative">
-            <h2 className="font-header text-body-text text-h2">
-              TECH SKILLS</h2>
+          <section
+            ref={textScrollTriggerRef}
+            className="col-start-1 col-end-7 md:col-end-5 relative"
+          >
+            <div className="line"  ref={textScrollTriggerRef}>
+              <h2 className="font-header text-body-text text-h2 text-split">
+                TECH SKILLS
+              </h2>
+            </div>
             <TechSkills />
           </section>
-          <section className="col-start-1 md:col-start-3 col-end-7 row-start-2 relative">
-            <h2 className="font-header text-body-text text-h2 text-right ">
-              SOFT SKILLS</h2>
+          <section
+            ref={textScrollTriggerRef}
+            className="col-start-1 md:col-start-3 col-end-7 row-start-2 relative"
+          >
+            <div className="line"  ref={textScrollTriggerRef}>
+              <h2 className="font-header text-body-text text-h2 text-right text-split">
+                SOFT SKILLS
+              </h2>
+            </div>
             <SoftSkills />
           </section>
         </section>
@@ -304,8 +343,7 @@ export default function Home() {
           className="mx-auto px-large md:px-36 w-full max-w-[1240px] text-body-text "
           id="projects"
         >
-          <h2 className="font-header text-h2 my-medium">
-            PROJECTS</h2>
+          <h2 className="font-header text-h2 my-medium">PROJECTS</h2>
           <ul className="grid grid-cols-1  md:grid-cols-2 gap-8 ">
             {cards.map((card, i) => (
               <Card
@@ -320,9 +358,15 @@ export default function Home() {
             ))}
           </ul>
         </section>
-        <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-1 md:grid-cols-4 gap-x-10 gap-y-6">
-          <h2 className="font-header text-body-text text-h2 text-right col-span-full md:col-span-4">
-            EXPERIENCE </h2>
+        <section
+          ref={textScrollTriggerRef}
+          className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-1 md:grid-cols-4 gap-x-10 gap-y-6"
+        >
+          <div className="col-span-full md:col-span-4 line">
+            <h2 className=" text-split font-header text-body-text text-h2 text-right">
+              EXPERIENCE{" "}
+            </h2>
+          </div>
 
           <Image
             width={500}
@@ -333,7 +377,7 @@ export default function Home() {
             className="w-full h-full object-cover brown-shadow rounded-2xl col-span-full md:col-span-2"
           />
 
-          <div className="bg-primary-1 p-medium brown-shadow rounded-2xl text-body-text col-span-full md:col-span-2 flex flex-col justify-center">
+          <div className=" bg-primary-1 p-medium brown-shadow rounded-2xl text-body-text col-span-full md:col-span-2 flex flex-col justify-center">
             <h3 className="font-subheader font-semibold">
               Digital Design Intern <br /> at Relesys
             </h3>
@@ -349,9 +393,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section>
-          <h2 className="font-header text-h2 text-center text-body-text">
-            THANK YOU <br/> FOR YOUR TIME </h2>
+        <section className="line" ref={textScrollTriggerRef}>
+          <h2 className="font-header text-h2 text-center text-body-text text-split">
+            THANK YOU <br /> FOR YOUR TIME{" "}
+          </h2>
         </section>
       </main>
     </>

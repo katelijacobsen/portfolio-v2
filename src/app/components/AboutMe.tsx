@@ -35,7 +35,7 @@ function AboutMe() {
   return (
     <article
       ref={bentoRef}
-      className="z-90 flex flex-col relative gap-medium  p-10 rounded-3xl lg:grid lg:grid-cols-7 lg:grid-rows-[auto_12rem_18rem] lg:px-negative max-w-[414px] md:max-w-[414px] lg:max-w-[1240px]"
+      className="z-90 flex flex-col relative gap-medium  p-10 rounded-3xl lg:grid lg:grid-cols-7 lg:grid-rows-[auto_12rem_18rem] lg:px-negative max-w-[414px] md:max-w-[514px] lg:max-w-[1280px]"
     >
       <section className="bento-box flex lg:hidden absolute -my-40 right-0 mx-10 z-90">
         <Image

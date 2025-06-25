@@ -192,7 +192,7 @@ export default function Home() {
     <>
       <Preloader done={done} />
       <main
-        className={`space-y-large transition-opacity duration-300 delay-300 ${
+        className={`space-y-large transition-opacity duration-400 delay-400 ${
           done ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -283,18 +283,18 @@ export default function Home() {
         <section
           id="about-me"
           ref={aboutRef}
-          className="relative my-negative text-body-text flex items-center justify-center"
+          className="relative text-body-text flex items-center justify-center"
         >
           <AboutMe />
           <Gradient projectId={"Rmw56LZnSfkqFxfyAcyB?"} />
         </section>
         <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-6 grid-rows-2 gap-medium ">
-          <section className="col-start-1 col-end-5 relative">
-            <h2 className="font-header text-body-text text-h2 asset-moon">
+          <section className="col-start-1 col-end-7 md:col-end-5 relative">
+            <h2 className="font-header text-body-text text-h2">
               TECH SKILLS</h2>
             <TechSkills />
           </section>
-          <section className=" col-start-3 col-end-7 row-start-2 relative asset-wheel">
+          <section className="col-start-1 md:col-start-3 col-end-7 row-start-2 relative">
             <h2 className="font-header text-body-text text-h2 text-right ">
               SOFT SKILLS</h2>
             <SoftSkills />
@@ -321,7 +321,7 @@ export default function Home() {
           </ul>
         </section>
         <section className="mx-auto px-large md:px-36 w-full max-w-[1240px] grid grid-cols-1 md:grid-cols-4 gap-x-10 gap-y-6">
-          <h2 className="font-header text-body-text text-h2 col-span-full md:col-span-4">
+          <h2 className="font-header text-body-text text-h2 text-right col-span-full md:col-span-4">
             EXPERIENCE </h2>
 
           <Image

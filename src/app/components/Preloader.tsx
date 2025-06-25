@@ -22,7 +22,7 @@ function Preloader({ done }: { done: boolean }) {
 
 return (
     <div
-      className={`fixed inset-0 bg-body-bg z-50 flex items-center justify-center transition-opacity duration-700 ${
+      className={`fixed inset-0 bg-body-bg z-50 flex items-center justify-center transition-opacity duration-400 ${
         done ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >

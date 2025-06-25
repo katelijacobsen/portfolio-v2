@@ -14,6 +14,8 @@ import { TbBrandFramerMotion } from "react-icons/tb";
 import { SiAdobe } from "react-icons/si";
 import { PiCirclesFourFill } from "react-icons/pi";
 import { SiJira } from "react-icons/si";
+import { SiSupabase } from "react-icons/si";
+import { PiSealQuestionFill } from "react-icons/pi";
 const TechSkills = () => {
   return (
     <ul className="font-semibold flex flex-wrap gap-x-small gap-y-small list-none w-full bg-primary-1 p-medium rounded-lg brown-shadow">
@@ -113,6 +115,24 @@ const TechSkills = () => {
           className="px-[10px]"
           bgColor="bg-blue-600"
           txtColor="text-blue-50"
+        />
+      </li>
+      <li>
+        <Tags
+          skill="Supabase"
+          icon={<SiSupabase />}
+          className="px-[10px]"
+          bgColor="bg-slate-800"
+          txtColor="text-emerald-400"
+        />
+      </li>
+      <li>
+        <Tags
+          skill="More to come . . ."
+          icon={<PiSealQuestionFill />}
+          className="px-[10px]"
+          bgColor="bg-indigo-200"
+          txtColor="text-indigo-800"
         />
       </li>
     </ul>

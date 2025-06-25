@@ -1,7 +1,7 @@
 import { VscGithubAlt } from "react-icons/vsc";
 import { SlSocialLinkedin } from "react-icons/sl";
 import Button from "./Button";
-
+import Anchor from "./Anchor";
 const Footer = () => {
   return (
     <footer
@@ -36,13 +36,20 @@ const Footer = () => {
         </ul>
       </nav>
 
-      <address className="not-italic text-center lg:text-left space-y-2 flex flex-col justify-center items-center">
-        <h2 className="text-h2 font-header border-b-2 border-accent-1 pb-1 mb-3">
+      <address className="not-italic text-center lg:text-left space-y-2 flex flex-col justify-center items-center gap-4">
+        <h2 className="text-h2 font-header border-b-2 border-body-text pb-1">
           LET'S TALK
         </h2>
-        <Button text="I'm just an email away" />
-        <Button text="Reach me by sms" />
-        <a href="sms:+4512345678">Send me a SMS</a>
+        <Anchor
+          text="I'm just an email away"
+          href="mailto:katjamaehleke98@gmail.com"
+        />
+        <div className="flex flex-col justify-center items-center">
+          <h3 className="font-semibold">Phone number</h3>
+          <a className="text-h4" href="tel+4591996396:">
+            +45 91 99 63 96
+          </a>
+        </div>
       </address>
     </footer>
   );

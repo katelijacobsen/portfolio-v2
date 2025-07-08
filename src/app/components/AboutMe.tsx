@@ -41,7 +41,7 @@ function AboutMe() {
         <Image
           width={512}
           height={512}
-          src="/img/pictures/portrait.avif"
+          src="/img/pictures/portrait.jpg"
           alt=""
           loading="lazy"
           className="rounded-full border-4 border-primary-2 brown-shadow w-[12.5rem] h-auto lg:h-full object-cover"
@@ -52,7 +52,7 @@ function AboutMe() {
         <Image
           width={512}
           height={512}
-          src="/img/pictures/portrait.avif"
+          src="/img/pictures/portrait.jpg"
           alt=""
           loading="lazy"
           className="rounded-2xl border-4 border-primary-2 brown-shadow w-full h-auto lg:h-full object-cover"

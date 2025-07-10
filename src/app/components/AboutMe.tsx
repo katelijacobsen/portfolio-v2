@@ -97,7 +97,7 @@ function AboutMe() {
         </section>
 
         <a
-          href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:8d9ea878-f7d8-4156-8f7d-6d5c0cbc93dd"
+          href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:d3e9808b-add0-43a0-a6aa-cbb90d3e3572"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="CV of Katja"

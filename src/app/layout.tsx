@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "./components/Footer";
-import Button from "./components/Button";
-import Header from "./components/Header";
+import PillNav from "./components/PillNav";
 
 export const metadata: Metadata = {
   title: "Katja Mähleke",
@@ -37,17 +36,14 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
-  
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body>
-        <Header/>
+      <body className="bg-dark py-large px-negative">
         {children}
         <Footer />
       </body>

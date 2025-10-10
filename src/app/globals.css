@@ -20,30 +20,35 @@
 
 @theme inline {
   /*===== Colorpalette =====*/
-  --color-body-text: #463530;
-  --color-primary-1: #fffefd;
-  --color-primary-2: #faf7ee;
-  --color-primary-3: #d3cfc4;
-  --color-secondary-1: #ed95ba;
-  --color-secondary-2: #e35029;
-  --color-secondary-3: #f8d505;
-  --color-secondary-4: #8ee329;
-  --color-accent-1: #2954e3;
+  --color-dark: oklch(21% 0.034 264.665);
+  --color-caption: #1e2939;
   --color-accent-2: #2545b2;
+  --color-body-header: #f3f4f6;
+  --color-body-p: var(--color-body-header);
+  --color-white-gradient: linear-gradient(
+    209deg,
+    #f4f6f9 26.79%,
+    #eceef2 99.11%
+  );
+  --color-tag-bg: #4a5565;
+  --color-tag-text: #f3f4f6;
 
   /*===== Spacing =====*/
-  --spacing-xx-small: 2px;
-  --spacing-x-small: 4px;
-  --spacing-small: 8px;
-  --spacing-medium: 16px;
-  --spacing-large: clamp(2rem, -1.4286rem + 17.1429vw, 14rem);
-  --spacing-x-large: 40px;
-  --spacing-xx-large: 64px;
-  --spacing-negative: 224px;
-  --spacing-button: 0.7rem 1.4rem;
+  --spacing-xx-small: 0.125rem; /* 2px  */
+  --spacing-x-small: 0.25rem; /* 4px  */
+  --spacing-small: 0.5rem; /* 8px  */
+  --spacing-medium: 1rem; /* 16px */
+  --spacing-large: 2rem; /* 32px */
+  --spacing-x-large: 4rem; /* 64px */
+  --spacing-sections: clamp(4rem, 2.5733rem + 7.0022vw, 8rem); /* 128px */
+  --spacing-negative: clamp(2rem, -2.2801rem + 21.0066vw, 14rem); /* 224px */
+
+  --spacing-button: ;
+  --spacing-card: ;
+  --spacing-caption: ;
 
   /*===== Font =====*/
-  --font-header: "TransformaBold", serif;
+  --font-header: "SF Pro Regular", serif;
   --font-subheader: "SF Pro Regular", serif;
   --font-subheader-bold: "SF Pro Regular", serif;
   --font-subheader-bold-italic: "AppleGaramond-BoldItalic", serif;
@@ -58,6 +63,7 @@
   --text-label: var(--text-paragraph);
   --text-blockquote: clamp(1.62rem, 1.1474rem + 2.3195vw, 2.945rem);
   --text-tag: clamp(0.6188rem, 0.8518rem + -0.2589vw, 0.8rem);
+
   /*===== Font-weight =====*/
   /*===== Lineheight =====*/
   --color-foreground: var(--foreground);
@@ -66,172 +72,61 @@
 }
 
 /*===== Fixed Rules =====*/
-body {
-  background: var(--color-primary-2);
+html {
+  scroll-behavior: smooth;
 }
 
-h1 {
-  font-size: var(--text-h1);
-  font-family: "TransformaBold", Arial, Helvetica, sans-serif;
+body {
+  background: var(--color-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  font-family: var(--font-header);
+  color: var(--color-body-header);
 }
 
 header > h2:only-child {
-  font-size: var(--text-h2);
+  font-size: var(--color-body-header);
   font-family: "TransformaBold";
 }
 header div + h2 {
-  font-size: var(--text-h2);
+  font-size: var(--color-body-header);
 }
 h3 {
-  font-size: var(--text-h3);
+  font-size: var(--text-h2);
+  font-weight: 800;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 4pt;
 }
 
 blockquote {
   font-size: var(--text-blockquote);
 }
 
-
-button,
 p {
-  font-family: "SF Pro Regular";
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.4pt;
   font-size: var(--text-paragraph);
 }
 
-li {
-  list-style: none;
+.tag-text {
+  font-size: var(--text-tag);
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.4pt;
 }
 
-.brown-shadow {
-  box-shadow: 0px 15px 4px 0px rgba(70, 53, 48, 0),
-    0px 9px 4px 0px rgba(70, 53, 48, 0.01),
-    0px 5px 3px 0px rgba(70, 53, 48, 0.05),
-    0px 2px 2px 0px rgba(70, 53, 48, 0.09),
-    0px 1px 1px 0px rgba(70, 53, 48, 0.1);
-}
-
-/*===== GSAP Classes =====*/
-
-.line {
-  overflow: hidden;
-}
-
-/*===== Pesudo Elements =====*/
-
-.asset-moon::after {
-  content: "";
-  position: absolute;
-  margin-inline-start: 6rem;
-  width: 5rem;
-  height: 5rem;
-  pointer-events: none;
-  background: url("/img/shapes/redMoon.svg") no-repeat center / contain;
-}
-
-.asset-wheel::before {
-  content: "";
-  position: absolute;
-  margin-inline-start: -8rem;
-  margin-block-start: 8rem;
-  width: 5rem;
-  height: 5rem;
-  pointer-events: none;
-  background: url("/img/shapes/pinkFlower.svg") no-repeat center / contain;
-
-}
-.asset-moon2::before {
-  content: "";
-  position: absolute;
-  inset: -60% 0 0 0%;
-  width: 5rem;
-  height: 5rem;
-  pointer-events: none;
-  background: url("/img/icons/moon2.svg") no-repeat center / contain;
-  z-index: -1;
-}
-
-.asset-misc::after {
-  content: "";
-  position: absolute;
-  inset: 65% 0 0 85%;
-  width: 8rem;
-  height: 8rem;
-  pointer-events: none;
-  background: url("/img/icons/misc2.png") no-repeat center / contain;
-}
-
-/*===== Animations =====*/
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes fadeIn2 {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes rotation2 {
-  0% {
-    transform: rotate(360deg);
-  }
-
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.text {
-  font-family: 'TransformaBold';
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: ease-out;
-}
-
-
-/* HTML: <div class="loader"></div> */
-.loader {
-  width: fit-content;
-  font-weight: bold;
-  font-family: monospace;
-  font-size: 30px;
-  clip-path: inset(0 3ch 0 0);
-  animation: l4 1s steps(4) infinite;
-  color: var(--color-accent-1);
-}
-.loader:before {
-  content:"Loading..."
-}
-@keyframes l4 {to{clip-path: inset(0 -1ch 0 0)}}
-
-.text-border {
-    text-shadow: 2px 0 var(--color-accent-1), -2px 0 var(--color-accent-1), 0 2px var(--color-accent-1), 0 -2px var(--color-accent-1),
-               1px 1px var(--color-accent-1), -1px -1px var(--color-accent-1), 1px -1px var(--color-accent-1), -1px 1px var(--color-accent-1);
+h4 {
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.4pt;
 }

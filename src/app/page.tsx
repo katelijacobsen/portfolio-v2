@@ -6,10 +6,26 @@ import Education from "./components/Education";
 export default function Page() {
   return (
     <main>
-      <h1>About</h1>
-      <h2> Katja Mähleke</h2>
-      <p>UI/UX Designer & Frontend Developer</p>
-      <img src="/img/pictures/profile-image.png" alt="Profile image of Katja" />
+      <article className="grid grid-cols-2 gap-medium relative mb-sections">
+        <div>
+          <h1>About</h1>
+          <h2 className="text-h2">Katja Mähleke</h2>
+          <p>UI/UX Designer & Frontend Developer</p>
+        </div>
+        <div className="wrapper col-start-2 relative">
+          <img
+            src="/img/pictures/profile-image.png"
+            alt="Profile image of Katja"
+            className="w-full h-full object-cover p-4"
+          />
+          <div className="feather-blur col-start-2 w-full">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </article>
       <div className="space-y-sections">
         <article>
           <section className="bg-caption p-medium flex justify-between items-center rounded-lg border border-gray-600">

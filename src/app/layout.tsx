@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-dark py-large px-negative">
+      <body className="bg-dark py-large px-medium md:px-negative">
         {children}
         <Footer />
       </body>

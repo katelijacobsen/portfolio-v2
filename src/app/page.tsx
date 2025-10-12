@@ -2,12 +2,14 @@ import Flag from "./components/Flag";
 import Interest from "./components/Interest";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
+import SkillIcon from "./components/skillIcon";
+import Marquee from "./components/Marquee";
 
 export default function Page() {
   return (
     <main>
       <article className="grid grid-cols-2 gap-medium relative mb-sections">
-        <div>
+        <div className="relative z-100">
           <h1>About</h1>
           <h2 className="text-h2">Katja Mähleke</h2>
           <p>UI/UX Designer & Frontend Developer</p>
@@ -27,17 +29,17 @@ export default function Page() {
         </div>
       </article>
       <div className="space-y-sections">
-        <article>
-          <section className="bg-caption p-medium flex justify-between items-center rounded-lg border border-gray-600">
-            <h3>Languages</h3>
+        <article className="space-y-medium">
+          <section className="bg-caption p-medium  flex justify-between items-center rounded-lg border border-gray-600">
+            <h3 className="headline-regular">Languages</h3>
             <ul className="flex gap-x-small">
               <Flag countryFlag="dk" />
               <Flag countryFlag="de" />
               <Flag countryFlag="gb" />
             </ul>
           </section>
-          <section className="bg-caption border border-gray-600 rounded-lg p-medium">
-            <h3>Interests</h3>
+          <section className="bg-caption space-y-medium border border-gray-600 rounded-lg p-medium">
+            <h3 className="headline-regular">Interests</h3>
             <ul className="flex flex-wrap gap-small">
               <Interest
                 interest="Baking"
@@ -140,15 +142,28 @@ export default function Page() {
             />
           </ul>
         </article>
-        <article>
-          <section>
-            <h3>Tech</h3>
+        <article className="grid grid-cols-2 grid-rows-2 gap-medium">
+          <section className="bg-caption p-medium flex flex-col gap-medium rounded-lg border border-gray-600 col-start-1 col-end-3">
+            <h3 className="headline-regular">Tech</h3>
+            <Marquee />
           </section>
-          <section>
-            <h3>Video editing</h3>
+          <section className="bg-caption p-medium rounded-lg border border-gray-600">
+            <h3 className="headline-regular">Video editing</h3>
+            <ul className="flex flex-row gap-small">
+              <SkillIcon iconSrc="/img/icons/ae.svg" altText="After Effects" />
+              <SkillIcon iconSrc="/img/icons/pr.svg" altText="Premiere Pro" />
+            </ul>
           </section>
-          <section>
-            <h3>Design Tools</h3>
+          <section className="bg-caption p-medium rounded-lg border border-gray-600">
+            <h3 className="headline-regular">Design tools</h3>
+            <ul className="flex flex-row gap-small">
+              <SkillIcon iconSrc="/img/icons/figma.svg" altText="Figma" />
+              <SkillIcon
+                iconSrc="/img/icons/ai.svg"
+                altText="Adobe Illustrator"
+              />
+              <SkillIcon iconSrc="/img/icons/lr.svg" altText="Lightroom" />
+            </ul>
           </section>
         </article>
       </div>

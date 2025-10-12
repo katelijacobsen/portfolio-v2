@@ -97,13 +97,7 @@ header > h2:only-child {
 header div + h2 {
   font-size: var(--color-body-header);
 }
-h3 {
-  font-size: var(--text-h2);
-  font-weight: 800;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 4pt;
-}
+
 
 blockquote {
   font-size: var(--text-blockquote);
@@ -131,12 +125,6 @@ h1 {
   letter-spacing: 0.4pt;
 }
 
-h4 {
-  font-size: var(--text-h3);
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 0.4pt;
-}
 h2 {
   font-size: var(--text-h2);
   font-weight: 700;
@@ -144,12 +132,36 @@ h2 {
   letter-spacing: 0.4pt;
 }
 
+h3 {
+  font-size: var(--text-h2);
+  font-weight: 800;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.2pt;
+}
+.headline-regular {
+  font-size: var(--text-h5);
+  font-weight: 800;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1.2pt;
+}
+
+h4 {
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.4pt;
+}
+
+/* ===== Blur Gradient =====*/
 .feather-blur {
   position: absolute;
   inset: auto 0 0 0;
-  height: 65%;
+  height: 100%;
   pointer-events: none;
-  z-index: 5;
+  z-index: 7;
+  overflow: visible;
 }
 
 .feather-blur > div,
@@ -162,44 +174,163 @@ h2 {
 .feather-blur::before {
   z-index: 6;
   content: "";
-  position: absolute;
-  background-color: rgba(255, 0, 0, 0.404);
   inset: 0;
-  backdrop-filter: blur(100px);
-  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(1px);
   mask: linear-gradient(
-    to bottom,
+    -30deg,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 40%,
-    rgba(0, 0, 0, 1) 80%,
-    rgba(0, 0, 0, 0) 100%
+    rgba(0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0) 60%
   );
   -webkit-mask: linear-gradient(
-    to bottom,
+    -40deg,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 40%,
-    rgba(0, 0, 0, 1) 80%,
-    rgba(0, 0, 0, 0) 100%
+    rgba(0, 0, 0, 1) 12.5%,
+    rgba(0, 0, 0, 1) 25%,
+    rgba(0, 0, 0, 0) 17.5%
+  );
+}
+.feather-blur::after {
+  z-index: 10;
+  content: "";
+  inset: 0;
+  backdrop-filter: blur(1px);
+  mask: linear-gradient(
+    140deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0) 15%,
+    rgba(0, 0, 0, 1) 23%,
+    rgba(0, 0, 0, 0) 35%
+  );
+  -webkit-mask: linear-gradient(
+    140deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0) 15%,
+    rgba(0, 0, 0, 1) 23%,
+    rgba(0, 0, 0, 0) 35%
   );
 }
 
-
 .feather-blur > div:nth-of-type(1) {
   z-index: 2;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(4px);
   mask: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 12.5%,
-    rgba(0, 0, 0, 1) 25%,
-    rgba(0, 0, 0, 1) 37.5%,
-    rgba(0, 0, 0, 0) 50%
+    -30deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 0) 45%
   );
   -webkit-mask: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 12.5%,
+    -40deg,
+   rgba(0, 0, 0, 0) 12.5%,
     rgba(0, 0, 0, 1) 25%,
     rgba(0, 0, 0, 1) 37.5%,
     rgba(0, 0, 0, 0) 50%
   );
+}
+.feather-blur > div:nth-of-type(2) {
+  z-index: 3;
+  backdrop-filter: blur(6px);
+  mask: linear-gradient(
+    -30deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 0) 45%
+  );
+  -webkit-mask: linear-gradient(
+    140deg,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 1) 75%,
+    rgba(0, 0, 0, 1) 100%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.feather-blur > div:nth-of-type(3) {
+  z-index: 4;
+  backdrop-filter: blur(4px);
+  mask: linear-gradient(
+    140deg,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 1) 100%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask: linear-gradient(
+    140deg,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 1) 100%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.feather-blur > div:nth-of-type(4) {
+  z-index: 5;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  mask: linear-gradient(
+    140deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 22%,
+    rgba(0, 0, 0, 0) 33%
+  );
+  -webkit-mask: linear-gradient(
+    -40deg,
+    rgba(0, 0, 0, 0) 87.5%
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 1) 62.5%,
+    rgba(0, 0, 0, 0) 100%,
+  );
+}
+
+h4 + p {
+  color: #D1D5DC;
+}
+
+/*=== Animations ===*/
+
+.marquee-wrapper {
+  width: 90%;
+  max-width: 1440px;
+  margin-inline: auto;
+  position: relative;
+  height: 56px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.marquee-item {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  left: max(calc(50px * 3.5), 100%);
+  animation-name: scrollLeft;
+  animation-duration: 20s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes scrollLeft {
+  to {
+    left: -50px;
+  }
 }

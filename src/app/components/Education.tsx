@@ -17,8 +17,8 @@ const Education: React.FC<Props> = ({
 }) => {
   return (
     <li className="bg-caption p-medium rounded-lg border border-gray-600 flex flex-col justify-between gap-large">
-      <div className="flex justify-between gap-medium items-start">
-        <div className="flex gap-medium">
+      <div className="flex flex-1 gap-medium justify-between items-start">
+        <div className="flex flex-1 gap-medium min-w-0">
           <Image
             src={imgUrl}
             alt={company}
@@ -26,7 +26,7 @@ const Education: React.FC<Props> = ({
             height={56}
             className="rounded-full aspect-square w-14 h-14 object-cover"
           />
-          <div>
+          <div className="min-w-0">
             <h4>{role}</h4>
             <p>{company}</p>
           </div>

@@ -41,7 +41,7 @@
   --spacing-large: 2rem; /* 32px */
   --spacing-x-large: 4rem; /* 64px */
   --spacing-sections: clamp(4rem, 2.5733rem + 7.0022vw, 8rem); /* 128px */
-  --spacing-negative: clamp(2rem, -2.2801rem + 21.0066vw, 14rem); /* 224px */
+  --spacing-negative: clamp(2rem, -2.9934rem + 24.5077vw, 16rem);
 
   --spacing-button: ;
   --spacing-card: ;
@@ -74,6 +74,7 @@
 /*===== Fixed Rules =====*/
 html {
   scroll-behavior: smooth;
+  cursor: url('/img/icons/cursor-pink.png'), auto;
 }
 
 body {

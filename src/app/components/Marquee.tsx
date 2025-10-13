@@ -30,7 +30,7 @@ export interface Props {
 }
 
 const Marquee: React.FC<Props> = ({
-  speed = 15,
+  speed = 50,
   direction = "left",
   pauseOnHover = true,
   className = "",

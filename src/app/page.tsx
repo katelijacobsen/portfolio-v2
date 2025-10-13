@@ -1,11 +1,9 @@
 import Flag from "./components/Flag";
 import Interest from "./components/Interest";
-import Experience from "./components/Experience";
-import Education from "./components/Education";
-import SkillIcon from "./components/skillIcon";
 import Marquee from "./components/Marquee";
 import MagicExperienceBento from "./components/MagicExperienceBento";
 import MagicEducationBento from "./components/MagicEducationBento";
+import Image from "next/image";
 
 const experiences = [
   {
@@ -85,37 +83,31 @@ const educations = [
 
 export default function Page() {
   return (
-    <main>
-      <article className="grid grid-cols-2 gap-medium relative mb-sections">
-        <div className="relative z-100">
+    <main className="space-y-sections">
+      <article className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto_auto] gap-medium relative mb-sections">
+        <div className="relative z-100 order-1">
           <h1>About</h1>
-          <h2 className="text-h2">Katja Mähleke</h2>
+          <h2>Katja Mähleke</h2>
           <p>UI/UX Designer & Frontend Developer</p>
         </div>
-        <div className="wrapper col-start-2 relative">
-          <img
+
+        <div className="wrapper relative order-2">
+          <Image
+            width={100}
+            height={100}
             src="/img/pictures/profile-image.png"
             alt="Profile image of Katja"
-            className="w-full h-full object-cover p-4"
+            className="w-full aspect-square object-contain p-4"
           />
-          <div className="feather-blur col-start-2 w-full">
+          <div className="feather-blur w-full ">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
           </div>
         </div>
-      </article>
-      <div className="space-y-sections">
-        <article className="space-y-medium">
-          <section className="bg-caption p-medium  flex justify-between items-center rounded-lg border border-gray-600">
-            <h3 className="headline-regular">Languages</h3>
-            <ul className="flex gap-x-small">
-              <Flag countryFlag="dk" />
-              <Flag countryFlag="de" />
-              <Flag countryFlag="gb" />
-            </ul>
-          </section>
+
+        <div className="flex gap-medium flex-col order-3 col-span-2 lg:col-span-1 lg:col-start-3 row-start-2 lg:row-start-1">
           <section className="bg-caption space-y-medium border border-gray-600 rounded-lg p-medium">
             <h3 className="headline-regular">Interests</h3>
             <ul className="flex flex-wrap gap-small">
@@ -157,46 +149,60 @@ export default function Page() {
               />
             </ul>
           </section>
-        </article>
-        <article>
-          <h3> Tech & design skills</h3>
-          <Marquee />
-        </article>
-        <article aria-label="work experience and education" className="space-y-sections">
-          <section>
-            <h3 className="py-medium">Experience</h3>
-            <MagicExperienceBento
-              experiences={experiences}
-              textAutoHide={true}
-              enableStars={true}
-              enableSpotlight={true}
-              enableBorderGlow={true}
-              enableTilt={false}
-              enableMagnetism={false}
-              clickEffect={true}
-              spotlightRadius={200}
-              particleCount={0}
-              glowColor="156, 163, 175"
-            />
+
+          <section className="bg-caption p-medium inline-flex justify-between items-center rounded-lg border border-gray-600 w-full">
+            <h3 className="headline-regular">Languages</h3>
+            <ul className="flex gap-x-small">
+              <Flag countryFlag="dk" />
+              <Flag countryFlag="de" />
+              <Flag countryFlag="gb" />
+            </ul>
           </section>
-          <section>
-            <h3 className="py-medium">Education</h3>
-            <MagicEducationBento
-              educations={educations}
-              textAutoHide={true}
-              enableStars={true}
-              enableSpotlight={true}
-              enableBorderGlow={true}
-              enableTilt={false}
-              enableMagnetism={false}
-              clickEffect={true}
-              spotlightRadius={200}
-              particleCount={0}
-              glowColor="156, 163, 175"
-            />
-          </section>
-        </article>
-      </div>
+        </div>
+      </article>
+
+      <article>
+        <h3> Tech & design skills</h3>
+        <Marquee />
+      </article>
+
+      <article
+        aria-label="work experience and education"
+        className="space-y-sections"
+      >
+        <section>
+          <h3 className="py-medium">Experience</h3>
+          <MagicExperienceBento
+            experiences={experiences}
+            textAutoHide={true}
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={false}
+            enableMagnetism={false}
+            clickEffect={true}
+            spotlightRadius={200}
+            particleCount={0}
+            glowColor="156, 163, 175"
+          />
+        </section>
+        <section>
+          <h3 className="py-medium">Education</h3>
+          <MagicEducationBento
+            educations={educations}
+            textAutoHide={true}
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={false}
+            enableMagnetism={false}
+            clickEffect={true}
+            spotlightRadius={200}
+            particleCount={0}
+            glowColor="156, 163, 175"
+          />
+        </section>
+      </article>
     </main>
   );
 }

@@ -16,9 +16,8 @@ const Education: React.FC<Props> = ({
   imgUrl,
 }) => {
   return (
-    <li className="bg-caption p-medium rounded-lg border border-gray-600 flex flex-col justify-between gap-large">
-      <div className="flex flex-1 gap-medium justify-between items-start">
-        <div className="flex flex-1 gap-medium min-w-0">
+    <li className="bg-caption p-medium rounded-lg border border-gray-600 grid grid-cols-[3.5rem_auto_auto] grid-rows-[auto_auto]  gap-medium">
+      <div className="min-w-0 flex gap-medium col-start-1 col-end-3">
           <Image
             src={imgUrl}
             alt={company}
@@ -26,15 +25,14 @@ const Education: React.FC<Props> = ({
             height={56}
             className="rounded-full aspect-square w-14 h-14 object-cover"
           />
-          <div className="min-w-0">
-            <h4>{role}</h4>
+          <div>
+            <h4 className="whitespace-normal">{role}</h4>
             <p>{company}</p>
           </div>
         </div>
-        <div className="inline-flex flex-wrap bg-tag-bg text-tag-text p-small rounded-md flex-shrink-0">
+        <div className="bg-tag-bg text-tag-text p-small rounded-md h-fit w-fit justify-self-end row-start-1 col-start-3">
           <p className="tag-text">{year}</p>
         </div>
-      </div>
       <p>{description}</p>
     </li>
   );

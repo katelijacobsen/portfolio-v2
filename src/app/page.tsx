@@ -81,41 +81,63 @@ export default function Page() {
           </section>
         </article>
         <article>
+          <h3> Tech & design skills</h3>
+          <Marquee />
+        </article>
+        <article>
           <h3>Experience</h3>
-          <ul className="grid grid-cols-1 gap-medium md:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-medium lg:grid-cols-2">
             <Experience
               imgUrl="/img/company/relesys.png"
               role="Digital Designer"
               company="Relesys A/S"
               year="2025"
-              description="Description"
+              points={[
+                "Design-system",
+                "Visual Identity",
+                "Wireframing",
+                "Prototyping",
+                "Sales Mockups",
+              ]}
             />
             <Experience
               imgUrl="/img/company/IKEA.png"
               role="Sales Assosciate"
               company="IKEA"
               year="2023-2025"
-              description="Description"
+              points={[
+                "Guide customers through products",
+                "Delivery assistens",
+                "Improving work schedule routine",
+                "Plan care and maintenance",
+              ]}
             />
             <Experience
               imgUrl="/img/company/IKEA.png"
               role="Returns & Claims Associate"
               company="IKEA"
               year="2021-2023"
-              description="Description"
+              points={[
+                "Improving spare-parts system for colleagues",
+                "Assessed items for refund, replacement or repair",
+                "Provided guidance on return policies",
+                "Handles customer returns and claims",
+              ]}
             />
             <Experience
               imgUrl="/img/company/redbarnetungdom.png"
               role="Tutor"
               company="Red Barnet Ungdom"
               year="2025"
-              description="Description"
+              points={["Encourafed learning through patience, motivation and positive reinforcement with children",
+                "Encouraged confidence through one-on-one tutoring",
+              ]}
             />
           </ul>
         </article>
         <article>
           <h3>Education</h3>
-          <ul className="grid grid-cols-1 gap-medium md:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-medium lg:grid-cols-2">
             <Education
               imgUrl="/img/company/ek.png"
               role="Web Development"
@@ -141,30 +163,6 @@ export default function Page() {
               year="2019-2021"
             />
           </ul>
-        </article>
-        <article className="grid grid-cols-2 grid-rows-2 gap-medium">
-          <section className="bg-caption p-medium flex flex-col gap-medium rounded-lg border border-gray-600 col-start-1 col-end-3">
-            <h3 className="headline-regular">Tech</h3>
-            <Marquee />
-          </section>
-          <section className="bg-caption p-medium rounded-lg border border-gray-600">
-            <h3 className="headline-regular">Video editing</h3>
-            <ul className="flex flex-row gap-small">
-              <SkillIcon iconSrc="/img/icons/ae.svg" altText="After Effects" />
-              <SkillIcon iconSrc="/img/icons/pr.svg" altText="Premiere Pro" />
-            </ul>
-          </section>
-          <section className="bg-caption p-medium rounded-lg border border-gray-600">
-            <h3 className="headline-regular">Design tools</h3>
-            <ul className="flex flex-row gap-small">
-              <SkillIcon iconSrc="/img/icons/figma.svg" altText="Figma" />
-              <SkillIcon
-                iconSrc="/img/icons/ai.svg"
-                altText="Adobe Illustrator"
-              />
-              <SkillIcon iconSrc="/img/icons/lr.svg" altText="Lightroom" />
-            </ul>
-          </section>
         </article>
       </div>
     </main>

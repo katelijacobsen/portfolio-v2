@@ -7,9 +7,9 @@ interface Props {
     size?: number;
 }
 
-const SkillIcon: FC<Props> = ({ iconSrc, altText, size = 40 }) => {
+const SkillIcon: FC<Props> = ({ iconSrc, altText, size = 56 }) => {
     return (
-        <li className="">
+        <div className="">
             <Image
                 src={iconSrc}
                 alt={altText}
@@ -17,7 +17,7 @@ const SkillIcon: FC<Props> = ({ iconSrc, altText, size = 40 }) => {
                 height={size}
                 className="object-contain aspect-square"
             />
-        </li>
+        </div>
     );
 };
 

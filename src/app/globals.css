@@ -74,11 +74,11 @@
 /*===== Fixed Rules =====*/
 html {
   scroll-behavior: smooth;
-  cursor: url('/img/icons/cursor-pink.png'), auto;
 }
 
 body {
   background: var(--color-dark);
+  cursor: url('/img/icons/cursor-pink.png'), auto;
 }
 
 h1,
@@ -299,3 +299,5 @@ h4 + p {
     rgba(255, 0, 0, 0) 50%,
     oklch(21% 0.034 264.665) 100%);
 }
+
+

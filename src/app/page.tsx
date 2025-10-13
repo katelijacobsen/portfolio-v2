@@ -4,6 +4,84 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import SkillIcon from "./components/skillIcon";
 import Marquee from "./components/Marquee";
+import MagicExperienceBento from "./components/MagicExperienceBento";
+import MagicEducationBento from "./components/MagicEducationBento";
+
+const experiences = [
+  {
+    imgUrl: "/img/company/relesys.png",
+    role: "Digital Designer",
+    company: "Relesys A/S",
+    year: "2025",
+    points: [
+      "Design-system",
+      "Visual Identity",
+      "Wireframing",
+      "Prototyping",
+      "Sales Mockups",
+    ],
+  },
+  {
+    imgUrl: "/img/company/IKEA.png",
+    role: "Sales Associate",
+    company: "IKEA",
+    year: "2023-2025",
+    points: [
+      "Guide customers through products",
+      "Delivery assistance",
+      "Improving work schedule routine",
+      "Plan care and maintenance",
+    ],
+  },
+  {
+    imgUrl: "/img/company/IKEA.png",
+    role: "Returns & Claims Associate",
+    company: "IKEA",
+    year: "2021-2023",
+    points: [
+      "Improving spare-parts system for colleagues",
+      "Assessed items for refund, replacement or repair",
+      "Provided guidance on return policies",
+      "Handles customer returns and claims",
+    ],
+  },
+  {
+    imgUrl: "/img/company/redbarnetungdom.png",
+    role: "Tutor",
+    company: "Red Barnet Ungdom",
+    year: "2025",
+    points: [
+      "Encouraged learning through patience, motivation and positive reinforcement with children",
+      "Encouraged confidence through one-on-one tutoring",
+    ],
+  },
+];
+const educations = [
+  {
+    imgUrl: "/img/company/ek.png",
+    role: "Web developer",
+    company: "Profession bachelor degree",
+    year: "2025",
+  },
+  {
+    imgUrl: "/img/company/ek.png",
+    role: "Multimedia design",
+    company: "Academic profession degree",
+    year: "2023-2025",
+  },
+  {
+    imgUrl: "/img/company/krabbesholm.png",
+    role: "Architecture",
+    company: "Program",
+    year: "2020",
+  },
+  {
+    imgUrl: "/img/company/kvuc.png",
+    role: "Psychology",
+    company: "High school degree",
+    year: "2021",
+  },
+];
 
 export default function Page() {
   return (
@@ -84,85 +162,39 @@ export default function Page() {
           <h3> Tech & design skills</h3>
           <Marquee />
         </article>
-        <article>
-          <h3>Experience</h3>
-          <ul className="grid grid-cols-1 gap-medium lg:grid-cols-2">
-            <Experience
-              imgUrl="/img/company/relesys.png"
-              role="Digital Designer"
-              company="Relesys A/S"
-              year="2025"
-              points={[
-                "Design-system",
-                "Visual Identity",
-                "Wireframing",
-                "Prototyping",
-                "Sales Mockups",
-              ]}
+        <article aria-label="work experience and education" className="space-y-sections">
+          <section>
+            <h3 className="py-medium">Experience</h3>
+            <MagicExperienceBento
+              experiences={experiences}
+              textAutoHide={true}
+              enableStars={true}
+              enableSpotlight={true}
+              enableBorderGlow={true}
+              enableTilt={false}
+              enableMagnetism={false}
+              clickEffect={true}
+              spotlightRadius={200}
+              particleCount={0}
+              glowColor="156, 163, 175"
             />
-            <Experience
-              imgUrl="/img/company/IKEA.png"
-              role="Sales Assosciate"
-              company="IKEA"
-              year="2023-2025"
-              points={[
-                "Guide customers through products",
-                "Delivery assistens",
-                "Improving work schedule routine",
-                "Plan care and maintenance",
-              ]}
+          </section>
+          <section>
+            <h3 className="py-medium">Education</h3>
+            <MagicEducationBento
+              educations={educations}
+              textAutoHide={true}
+              enableStars={true}
+              enableSpotlight={true}
+              enableBorderGlow={true}
+              enableTilt={false}
+              enableMagnetism={false}
+              clickEffect={true}
+              spotlightRadius={200}
+              particleCount={0}
+              glowColor="156, 163, 175"
             />
-            <Experience
-              imgUrl="/img/company/IKEA.png"
-              role="Returns & Claims Associate"
-              company="IKEA"
-              year="2021-2023"
-              points={[
-                "Improving spare-parts system for colleagues",
-                "Assessed items for refund, replacement or repair",
-                "Provided guidance on return policies",
-                "Handles customer returns and claims",
-              ]}
-            />
-            <Experience
-              imgUrl="/img/company/redbarnetungdom.png"
-              role="Tutor"
-              company="Red Barnet Ungdom"
-              year="2025"
-              points={["Encourafed learning through patience, motivation and positive reinforcement with children",
-                "Encouraged confidence through one-on-one tutoring",
-              ]}
-            />
-          </ul>
-        </article>
-        <article>
-          <h3>Education</h3>
-          <ul className="grid grid-cols-1 gap-medium lg:grid-cols-2">
-            <Education
-              imgUrl="/img/company/ek.png"
-              role="Web Development"
-              company="Professional Bachelor Degree"
-              year="2026-2027"
-            />
-            <Education
-              imgUrl="/img/company/ek.png"
-              role="Multimedia Design"
-              company="Academic Professional Degree"
-              year="2023-2025"
-            />
-            <Education
-              imgUrl="/img/company/krabbesholm.png"
-              role="Architecture"
-              company="Program"
-              year="2020"
-            />
-            <Education
-              imgUrl="/img/company/kvuc.png"
-              role="Psychology"
-              company="High School Diploma"
-              year="2019-2021"
-            />
-          </ul>
+          </section>
         </article>
       </div>
     </main>

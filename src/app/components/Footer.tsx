@@ -17,7 +17,7 @@ const Footer = () => {
   return (
     <footer
       id="contact-information"
-      className="pixel-footer rounded-t-lg grid grid-cols-3 grid-rows-[auto_auto_auto] "
+      className="pixel-footer rounded-t-lg grid grid-cols-3 grid-rows-[auto_auto_auto] mt-sections"
     >
       <div className="pixel-me"></div>
       <div className="flex items-end gap-small p-large row-start-3">

@@ -1,90 +1,43 @@
-import Flag from "./components/Flag";
-import Interest from "./components/Interest";
-import Marquee from "./components/Marquee";
-import MagicExperienceBento from "./components/MagicExperienceBento";
-import MagicEducationBento from "./components/MagicEducationBento";
 import Image from "next/image";
-
-const experiences = [
-  {
-    imgUrl: "/img/company/relesys.png",
-    role: "Digital Designer",
-    company: "Relesys A/S",
-    year: "2025",
-    points: [
-      "Design-system",
-      "Visual Identity",
-      "Wireframing",
-      "Prototyping",
-      "Sales Mockups",
-    ],
-  },
-  {
-    imgUrl: "/img/company/IKEA.png",
-    role: "Sales Associate",
-    company: "IKEA",
-    year: "2023-2025",
-    points: [
-      "Guide customers through products",
-      "Delivery assistance",
-      "Improving work schedule routine",
-      "Plan care and maintenance",
-    ],
-  },
-  {
-    imgUrl: "/img/company/IKEA.png",
-    role: "Returns & Claims Associate",
-    company: "IKEA",
-    year: "2021-2023",
-    points: [
-      "Improving spare-parts system for colleagues",
-      "Assessed items for refund, replacement or repair",
-      "Provided guidance on return policies",
-      "Handles customer returns and claims",
-    ],
-  },
-  {
-    imgUrl: "/img/company/redbarnetungdom.png",
-    role: "Tutor",
-    company: "Red Barnet Ungdom",
-    year: "2025",
-    points: [
-      "Encouraged learning through patience, motivation and positive reinforcement with children",
-      "Encouraged confidence through one-on-one tutoring",
-    ],
-  },
-];
-const educations = [
-  {
-    imgUrl: "/img/company/ek.png",
-    role: "Web developer",
-    company: "Profession bachelor degree",
-    year: "2025",
-  },
-  {
-    imgUrl: "/img/company/ek.png",
-    role: "Multimedia design",
-    company: "Academic profession degree",
-    year: "2023-2025",
-  },
-  {
-    imgUrl: "/img/company/krabbesholm.png",
-    role: "Architecture",
-    company: "Program",
-    year: "2020",
-  },
-  {
-    imgUrl: "/img/company/kvuc.png",
-    role: "Psychology",
-    company: "High school degree",
-    year: "2021",
-  },
-];
+import Link from "next/link";
 
 export default function About() {
   return (
     <main className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto">
-
+      <Image 
+      width={160}
+      height={160}
+      src="/img/pictures/pixel-me.gif"
+      alt=""/>
+      <h3>
+        Hi I’m Katja! I’m a designer with a strong passion for webdesign that
+        are accessible for all types of users. My focus is to use my UI/UX
+        skills to create intuitive straightforward digital experiences,
+        including responsive design to ensure consistent performance across all
+        devices.
+      </h3>
+      <article>
+        <h3 className="py-medium">Projects</h3>
+        <section>
+          <div className="test grid grid-cols-3 grid-rows-3">
+            <Image
+              width={936}
+              height={536}
+              src="/img/pictures/Test.png"
+              alt="Foo"
+              className="pointer-events-none rounded-lg col-start-1 col-end-4 row-start-1 row-end-4 object-cover place-self-stretch"
+            />
+            <h4 className="col-start-1 row-start-1 place-self-center">FooFest Festival</h4>
+            <div className="p-medium col-start-3 row-start-3 place-self-center">
+              <div className="flex gap-medium">
+                <Link href="/projects/foo-festival" className="bg-blue-500 py-2 px-4 rounded-full">Overview</Link>
+                <Link href="" >Doc</Link>
+                <Link href="" >Visit</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
     </main>
   );
 }

@@ -51,7 +51,7 @@ const PillNav = () => {
   }, [pathname]);
 
   return (
-    <nav className="fixed inline-flex z-50 p-medium">
+    <nav className="relative inline-flex z-50 p-medium">
       <div className="bg-gray-800/80 backdrop-blur-sm px-2 py-4 rounded-full border-gray-600 border">
         <ul className="flex space-x-4">
           <li className="">

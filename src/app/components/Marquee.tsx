@@ -137,7 +137,7 @@ const Marquee: React.FC<Props> = ({
       {/* Tooltip */}
       {isHovered && (
         <div 
-          className="fixed z-50 px-3 py-2 text-sm text-white bg-gray-900 rounded-lg shadow-lg pointer-events-none"
+          className="fixed z-50 px-2 py-[.3rem] text-h1 text-white bg-[#DD2590] rounded-md pointer-events-none hover:opacity-100 opacity-100 transform transition duration-800 ease-in-out"
           style={{
             left: mousePosition.x + 15,
             top: mousePosition.y + 15,

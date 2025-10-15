@@ -74,10 +74,10 @@
 /*===== Fixed Rules =====*/
 html {
   scroll-behavior: smooth;
+  background: var(--color-dark);
 }
 
-body {
-  background: var(--color-dark);
+* {
   cursor: url('/img/icons/cursor-pink.png'), auto;
 }
 
@@ -300,4 +300,64 @@ h4 + p {
     oklch(21% 0.034 264.665) 100%);
 }
 
+button {
+  color: white;
+}
 
+.pixel-footer {
+  filter:grayscale(0.4);
+  background: url('/img/pictures/pixelart-bg.avif') repeat-x;
+  background-size: contain 100%;
+  width: 100%;
+  height: 362px;
+  position: relative;
+  animation: scrollBackground 60s linear infinite;
+}
+
+.pixel-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #ff00ff,
+    #FFDE82,
+    #FFAE87,
+    #00ffff,
+    #8630ff,
+    #ff00ff
+  );
+  background-size: 500% 100%;
+  animation: gradientBorder 20s linear infinite;
+}
+
+.pixel-me {
+  background: url('/img/pictures/pixelme.gif') no-repeat center bottom;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  inset: -66px 10px 10px 0;
+  z-index: 2;
+}
+
+@keyframes scrollBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1440px 0;
+  }
+}
+
+@keyframes gradientBorder {
+  0% {
+    background-position: 0 0%;
+  }
+  100% {
+    background-position: 500% 0%;
+  }
+}

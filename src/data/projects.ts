@@ -1,4 +1,4 @@
-export const cards = [
+export const projects = [
   {
     title: "Kær Kaffebar",
     slug: "kaer-kaffebar",

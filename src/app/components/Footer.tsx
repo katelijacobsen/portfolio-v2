@@ -44,13 +44,13 @@ const Footer = () => {
 
       <div className="flex gap-6 md:justify-end justify-center z-10 md:row-start-3 md:col-start-3 ">
         <Button href="https://github.com/katelijacobsen" aria-label="GitHub">
-          <BsGithub className="hover:text-pink-500 transition-colors"/>
+          <BsGithub className="hover:text-pink-500 transition-colors" />
         </Button>
         <Button href="https://www.linkedin.com" aria-label="LinkedIn">
-          <BsLinkedin className="hover:text-pink-500 transition-colors"/>
+          <BsLinkedin className="hover:text-pink-500 transition-colors" />
         </Button>
         <Button href="https://www.instagram.com" aria-label="Instagram">
-          <BsInstagram className="hover:text-pink-500 transition-colors"/>
+          <BsInstagram className="hover:text-pink-500 transition-colors" />
         </Button>
       </div>
     </footer>

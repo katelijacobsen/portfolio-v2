@@ -28,5 +28,10 @@ export const projects = [
     title: "Mad",
     description: "Small personal project by building an app to collect all recipies in the danish cooking & baking universe",
     image: "/img/pictures/FoodHead.png"
+  },
+  {
+    title: "Mad",
+    description: "Small personal project by building an app to collect all recipies in the danish cooking & baking universe",
+    image: "/img/pictures/FoodHead.png"
   }
 ];

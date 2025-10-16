@@ -55,7 +55,7 @@ export default function Page() {
 
     for (let i = 0; i < cards.length - 1; i++) {
       tl.add(`card${i + 2}`);
-      const scaleVal = 0.85 + i * 0.04;
+      const scaleVal = 0.85 + i * 0.03;
       tl.to(cards[i], {
         scale: scaleVal,
         duration: time,
@@ -96,7 +96,7 @@ export default function Page() {
     // Observer
     const cardsObserver = Observer.create({
       target: window,
-      wheelSpeed: -1,
+      wheelSpeed: -2,
       tolerance: 10,
       preventDefault: true,
       onDown: () => tweenToLabel(tl.previousLabel(), false),
@@ -127,9 +127,9 @@ export default function Page() {
       id: "STOP-SCROLL",
       trigger: containerRef.current,
       pin: true,
-      start: "top+=-300",
-      end: "+=100",
-      markers: true,
+      start: "top+=-250",
+      end: "+=",
+      markers: false,
       onEnter: () => {
         if (!cardsObserver.isEnabled) cardsObserver.enable();
       },
@@ -154,8 +154,8 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="space-y-sections py-large px-medium md:px-negative max-w-[1440px] m-auto">
-      <section className="h-screen">
+    <main className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto">
+      <section className="">
         <Image
           width={160}
           height={160}
@@ -170,10 +170,14 @@ export default function Page() {
           all devices.
         </h3>
       </section>
+      <section>
+      <div className="relative">
+        <h3 className="my-medium"> Projects </h3>
+      </div>
       <article className="cards-section">
         <section
           ref={containerRef}
-          className="relative h-screen overflow-hidden cards-section "
+          className="relative h-[60dvh] w-full overflow-hidden cards-section "
         >
           {projects.map((project, i) => (
             <div
@@ -218,6 +222,7 @@ export default function Page() {
           ))}
         </section>
       </article>
+      </section>
     </main>
   );
 }

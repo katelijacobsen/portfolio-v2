@@ -20,12 +20,12 @@ export const projects = [
     image: "/img/pictures/Kær.png"
   },
   {
-    title: "Saturn Electronics.png",
+    title: "Saturn Electronics",
     description: "Little project for creating a electronic webshop",
     image: "/img/pictures/Saturn Electronics.png"
   },
   {
-    title: "Madhovedet",
+    title: "Mad",
     description: "Small personal project by building an app to collect all recipies in the danish cooking & baking universe",
     image: "/img/pictures/FoodHead.png"
   }

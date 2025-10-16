@@ -339,3 +339,46 @@ h4 + p {
     background-position: -1440px 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.projects-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+}
+
+.project-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Ensure proper stacking context */
+.projects-container {
+  transform-style: preserve-3d;
+}
+
+.project-card {
+  transform-style: preserve-3d;
+}

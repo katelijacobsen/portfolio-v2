@@ -55,7 +55,7 @@ export default function Page() {
 
     for (let i = 0; i < cards.length - 1; i++) {
       tl.add(`card${i + 2}`);
-      const scaleVal = 0.85 + i * 0.05;
+      const scaleVal = 0.85 + i * 0.04;
       tl.to(cards[i], {
         scale: scaleVal,
         duration: time,
@@ -128,8 +128,8 @@ export default function Page() {
       trigger: containerRef.current,
       pin: true,
       start: "top+=-300",
-      end: "+=500",
-      markers: false,
+      end: "+=100",
+      markers: true,
       onEnter: () => {
         if (!cardsObserver.isEnabled) cardsObserver.enable();
       },
@@ -154,7 +154,7 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto">
+    <main className="space-y-sections py-large px-medium md:px-negative max-w-[1440px] m-auto">
       <section className="h-screen">
         <Image
           width={160}
@@ -180,7 +180,7 @@ export default function Page() {
               key={i}
               ref={(el) => addToRef(el)}
               className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-3 card"
-              style={{ minHeight: 250 }}
+              style={{ minHeight: 150 }}
             >
               <Image
                 width={936}

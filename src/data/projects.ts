@@ -17,7 +17,7 @@ export const projects = [
   {
     title: "Kær Kaffebar",
     description: "Final last semester project for a small coffee bar",
-    image: "/img/pictures/kær.png"
+    image: "/img/pictures/Kær.png"
   },
   {
     title: "Saturn Electronics.png",

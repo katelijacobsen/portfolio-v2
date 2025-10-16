@@ -2,8 +2,53 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "../data/projects";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { useRef, useEffect } from "react";
 
-export default function About() {
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Page() {
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+
+  const addToRef = (el: HTMLDivElement) => {
+    if (el && !cardsRef.current.includes(el)) {
+      cardsRef.current.push(el);
+    }
+  };
+
+useEffect(() => {
+    const cards = cardsRef.current;
+    
+    cards.forEach((card, i) => {
+      gsap.fromTo(card, 
+        {
+          y: 200,
+          opacity: 0,
+          scale: 0.8
+        },
+        {
+          y: 100,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            end: "top 40%",
+            scrub: 1,
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
     <main className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto">
       <Image width={160} height={160} src="/img/pictures/pixel-me.gif" alt="" />
@@ -16,9 +61,9 @@ export default function About() {
       </h3>
       <article>
         <h3 className="py-medium">Projects</h3>
-        <section>
+        <section className="space-y-sections ">
           {projects.map((project, i) => (
-            <div key={i} className="test grid grid-cols-3 grid-rows-3">
+            <div key={i} ref={addToRef} className="test grid grid-cols-3 grid-rows-3 ">
               <Image
                 width={936}
                 height={536}

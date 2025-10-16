@@ -177,7 +177,7 @@ export default function Page() {
       <article className="cards-section">
         <section
           ref={containerRef}
-          className="relative h-screen md:h-[60dvh] w-full overflow-hidden cards-section "
+          className="relative h-[40dvh] md:h-[80dvh] w-full overflow-hidden cards-section "
         >
           {projects.map((project, i) => (
             <div

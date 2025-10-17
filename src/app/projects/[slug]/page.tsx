@@ -5,7 +5,6 @@ import Image from "next/image";
 import { projects } from "../../../data/projects";
 
 export default function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-  // ✅ unwrap params promise with React.use
   const { slug } = React.use(params);
 
   const project = projects.find((p) => p.slug === slug);

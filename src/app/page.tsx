@@ -118,7 +118,7 @@ export default function Page() {
     // Observer
     const cardsObserver = Observer.create({
       target: window,
-      wheelSpeed: -15,
+      wheelSpeed: -100,
       tolerance: 10,
       preventDefault: true,
       onDown: () => tweenToLabel(tl.previousLabel(), false),
@@ -176,7 +176,7 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto">
+    <main className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto relative">
       <section className="">
         <Image
           width={160}
@@ -199,13 +199,13 @@ export default function Page() {
         <article className="cards-section">
           <section
             ref={containerRef}
-            className="relative h-screen w-full overflow-hidden cards-section "
+            className="relative min-h-[60vh] md:min-h-[80vh] w-full overflow-hidden cards-section "
           >
             {projects.map((project, i) => (
               <div
                 key={i}
                 ref={(el) => addToRef(el)}
-                className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-3 card"
+                className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-3 card "
                 style={{ minHeight: 150 }}
               >
                 <Image

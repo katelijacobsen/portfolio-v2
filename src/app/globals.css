@@ -343,6 +343,23 @@ h4 + p {
 
 
 
+::view-transition-old(box) {
+  animation: slide-out 0.5s ease forwards;
+}
+
+::view-transition-new(box) {
+  animation: slide-in 0.5s ease forwards;
+}
+
+@keyframes slide-out {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-100px); opacity: 0; }
+}
+
+@keyframes slide-in {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
 
 
 

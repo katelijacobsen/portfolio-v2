@@ -7,7 +7,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Observer from "gsap/Observer";
 import { useRef, useEffect } from "react";
-
+import { useRouter } from "next/navigation";
 import { FaFigma } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 
@@ -28,11 +28,23 @@ export default function Page() {
     }
   };
 
+  const router = useRouter();
+
+  function handleTransition(slug: string) {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        router.push(`/projects/${slug}`);
+      });
+    } else {
+      router.push(`/projects/${slug}`);
+    }
+  }
+
   useEffect(() => {
     const cards = cardsRef.current;
     if (!cards.length || !containerRef.current) return;
 
-    const time = 0.5;
+    const time = 0.4;
 
     scrollTimeoutRef.current = gsap
       .delayedCall(1, () => (allowScrollRef.current = true))
@@ -54,17 +66,27 @@ export default function Page() {
     tlRef.current = tl;
 
     for (let i = 0; i < cards.length - 1; i++) {
-      tl.add(`card${i + 2}`);
+      tl.add(`card${i + 20}`);
+
       const scaleVal = 0.85 + i * 0.03;
+
+      // scale + blur the current card
       tl.to(cards[i], {
         scale: scaleVal,
+        filter: `blur(4px)`,
         duration: time,
+        ease: "expo.out",
       });
+
+      // animate the next card in
       tl.from(
         cards[i + 1],
         {
-          y: () => window.innerHeight,
+          y: 500,
+          opacity: 0,
+          filter: "blur(2px)",
           duration: time,
+          ease: "expo.out",
         },
         "<"
       );
@@ -96,7 +118,7 @@ export default function Page() {
     // Observer
     const cardsObserver = Observer.create({
       target: window,
-      wheelSpeed: -2,
+      wheelSpeed: -15,
       tolerance: 10,
       preventDefault: true,
       onDown: () => tweenToLabel(tl.previousLabel(), false),
@@ -171,57 +193,50 @@ export default function Page() {
         </h3>
       </section>
       <section>
-      <div className="relative">
-        <h3 className="my-medium"> Projects </h3>
-      </div>
-      <article className="cards-section">
-        <section
-          ref={containerRef}
-          className="relative h-[40dvh] md:h-[80dvh] w-full overflow-hidden cards-section "
-        >
-          {projects.map((project, i) => (
-            <div
-              key={i}
-              ref={(el) => addToRef(el)}
-              className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-3 card"
-              style={{ minHeight: 150 }}
-            >
-              <Image
-                width={936}
-                height={536}
-                src={project.image}
-                alt={project.title}
-                className="pointer-events-none rounded-lg col-start-1 col-end-4 row-start-1 row-end-4 object-cover place-self-stretch"
-              />
-              <h4 className="col-start-1 row-start-1 place-self-center text-white text-2xl font-bold">
-                {project.title}
-              </h4>
-              <div className="p-medium col-start-2 row-start-3 place-self-center">
-                <div className="flex gap-medium">
-                  <Link
-                    href="/projects/foo-festival"
-                    className="bg-blue-500 py-2 px-4 rounded-full text-gray-50 border border-gray-50"
-                  >
-                    Overview
-                  </Link>
-                  <Link
-                    href=""
-                    className="bg-blue-50 py-2 px-4 rounded-full text-blue-500 border border-blue-500 m-auto"
-                  >
-                    <FaFigma />
-                  </Link>
-                  <Link
-                    href=""
-                    className="bg-blue-50 py-2 px-4 rounded-full text-blue-500 border border-blue-500 m-auto"
-                  >
-                    <FiExternalLink />
-                  </Link>
+        <div className="relative">
+          <h3 className="my-medium"> Projects </h3>
+        </div>
+        <article className="cards-section">
+          <section
+            ref={containerRef}
+            className="relative h-screen w-full overflow-hidden cards-section "
+          >
+            {projects.map((project, i) => (
+              <div
+                key={i}
+                ref={(el) => addToRef(el)}
+                className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-3 card"
+                style={{ minHeight: 150 }}
+              >
+                <Image
+                  width={936}
+                  height={536}
+                  src={project.image}
+                  alt={project.title}
+                  style={{
+                    viewTransitionName: `project-${project.slug}`,
+                  }}
+                  className="pointer-events-none rounded-lg col-start-1 col-end-4 row-start-1 row-end-4 object-cover place-self-stretch z-0"
+                />
+
+                <h4 className="col-start-1 row-start-2 place-self-center text-white text-2xl font-bold z-10 relative">
+                  {project.title}
+                </h4>
+
+                <div className="p-medium col-start-3 row-start-3 place-self-center z-10 relative">
+                  <div className="flex gap-medium">
+                    <button
+                      onClick={() => handleTransition(project.slug)}
+                      className="bg-blue-500 py-2 px-4 rounded-full text-white border border-white"
+                    >
+                      Overview
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </section>
-      </article>
+            ))}
+          </section>
+        </article>
       </section>
     </main>
   );

@@ -10,6 +10,7 @@ import { useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FaFigma } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
+import Button from "./components/Button";
 
 gsap.registerPlugin(ScrollTrigger, Observer);
 
@@ -209,8 +210,8 @@ export default function Page() {
                 style={{ minHeight: 150 }}
               >
                 <Image
-                  width={936}
-                  height={536}
+                  width={1400}
+                  height={1400}
                   src={project.image}
                   alt={project.title}
                   style={{
@@ -231,6 +232,7 @@ export default function Page() {
                     >
                       Overview
                     </button>
+                      <Button href={`/projects/${project.slug}`}>Overview</Button>
                   </div>
                 </div>
               </div>

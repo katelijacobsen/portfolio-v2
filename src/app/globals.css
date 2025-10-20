@@ -105,8 +105,8 @@ blockquote {
 
 p {
   font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.4pt;
+  line-height: 1.6;
+  letter-spacing: 0.4pt;
   font-size: var(--text-paragraph);
 }
 

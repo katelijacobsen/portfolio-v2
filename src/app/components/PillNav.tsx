@@ -80,6 +80,19 @@ const PillNav = () => {
               About
             </Link>
           </li>
+          <li className="cursor-pointer">
+            <Link
+              ref={aboutLinkRef}
+              href="/projects"
+              className={`px-4 py-2 rounded-full transition-colors ${
+                pathname === '/'
+                  ? 'bg-white text-gray-800'
+                  : 'text-white hover:bg-gray-700'
+              }`}
+            >
+              Projects
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

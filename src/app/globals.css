@@ -358,3 +358,22 @@ h4 + p {
   z-index: 10;
   border-radius: 8px;
 }
+
+
+/* Prevent GSAP from affecting images */
+.card-container {
+  transform-origin: center top;
+}
+
+.image-container {
+  transform: none !important;
+}
+
+.project-image {
+  transform: none !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+

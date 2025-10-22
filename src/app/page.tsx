@@ -6,11 +6,11 @@ import gsap from "gsap";
 import ScrollReveal from "./components/ScrollReveal";
 import Observer from "gsap/Observer";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useRef, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRef, useEffect, useState } from "react";
 import { projects } from "../data/projects";
 import { motion } from "motion/react";
-import Link from "next/link";
+import PixelBlast from "./components/PixelBlast";
+import ProjectOverlay from "./components/ProjectOverlay"; // new component
 
 export default function Page() {
   const cardsRef = useRef<HTMLDivElement[]>([]);
@@ -27,16 +27,25 @@ export default function Page() {
     }
   };
 
-  const router = useRouter();
+  // NEW: state to store the currently open project slug
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
 
-  function handleTransition(slug: string) {
+  // Keep router push available for other uses (not used for the overlay)
+  // const router = useRouter();
+
+  function handleOpen(slug: string) {
+    // optionally use the View Transition API if you want:
     if (document.startViewTransition) {
       document.startViewTransition(() => {
-        router.push(`/projects/${slug}`);
+        setOpenSlug(slug);
       });
     } else {
-      router.push(`/projects/${slug}`);
+      setOpenSlug(slug);
     }
+  }
+
+  function handleClose() {
+    setOpenSlug(null);
   }
 
   useEffect(() => {
@@ -179,30 +188,60 @@ export default function Page() {
       initial={{ opacity: 0, y: 100 }} // start slightly below and invisible
       animate={{ opacity: 1, y: 0 }} // fade in and slide up
       transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
-      className="space-y-sections px-medium md:px-negative max-w-[1280px] m-auto relative py-sections"
+      className="space-y-sections px-medium md:px-negative max-w-[1280px] m-auto relative py-sections overflow-hidden"
     >
-      <header
-        id="home"
-        className="w-auto h-[60dvh] flex flex-col justify-center gap-medium lg:gap-y-10"
-      >
-        <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14">
-          <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">
-            KATJA <br /> MÄHLEKE
-          </h1>
-          <div className="flex items-center justify-between col-span-3 ">
-            <h2 className="slide-left">Frontend</h2>
-            <h2 className="slide-right">UI/UX</h2>
+      <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60dvh] overflow-hidden ">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 4, delay: 1.4 }}
+          className="absolute inset-0 z-10 invert"
+        >
+          <PixelBlast
+            variant="diamond"
+            pixelSize={4}
+            color="#F6339A"
+            patternScale={3}
+            patternDensity={1.2}
+            pixelSizeJitter={0.5}
+            enableRipples
+            rippleSpeed={0.4}
+            rippleThickness={0.12}
+            rippleIntensityScale={1.5}
+            liquid
+            liquidStrength={0.12}
+            liquidRadius={0}
+            liquidWobbleSpeed={0}
+            speed={0.6}
+            edgeFade={0.25}
+            transparent
+          />
+        </motion.div>
+
+        <header
+          id="home"
+          className="relative z-10 h-full flex flex-col justify-center gap-medium lg:gap-y-10 text-gray-200 text-center"
+        >
+          <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14 mx-negative">
+            <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 self-end text-body-text">
+              KATJA <br /> MÄHLEKE
+            </h1>
+            <div className="flex items-center justify-between col-span-3">
+              <h2 className="slide-left">Frontend</h2>
+              <h2 className="slide-right">UI/UX</h2>
+            </div>
+            <div className="flex items-center justify-between col-span-3">
+              <h2 className="slide-left">2025</h2>
+              <h2 className="slide-right">Portfolio</h2>
+            </div>
           </div>
-          <div className="flex items-center justify-between col-span-3 ">
-            <h2 className="slide-left">2025</h2>
-            <h2 className="slide-right">Portfolio</h2>
+
+          <div className="flex flex-col md:flex-row gap-medium justify-center items-center relative ">
+            <Button>See my work</Button>
           </div>
-        </div>
-        <div className="flex flex-col md:flex-row gap-medium justify-center items-center relative">
-          <Button>See my work</Button>
-          <Button>Contact</Button>
-        </div>
-      </header>
+        </header>
+      </div>
+
       <ScrollReveal
         baseOpacity={0}
         enableBlur={true}
@@ -215,14 +254,17 @@ export default function Page() {
         including responsive design to ensure consistent performance across all
         devices.
       </ScrollReveal>
+
       <section className="">
         <Image
           width={160}
           height={160}
           src="/img/pictures/pixel-me.gif"
           alt=""
+          className="mx-[75%]"
         />
       </section>
+
       <section>
         <div className="relative pt-sections">
           <h3 className="my-medium"> Projects </h3>
@@ -230,7 +272,7 @@ export default function Page() {
         <article className="cards-section">
           <section
             ref={containerRef}
-            className="relative min-h-[60vh] md:min-h-[60vh] w-full overflow-hidden cards-section "
+            className="relative min-h-[60vh] md:min-h-[60vh] w-full cards-section "
           >
             {projects.map((project, i) => (
               <div
@@ -239,29 +281,40 @@ export default function Page() {
                 className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-[1fr_1fr_1fr] gap-y-medium"
                 style={{ minHeight: 150 }}
               >
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="col-start-1 col-end-4 row-start-1 row-end-4 place-self-stretch object-cover relative z-0 card-gradient"
-                >
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    layoutId={`project-image-${project.slug}`}
-                    transition={{ duration: 1, ease: "anticipate", delay: 0.1 }}
-                    style={{
-                      viewTransitionName: `project-${project.slug}`,
-                    }}
-                    className="pointer-events-none rounded-lg "
-                  />
-                </Link>
+                {/* Image container that won't be scaled by GSAP */}
+                <div className="col-start-1 col-end-4 row-start-1 row-end-4 place-self-stretch relative z-0">
+                  <button
+                    onClick={() => handleOpen(project.slug)}
+                    className="w-full h-full p-0 border-0 bg-transparent"
+                    aria-label={`Open ${project.title} overview`}
+                  >
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      layoutId={`project-image-${project.slug}`}
+                      transition={{ duration: 0.8, ease: "anticipate" }}
+                      className="rounded-lg w-full h-full object-cover"
+                      style={{
+                        willChange: "transform, opacity",
+                        transform: "translateZ(0)", // Force GPU acceleration
+                      }}
+                    />
+                  </button>
+                </div>
 
-                <h4 className="col-start-2 col-span-2 row-start-2 place-self-end  pr-10 text-white text-2xl font-bold z-10 relative ">
+                <span className="col-start-1 uppercase row-start-3 place-self-center p-small rounded-md font-bold bg-pink-50 text-pink-500 relative z-200">
+                  {project.tag}
+                </span>
+
+                <h4 className="col-start-2 col-span-2 row-start-2 place-self-end pr-10 text-white text-2xl font-bold z-10 relative">
                   {project.title}
                 </h4>
 
                 <div className="col-start-2 row-start-3 z-10 relative place-self-center">
                   <div className="flex gap-medium">
-                    <Button href={`/projects/${project.slug}`}>Overview</Button>
+                    <Button onClick={() => handleOpen(project.slug)}>
+                      Overview
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -269,6 +322,10 @@ export default function Page() {
           </section>
         </article>
       </section>
+
+      {/* NEW: Project Overlay - appears above everything when open */}
+      {openSlug && <ProjectOverlay slug={openSlug} onClose={handleClose} />}
+
       <section></section>
     </motion.main>
   );

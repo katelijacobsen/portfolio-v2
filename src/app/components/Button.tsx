@@ -10,9 +10,18 @@ interface Props {
   w?: string;
   fadeIn?: string;
   ariaLabel?: string;
+  onClick?: () => void;
 }
 
-function Button({ text, href = "#", children, w = "w-auto", fadeIn, ariaLabel }: Props) {
+function Button({
+  text,
+  href = "#",
+  children,
+  w = "w-auto",
+  fadeIn,
+  ariaLabel,
+  onClick,
+}: Props) {
   const isExternal = href.startsWith("http");
 
   const content = (
@@ -25,20 +34,20 @@ function Button({ text, href = "#", children, w = "w-auto", fadeIn, ariaLabel }:
         "
       >
         {children}
-        {text && <span>{text}</span>}
+        {text && <span className="relative z-100">{text}</span>}
       </span>
 
       <span
         className="
           absolute inset-0 bg-pink-500 border-2 border-gray-200 rounded-full 
-          z-0 group-hover:translate-y-1
+          z-1 group-hover:translate-y-1
           transition-transform duration-200
         "
       ></span>
 
       <span
         className="
-          absolute inset-0 bg-pink-700 border-2 border-gray-200 rounded-full -z-10
+          absolute inset-0 bg-pink-700 border-2 border-gray-200 rounded-full z-0
           translate-y-[25%] 
           transition-transform duration-200
         "
@@ -52,7 +61,7 @@ function Button({ text, href = "#", children, w = "w-auto", fadeIn, ariaLabel }:
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={`relative flex items-center justify-center gap-2 py-2 px-4 font-semibold uppercase tracking-[.2ch] rounded-full cursor-pointer transition-all ease-in-out duration-200 group ${w} ${fadeIn}`}
+        className={`relative z-100 flex items-center justify-center gap-2 py-2 px-4 font-semibold uppercase tracking-[.2ch] rounded-full cursor-pointer transition-all ease-in-out duration-200 group ${w} ${fadeIn}`}
         aria-label={ariaLabel}
       >
         {content}
@@ -62,13 +71,12 @@ function Button({ text, href = "#", children, w = "w-auto", fadeIn, ariaLabel }:
 
   // internal link
   return (
-    <Link
-      href={href}
-      className={`relative flex items-center justify-center gap-2 py-2 px-4 font-semibold uppercase tracking-[.2ch] rounded-full cursor-pointer transition-all ease-in-out duration-200 group ${w} ${fadeIn}`}
+    <button
+      className={`relative z-100 flex items-center justify-center gap-2 py-2 px-4 font-semibold uppercase tracking-[.2ch] rounded-full cursor-pointer transition-all ease-in-out duration-200 group ${w} ${fadeIn}`}
       aria-label={ariaLabel}
     >
       {content}
-    </Link>
+    </button>
   );
 }
 

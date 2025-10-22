@@ -5,6 +5,7 @@ export const projects = [
       "3RD semester project focusing on building user friendly ticket booking-system",
     image: "/img/pictures/FooFest Festival.png",
     slug: "foofest",
+    tag:"website",
     overview:
       "Designing and developing a functional, visually appealing, and user-friendly festival website that includes a booking system. Created during the 3rd semester, this project had a strong focus on modern frontend development. During the process, it was decided to build the digital solution with React/Next.js for optimal performance and a component-based architecture. The design was implemented using Tailwind CSS, and Framer Motion was used for dynamic and interactive animations. Data was handled via Supabase. Foo Festival’s design is inspired by Nordic mythology, utilizing rune-like icons and fonts. For a modern touch and a rock-theme experience, a dark design was chosen, which also helps reduce energy consumption.",
     process:
@@ -33,6 +34,7 @@ export const projects = [
     description: "A small Y2K inspired JavaScript-game...",
     image: "/img/pictures/Ducky.png",
     slug: "duckys-diner",
+    tag:"web-game",
     overview:
       "A small web-game where you have to collect the ingrediens for the burger in the busy diner by serving customers as quickly as possible. Avoid getting any bugs in your burger and earn the highest score before the times runs out. ",
     process:
@@ -50,6 +52,7 @@ export const projects = [
     description: "Final last semester project for a small coffee bar",
     image: "/img/pictures/Kær.png",
     slug: "kaer-kaffebar",
+    tag:"website",
     overview:
       "A local copenhagen café that is known for organic quality products and fostering a vibrant local community in Valby. The core objective was to significantly enhance the cafés digital presence by delivering a full-site redesign and to create a direct digital communication and content strategy for SoMe. The focus on this project was to build a coherent digital experience that effectively mirrors the authentic, warm and inviting atmosphere of the physical location, which in turn was intended to attract more customers and reinforce the local community spirit.",
     process:
@@ -68,6 +71,7 @@ export const projects = [
     description: "Little project for creating a electronic webshop",
     image: "/img/pictures/Saturn Electronics.png",
     slug: "saturn-electronics",
+    tag:"website",
     figmaLink: "",
     site: "",
     mockup: "",
@@ -79,6 +83,7 @@ export const projects = [
     description: "Small personal recipe app",
     image: "/img/pictures/FoodHead.png",
     slug: "foodhead",
+    tag:"App",
     overview:
       "Madhovedet is a small, personal side project: a mobile application created to simplify the search for recipes across the Danish food universe. This single, cohesive app brings friends and family together with all the recipes they need, eliminating the need to browse multiple sites. Crucially, the design of this app to promote a healthy, balanced relationship with food, meaning it embraces both nutritious meals and enjoyable snacks and drinks. Its design features a playful, experimental, and fresh tone-of-voice to ensure the culinary journey is both accessible and fun.",
     process:

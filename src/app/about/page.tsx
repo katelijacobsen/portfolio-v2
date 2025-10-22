@@ -83,15 +83,36 @@ const educations = [
   },
 ];
 
+export const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25, // delay between children
+      delayChildren: 0.3,    // delay before starting stagger
+    },
+  },
+};
+
+export const itemVariants = {
+  hidden: { opacity: 0, y: 80 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 2, ease: "anticipate" },
+  },
+};
+
 export default function Page() {
   return (
     <motion.main
-      initial={{ opacity: 0, y: 150 }} // start slightly below and invisible
-      animate={{ opacity: 1, y: 80 }} // fade in and slide up
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
       transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
       className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto"
     >
-      <article className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto_auto] gap-medium relative mb-sections">
+      <motion.article variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto_auto] gap-medium relative mb-sections">
         <div className="relative z-100 order-1">
           <h1>About</h1>
           <h2>Katja Mähleke</h2>
@@ -166,14 +187,14 @@ export default function Page() {
             </ul>
           </section>
         </div>
-      </article>
+      </motion.article>
 
-      <article>
+      <motion.article variants={itemVariants}>
         <h3> Tech & design skills</h3>
         <Marquee />
-      </article>
+      </motion.article>
 
-      <article
+      <motion.article variants={itemVariants}
         aria-label="work experience and education"
         className="space-y-sections"
       >
@@ -209,7 +230,7 @@ export default function Page() {
             glowColor="156, 163, 175"
           />
         </section>
-      </article>
+      </motion.article>
     </motion.main>
   );
 }

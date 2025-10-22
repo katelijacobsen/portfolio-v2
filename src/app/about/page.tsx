@@ -1,11 +1,11 @@
-"use client";
+'use client';
 import Image from "next/image";
 import Interest from "../components/Interest";
 import Flag from "../components/Flag";
 import Marquee from "../components/Marquee";
 import MagicExperienceBento from "../components/MagicExperienceBento";
 import MagicEducationBento from "../components/MagicEducationBento";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const experiences = [
   {
@@ -88,36 +88,31 @@ export const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3, // delay between children
-      delayChildren: 0.2, // delay before starting stagger
+      staggerChildren: 0.25, // delay between children
+      delayChildren: 0.3,    // delay before starting stagger
     },
   },
 };
 
 export const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: 60,
-  },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut", // Using valid easing function
-    },
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
 export default function Page() {
   return (
     <motion.main
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
+    
+      initial={{ opacity: 0, y: 150 }} // start slightly below and invisible
+      animate={{ opacity: 1, y: 0 }} // fade in and slide up
+      transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
       className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto"
     >
-      <motion.article className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto_auto] gap-medium relative mb-sections">
+      <article className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto_auto] gap-medium relative mb-sections">
         <div className="relative z-100 order-1">
           <h1>About</h1>
           <h2>Katja Mähleke</h2>
@@ -192,14 +187,14 @@ export default function Page() {
             </ul>
           </section>
         </div>
-      </motion.article>
+      </article>
 
-      <motion.article>
+      <article>
         <h3> Tech & design skills</h3>
         <Marquee />
-      </motion.article>
+      </article>
 
-      <motion.article
+      <article
         aria-label="work experience and education"
         className="space-y-sections"
       >
@@ -235,7 +230,7 @@ export default function Page() {
             glowColor="156, 163, 175"
           />
         </section>
-      </motion.article>
+      </article>
     </motion.main>
   );
 }

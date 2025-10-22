@@ -1,11 +1,11 @@
-'use client';
+"use client";
 import Image from "next/image";
 import Interest from "../components/Interest";
 import Flag from "../components/Flag";
 import Marquee from "../components/Marquee";
 import MagicExperienceBento from "../components/MagicExperienceBento";
 import MagicEducationBento from "../components/MagicEducationBento";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 const experiences = [
   {
@@ -88,18 +88,24 @@ export const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.25, // delay between children
-      delayChildren: 0.3,    // delay before starting stagger
+      staggerChildren: 0.3, // delay between children
+      delayChildren: 0.2, // delay before starting stagger
     },
   },
 };
 
 export const itemVariants = {
-  hidden: { opacity: 0, y: 80 },
+  hidden: {
+    opacity: 0,
+    y: 60,
+  },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 2, ease: "anticipate" },
+    transition: {
+      duration: 0.8,
+      ease: "easeOut", // Using valid easing function
+    },
   },
 };
 
@@ -109,10 +115,9 @@ export default function Page() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
       className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto"
     >
-      <motion.article variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto_auto] gap-medium relative mb-sections">
+      <motion.article className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto_auto] gap-medium relative mb-sections">
         <div className="relative z-100 order-1">
           <h1>About</h1>
           <h2>Katja Mähleke</h2>
@@ -189,12 +194,12 @@ export default function Page() {
         </div>
       </motion.article>
 
-      <motion.article variants={itemVariants}>
+      <motion.article>
         <h3> Tech & design skills</h3>
         <Marquee />
       </motion.article>
 
-      <motion.article variants={itemVariants}
+      <motion.article
         aria-label="work experience and education"
         className="space-y-sections"
       >

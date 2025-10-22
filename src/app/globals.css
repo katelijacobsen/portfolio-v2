@@ -348,7 +348,7 @@ h4 + p {
   }
 }
 
-.card::before{
+.card-gradient::before{
   content: '';
   position: absolute;
   inset: 0;

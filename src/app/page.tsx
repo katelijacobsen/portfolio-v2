@@ -241,7 +241,7 @@ export default function Page() {
               >
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="col-start-1 col-end-4 row-start-1 row-end-4 place-self-stretch object-cover relative z-0 card"
+                  className="col-start-1 col-end-4 row-start-1 row-end-4 place-self-stretch object-cover relative z-0 card-gradient"
                 >
                   <motion.img
                     src={project.image}

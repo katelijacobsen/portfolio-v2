@@ -1,18 +1,16 @@
 "use client";
 
+import Button from "./components/Button";
 import Image from "next/image";
-import Link from "next/link";
-import { projects } from "../data/projects";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrollReveal from "./components/ScrollReveal";
 import Observer from "gsap/Observer";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { FaFigma } from "react-icons/fa";
-import { FiExternalLink } from "react-icons/fi";
-import Button from "./components/Button";
-
-gsap.registerPlugin(ScrollTrigger, Observer);
+import { projects } from "../data/projects";
+import { motion } from "motion/react";
+import Link from "next/link";
 
 export default function Page() {
   const cardsRef = useRef<HTMLDivElement[]>([]);
@@ -150,7 +148,7 @@ export default function Page() {
       id: "STOP-SCROLL",
       trigger: containerRef.current,
       pin: true,
-      start: "top+=-250",
+      start: "top 30%",
       end: "+=",
       markers: false,
       onEnter: () => {
@@ -177,7 +175,46 @@ export default function Page() {
   }, []);
 
   return (
-    <main className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto relative">
+    <motion.main
+      initial={{ opacity: 0, y: 100 }} // start slightly below and invisible
+      animate={{ opacity: 1, y: 0 }} // fade in and slide up
+      transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
+      className="space-y-sections px-medium md:px-negative max-w-[1280px] m-auto relative py-sections"
+    >
+      <header
+        id="home"
+        className="w-auto h-[60dvh] flex flex-col justify-center gap-medium lg:gap-y-10"
+      >
+        <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14">
+          <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 text-center self-end text-body-text">
+            KATJA <br /> MÄHLEKE
+          </h1>
+          <div className="flex items-center justify-between col-span-3 ">
+            <h2 className="slide-left">Frontend</h2>
+            <h2 className="slide-right">UI/UX</h2>
+          </div>
+          <div className="flex items-center justify-between col-span-3 ">
+            <h2 className="slide-left">2025</h2>
+            <h2 className="slide-right">Portfolio</h2>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row gap-medium justify-center items-center relative">
+          <Button>See my work</Button>
+          <Button>Contact</Button>
+        </div>
+      </header>
+      <ScrollReveal
+        baseOpacity={0}
+        enableBlur={true}
+        baseRotation={5}
+        blurStrength={10}
+      >
+        Hi I’m Katja! I’m a designer with a strong passion for webdesign that
+        are accessible for all types of users. My focus is to use my UI/UX
+        skills to create intuitive straightforward digital experiences,
+        including responsive design to ensure consistent performance across all
+        devices.
+      </ScrollReveal>
       <section className="">
         <Image
           width={160}
@@ -185,54 +222,46 @@ export default function Page() {
           src="/img/pictures/pixel-me.gif"
           alt=""
         />
-        <h3>
-          Hi I’m Katja! I’m a designer with a strong passion for webdesign that
-          are accessible for all types of users. My focus is to use my UI/UX
-          skills to create intuitive straightforward digital experiences,
-          including responsive design to ensure consistent performance across
-          all devices.
-        </h3>
       </section>
       <section>
-        <div className="relative">
+        <div className="relative pt-sections">
           <h3 className="my-medium"> Projects </h3>
         </div>
         <article className="cards-section">
           <section
             ref={containerRef}
-            className="relative min-h-[60vh] md:min-h-[80vh] w-full overflow-hidden cards-section "
+            className="relative min-h-[60vh] md:min-h-[60vh] w-full overflow-hidden cards-section "
           >
             {projects.map((project, i) => (
               <div
                 key={i}
                 ref={(el) => addToRef(el)}
-                className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-3 card "
+                className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-[1fr_1fr_1fr] gap-y-medium"
                 style={{ minHeight: 150 }}
               >
-                <Image
-                  width={1400}
-                  height={1400}
-                  src={project.image}
-                  alt={project.title}
-                  style={{
-                    viewTransitionName: `project-${project.slug}`,
-                  }}
-                  className="pointer-events-none rounded-lg col-start-1 col-end-4 row-start-1 row-end-4 object-cover place-self-stretch z-0"
-                />
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="col-start-1 col-end-4 row-start-1 row-end-4 place-self-stretch object-cover relative z-0 card"
+                >
+                  <motion.img
+                    src={project.image}
+                    alt={project.title}
+                    layoutId={`project-image-${project.slug}`}
+                    transition={{ duration: 1, ease: "anticipate", delay: 0.1 }}
+                    style={{
+                      viewTransitionName: `project-${project.slug}`,
+                    }}
+                    className="pointer-events-none rounded-lg "
+                  />
+                </Link>
 
-                <h4 className="col-start-1 row-start-2 place-self-center text-white text-2xl font-bold z-10 relative">
+                <h4 className="col-start-2 col-span-2 row-start-2 place-self-end  pr-10 text-white text-2xl font-bold z-10 relative ">
                   {project.title}
                 </h4>
 
-                <div className="p-medium col-start-3 row-start-3 place-self-center z-10 relative">
+                <div className="col-start-2 row-start-3 z-10 relative place-self-center">
                   <div className="flex gap-medium">
-                    <button
-                      onClick={() => handleTransition(project.slug)}
-                      className="bg-blue-500 py-2 px-4 rounded-full text-white border border-white"
-                    >
-                      Overview
-                    </button>
-                      <Button href={`/projects/${project.slug}`}>Overview</Button>
+                    <Button href={`/projects/${project.slug}`}>Overview</Button>
                   </div>
                 </div>
               </div>
@@ -240,6 +269,7 @@ export default function Page() {
           </section>
         </article>
       </section>
-    </main>
+      <section></section>
+    </motion.main>
   );
 }

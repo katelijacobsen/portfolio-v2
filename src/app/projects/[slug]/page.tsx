@@ -6,6 +6,7 @@ import { projects } from "../../../data/projects";
 import { FaFigma } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import Button from "@/app/components/Button";
+import { motion } from "motion/react";
 
 export default function ProjectPage({
   params,
@@ -19,11 +20,11 @@ export default function ProjectPage({
   return (
     <main className="relative grid grid-cols-1 gap-8 py-large max-w-[1280px] m-auto p-small">
       <div className="relative">
-        <Image
-          width={1400}
-          height={1400}
+        <motion.img
           src={project.image}
           alt={project.title}
+          layoutId={`project-image-${project.slug}`}
+          transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
           className="w-full h-auto object-cover rounded-2xl"
           style={{
             viewTransitionName: `project-${project.slug}`,
@@ -31,7 +32,10 @@ export default function ProjectPage({
         />
       </div>
 
-      <article
+      <motion.article
+        initial={{ opacity: 0, y: 50 }} // start slightly below and invisible
+        animate={{ opacity: 1, y: 0 }} // fade in and slide up
+        transition={{ duration: 2, ease: "anticipate" }}
         className="
           bg-gray-700 border border-gray-600 backdrop-blur 
           rounded-2xl p-large 
@@ -102,7 +106,7 @@ export default function ProjectPage({
             </>
           )}
         </div>
-      </article>
+      </motion.article>
     </main>
   );
 }

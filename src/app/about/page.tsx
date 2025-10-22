@@ -1,9 +1,11 @@
+'use client';
 import Image from "next/image";
 import Interest from "../components/Interest";
 import Flag from "../components/Flag";
 import Marquee from "../components/Marquee";
 import MagicExperienceBento from "../components/MagicExperienceBento";
 import MagicEducationBento from "../components/MagicEducationBento";
+import { motion } from "motion/react";
 
 const experiences = [
   {
@@ -83,7 +85,12 @@ const educations = [
 
 export default function Page() {
   return (
-    <main className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto">
+    <motion.main
+      initial={{ opacity: 0, y: 150 }} // start slightly below and invisible
+      animate={{ opacity: 1, y: 80 }} // fade in and slide up
+      transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
+      className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto"
+    >
       <article className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto_auto] gap-medium relative mb-sections">
         <div className="relative z-100 order-1">
           <h1>About</h1>
@@ -203,6 +210,6 @@ export default function Page() {
           />
         </section>
       </article>
-    </main>
+    </motion.main>
   );
 }

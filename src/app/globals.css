@@ -91,14 +91,6 @@ p {
   color: var(--color-body-header);
 }
 
-header > h2:only-child {
-  font-size: var(--color-body-header);
-  font-family: "TransformaBold";
-}
-header div + h2 {
-  font-size: var(--color-body-header);
-}
-
 blockquote {
   font-size: var(--text-blockquote);
 }
@@ -125,6 +117,19 @@ h1 {
   letter-spacing: 0.4pt;
 }
 
+header {
+  h1{
+    font-size: var(--text-h2);
+    font-weight: 800;
+    letter-spacing: 2pt;
+  }
+  h2{
+    font-size: var(--text-h1);
+    font-weight: 600;
+    letter-spacing: 1pt;
+  }
+}
+
 h2 {
   font-size: var(--text-h2);
   font-weight: 700;
@@ -140,11 +145,15 @@ h3 {
   letter-spacing: 1.2pt;
 }
 
+section div h3 {
+  font-size: var(--text-h2);
+}
+
 h4 {
   font-size: var(--text-h4);
-  font-weight: 590;
+  font-weight: 700;
   line-height: normal;
-  letter-spacing: 0.2pt;
+  letter-spacing: 1.8pt;
 }
 
 .headline-regular {
@@ -301,7 +310,6 @@ h4 + p {
   );
 }
 
-
 .pixel-footer {
   background: black;
   background-size: cover;
@@ -340,62 +348,13 @@ h4 + p {
   }
 }
 
-
-
-
-::view-transition-old(box) {
-  animation: slide-out 0.5s ease forwards;
-}
-
-::view-transition-new(box) {
-  animation: slide-in 0.5s ease forwards;
-}
-
-@keyframes slide-out {
-  from { transform: translateX(0); opacity: 1; }
-  to { transform: translateX(-100px); opacity: 0; }
-}
-
-@keyframes slide-in {
-  from { transform: translateX(100px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-
-
-
-
-
-
-
-
-.projects-container {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cards-wrapper {
-  position: relative;
+.card::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000ab 100%);
   width: 100%;
-  max-width: 1200px;
-  height: 500px;
-}
-
-.project-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-/* Ensure proper stacking context */
-.projects-container {
-  transform-style: preserve-3d;
-}
-
-.project-card {
-  transform-style: preserve-3d;
+  height: 100%;
+  z-index: 10;
+  border-radius: 8px;
 }

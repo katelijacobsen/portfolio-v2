@@ -1,102 +1,58 @@
 'use client';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRef, useEffect } from 'react';
-import gsap from 'gsap';
+import { motion } from 'framer-motion';
+import React from 'react';
 
-const PillNav = () => {
+export default function PillNav() {
   const pathname = usePathname();
-  const homeLinkRef = useRef<HTMLAnchorElement>(null);
-  const aboutLinkRef = useRef<HTMLAnchorElement>(null);
-  const previousPathname = useRef(pathname);
-
-  useEffect(() => {
-    if (previousPathname.current !== pathname) {
-      const isToHome = pathname === '/';
-      const isToAbout = pathname === '/about';
-      
-      if (isToHome || isToAbout) {
-        const targetLink = isToHome ? homeLinkRef.current : aboutLinkRef.current;
-        const previousLink = isToHome ? aboutLinkRef.current : homeLinkRef.current;
-        
-        if (targetLink && previousLink) {
-          // Animate previous link out (optional)
-          gsap.to(previousLink, {
-            scale: 0.95,
-            opacity: 0.7,
-            duration: 0.2,
-            ease: "power2.out"
-          });
-          
-          // Bounce animation for active link
-          gsap.fromTo(targetLink, 
-            {
-              scale: 0.7,
-              rotation: -10,
-              opacity: 0
-            },
-            {
-              scale: 1,
-              rotation: 0,
-              opacity: 1,
-              duration: 0.8,
-              ease: "elastic.out(1.2, 0.5)"
-            }
-          );
-        }
-      }
-      
-      previousPathname.current = pathname;
-    }
-  }, [pathname]);
 
   return (
-    <nav className="relative inline-flex z-50 p-medium">
-      <div className="bg-gray-800/80 backdrop-blur-sm px-2 py-4 rounded-full border-gray-600 border">
-        <ul className="flex space-x-4">
-          <li className="">
-            <Link
-              ref={homeLinkRef}
-              href="/"
-              className={`p-4 py-2 rounded-full transition-colors ${
-                pathname === '/'
-                  ? 'bg-white text-gray-700'
-                  : 'text-white hover:bg-gray-700'
-              }`}
-            >
-              Home
+    <nav className="absolute inline-flex z-50 p-medium">
+      <div className="relative bg-gray-800/80 backdrop-blur-sm px-2 py-4 rounded-full border-gray-600 border">
+        <ul className="flex space-x-4 relative">
+          <li className="relative">
+            <Link href="/" className="relative z-10 block px-4 py-2">
+              {pathname === '/' && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 rounded-full pointer-events-none"
+                  style={{ background: 'white' }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className={`relative z-20 ${pathname === '/' ? 'text-gray-800' : 'text-white'}`}>Home</span>
             </Link>
           </li>
-          <li className="cursor-pointer">
-            <Link
-              ref={aboutLinkRef}
-              href="/about"
-              className={`px-4 py-2 rounded-full transition-colors ${
-                pathname === '/about'
-                  ? 'bg-white text-gray-800'
-                  : 'text-white hover:bg-gray-700'
-              }`}
-            >
-              About
+
+          <li className="relative">
+            <Link href="/about" className="relative z-10 block px-4 py-2">
+              {pathname === '/about' && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 rounded-full pointer-events-none"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className={`relative z-20 ${pathname === '/about' ? 'text-gray-800' : 'text-white'}`}>About</span>
             </Link>
           </li>
-          <li className="cursor-pointer">
-            <Link
-              ref={aboutLinkRef}
-              href="/projects"
-              className={`px-4 py-2 rounded-full transition-colors ${
-                pathname === '/'
-                  ? 'bg-white text-gray-800'
-                  : 'text-white hover:bg-gray-700'
-              }`}
-            >
-              Projects
+
+          <li className="relative">
+            <Link href="/projects" className="relative z-10 block px-4 py-2">
+              {pathname === '/projects' && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 rounded-full pointer-events-none"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className={`relative z-20 ${pathname === '/projects' ? 'text-gray-800' : 'text-white'}`}>Projects</span>
             </Link>
           </li>
         </ul>
       </div>
     </nav>
   );
-};
-
-export default PillNav;
+}

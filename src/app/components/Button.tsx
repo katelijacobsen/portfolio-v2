@@ -21,7 +21,7 @@ function Button({ text, href = "#", children, w = "w-auto", fadeIn, ariaLabel }:
         className="
           z-10 flex items-center gap-2 text-gray-50 
           transition-transform duration-200 
-          group-hover:translate-y-1
+          group-hover:translate-y-1 relative
         "
       >
         {children}

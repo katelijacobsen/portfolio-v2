@@ -63,9 +63,9 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         scrollTrigger: {
           trigger: el,
           scroller,
-          start: "top 75%",              // starts earlier
-          end: rotationEnd,              // longer distance for slower scroll
-          scrub: 1,                      // smooth & slower
+          start: "top 75%", // starts earlier
+          end: rotationEnd, // longer distance for slower scroll
+          scrub: 1, // smooth & slower
         },
       }
     );
@@ -84,8 +84,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
           scroller,
           start: "top 75%",
           end: wordAnimationEnd,
-          scrub: 1,           // 👈 slower
-          markers: false,      // remove in production
+          scrub: 1, // 👈 slower
+          markers: false, // remove in production
         },
       }
     );
@@ -103,7 +103,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
             scroller,
             start: "top 75%",
             end: wordAnimationEnd,
-            scrub: 1,         // 👈 slower
+            scrub: 1, // 👈 slower
           },
         }
       );
@@ -124,11 +124,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
   return (
     <div ref={containerRef} className={`my-5 ${containerClassName}`}>
-      <h3
-        className={`text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold ${textClassName}`}
-      >
-        {splitText}
-      </h3>
+      <h2>{splitText}</h2>
     </div>
   );
 };

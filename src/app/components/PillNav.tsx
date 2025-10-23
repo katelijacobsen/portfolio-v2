@@ -9,7 +9,7 @@ export default function PillNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="absolute inline-flex z-50 p-medium">
+    <nav className="relative inline-flex z-50 p-medium">
       <div className="relative bg-gray-800/80 backdrop-blur-sm p-small rounded-full border-gray-600 border">
         <ul className="flex space-x-4 relative">
           <li className="relative">

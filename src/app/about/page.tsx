@@ -89,7 +89,7 @@ export default function Page() {
       initial={{ opacity: 0, x: 150 }} // start slightly below and invisible
       animate={{ opacity: 1, x: 0 }} // fade in and slide up
       transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
-      className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto"
+      className="space-y-sections py-large px-medium md:px-negative max-w-[1440px] m-auto"
     >
       <article className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto_auto] gap-medium relative mb-sections">
         <div className="relative z-100 order-1">

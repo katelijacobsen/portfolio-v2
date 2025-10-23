@@ -1,5 +1,6 @@
 export const projects = [
   {
+    id: 1,
     title: "FooFest Festival",
     description:
       "3RD semester project focusing on building user friendly ticket booking-system",
@@ -19,6 +20,7 @@ export const projects = [
     alt: "",
   },
   {
+    id: 2,
     title: "GirlTalk",
     description: "Creative long-read page for girls and young women...",
     image: "/img/pictures/GirlTalk.png",
@@ -30,6 +32,7 @@ export const projects = [
     alt: "",
   },
   {
+    id: 3,
     title: "Ducky's Diner",
     description: "A small Y2K inspired JavaScript-game...",
     image: "/img/pictures/Ducky.png",
@@ -48,6 +51,7 @@ export const projects = [
     alt: "",
   },
   {
+    id: 4,
     title: "Kær Kaffebar",
     description: "Final last semester project for a small coffee bar",
     image: "/img/pictures/Kær.png",
@@ -67,6 +71,7 @@ export const projects = [
     alt: "",
   },
   {
+    id: 5,
     title: "Saturn Electronics",
     description: "Little project for creating a electronic webshop",
     image: "/img/pictures/Saturn Electronics.png",
@@ -79,7 +84,8 @@ export const projects = [
     alt: "",
   },
   {
-    title: "FoodHead",
+    id: 6,
+    title: "Madhovedet",
     description: "Small personal recipe app",
     image: "/img/pictures/FoodHead.png",
     slug: "foodhead",
@@ -96,9 +102,10 @@ export const projects = [
     alt: "",
   },
   {
+    id: 7,
     title: "FoodHead",
     description: "Small personal recipe app",
     image: "/img/pictures/FoodHead.png",
-    slug: "foodhead",
+    slug: "foodhead2",
   },
 ];

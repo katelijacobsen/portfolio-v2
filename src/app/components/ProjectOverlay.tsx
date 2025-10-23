@@ -11,6 +11,7 @@ import { IoClose } from "react-icons/io5";
 type Props = {
   slug: string;
   onClose: () => void;
+  id?: string;
 };
 
 export default function ProjectOverlay({ slug, onClose }: Props) {
@@ -61,7 +62,7 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
         className="relative z-10 w-full max-w-[1280px] mx-auto"
         style={{ maxHeight: "100vh" }}
       >
-        {/* Close button (top-right of viewport) */}
+        {/* Close button */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -78,7 +79,7 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
           </Button>
         </motion.div>
 
-        {/* top image (full width) */}
+        {/* top image */}
         <div className="relative">
           <motion.img
             initial={{ opacity: 0 }}
@@ -95,9 +96,9 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
 
         {/* article card that overlaps the image (same classes as your Slug page) */}
         <motion.article
-          initial={{ opacity: 0, y: 50, filter: "blur(10px)", }}
+          initial={{ opacity: 0, y: 50, filter: "blur(20px)", }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)", }}
-          exit={{ opacity: 0, y: 50, filter: "blur(10px)", }}
+          exit={{ opacity: 0, y: 50, filter: "blur(20px)", }}
           transition={{ duration: 0.6, ease: "anticipate", delay: 0.3 }}
           className="
             bg-gray-700 border border-gray-600 backdrop-blur 

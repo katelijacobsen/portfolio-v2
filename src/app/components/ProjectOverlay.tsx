@@ -65,8 +65,8 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 1, ease: "anticipate" }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: .8, ease: "anticipate" }}
           className="absolute right-0 top-10 z-300 px-large"
         >
           <Button
@@ -95,10 +95,10 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
 
         {/* article card that overlaps the image (same classes as your Slug page) */}
         <motion.article
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 1, ease: "anticipate", delay: 0.3 }}
+          initial={{ opacity: 0, y: 50, filter: "blur(10px)", }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)", }}
+          exit={{ opacity: 0, y: 50, filter: "blur(10px)", }}
+          transition={{ duration: 0.6, ease: "anticipate", delay: 0.3 }}
           className="
             bg-gray-700 border border-gray-600 backdrop-blur 
             rounded-2xl p-large 

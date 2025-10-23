@@ -109,7 +109,7 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
           style={{ maxHeight: "68vh" }}
         >
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold">{project.title}</h1>
+            <h3 className="text-2xl font-bold">{project.title}</h3>
             <div className="flex gap-4 text-xl relative">
               {project.figmaLink && (
                 <Button>

@@ -373,15 +373,15 @@ export default function Page() {
                     key={project.slug}
                     ref={(el) => addToRef(el as HTMLElement)}
                     // each card is absolutely positioned by GSAP
-                    className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-[1fr_2fr_1fr]"
+                    className="absolute top-0 left-0 w-full grid grid-cols-3 grid-rows-3"
                     style={{ minHeight: 150 }}
                   >
                     {/* Image container (non-scaled area) */}
-                    <figure className="col-start-1 col-end-4 row-start-1 row-end-4 place-self-stretch relative z-0 m-0">
+                    <figure className="col-start-1 col-end-4 row-start-1 row-end-4 place-self-stretch relative z-0">
                       {/* The button maintains native keyboard interactivity */}
                       <button
                         onClick={() => openProject(project.slug)}
-                        className="w-full h-full p-0 border-0 bg-transparent card-gradient"
+                        className="w-full h-full p-0 border-0 card-gradient"
                         aria-label={`Open ${project.title} overview`}
                         aria-controls={`project-overlay-${project.slug}`}
                         aria-expanded={openSlug === project.slug}
@@ -404,18 +404,10 @@ export default function Page() {
                       </figcaption>
                     </figure>
 
-                    {/* Title and tag */}
-                    <div className="col-start-1 col-end-2 row-start-2 flex items-center gap-medium px-medium place-self-end">
+                    <div className="col-start-1 col-end-3 md:col-start-1 row-start-3 flex items-center gap-medium px-medium md:px-14 ">
                       <h3 className="text-white font-bold z-10 relative">
                         {project.title}
                       </h3>
-
-                      <span
-                        className="px-small rounded-md font-semibold uppercase bg-pink-50 text-pink-500 relative z-200"
-                        aria-label={`Category: ${project.tag}`}
-                      >
-                        {project.tag}
-                      </span>
                     </div>
 
                     {/* Overview action */}

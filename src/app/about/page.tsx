@@ -61,7 +61,7 @@ const educations = [
     imgUrl: "/img/company/ek.png",
     role: "Web developer",
     company: "Profession bachelor degree",
-    year: "2025",
+    year: "2026-2027",
   },
   {
     imgUrl: "/img/company/ek.png",
@@ -100,11 +100,11 @@ export default function Page() {
 
         <div className="wrapper relative order-2">
           <Image
-            width={100}
-            height={100}
+            width={300}
+            height={300}
             src="/img/pictures/profile-image.png"
             alt="Profile image of Katja"
-            className="w-full aspect-square object-contain p-4"
+            className="w-full aspect-square object-contain p-small"
           />
           <div className="feather-blur w-full ">
             <div></div>
@@ -114,10 +114,10 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="flex gap-medium flex-col order-3 col-span-2 lg:col-span-1 lg:col-start-3 row-start-2 lg:row-start-1">
+        <div className="flex gap-medium flex-col order-3 col-span-2 lg:col-span-1 lg:col-start-3 row-start-2 lg:row-start-1 place-self-center">
           <section className="bg-caption space-y-medium border border-gray-600 rounded-lg p-medium">
             <h3 className="headline-regular">Interests</h3>
-            <ul className="flex flex-wrap gap-small">
+            <ul className="flex flex-wrap gap-[.2rem]">
               <Interest
                 interest="Baking"
                 icon="/img/icons/baking.svg"
@@ -132,7 +132,7 @@ export default function Page() {
               />
               <Interest
                 interest="DIY"
-                icon="/img/icons/diy.svg"
+                icon="/img/icons/hiking.svg"
                 borderColor="border border-purple-400"
                 bg="bg-purple-900"
               />
@@ -150,7 +150,7 @@ export default function Page() {
               />
               <Interest
                 interest="Drawing"
-                icon="/img/icons/diy.svg"
+                icon="/img/icons/hiking.svg"
                 borderColor="border border-fuchsia-400"
                 bg="bg-fuchsia-900"
               />

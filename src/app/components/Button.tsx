@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, forwardRef, Ref } from "react";
 import Link from "next/link";
 
 interface Props {
@@ -11,6 +11,8 @@ interface Props {
   fadeIn?: string;
   ariaLabel?: string;
   onClick?: () => void;
+  ref?: Ref<HTMLButtonElement>;
+  
 }
 
 function Button({
@@ -21,6 +23,7 @@ function Button({
   fadeIn,
   ariaLabel,
   onClick,
+  ref
 }: Props) {
   const isExternal = href.startsWith("http");
 
@@ -74,6 +77,8 @@ function Button({
     <button
       className={`relative z-100 flex items-center justify-center gap-2 py-2 px-4 font-semibold uppercase tracking-[.2ch] rounded-full cursor-pointer transition-all ease-in-out duration-200 group ${w} ${fadeIn}`}
       aria-label={ariaLabel}
+      onClick = {onClick}
+      ref={ref}
     >
       {content}
     </button>

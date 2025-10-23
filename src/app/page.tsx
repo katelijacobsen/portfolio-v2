@@ -8,7 +8,7 @@ import Observer from "gsap/Observer";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef, useEffect, useState } from "react";
 import { projects } from "../data/projects";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import PixelBlast from "./components/PixelBlast";
 import ProjectOverlay from "./components/ProjectOverlay"; // new component
 
@@ -195,12 +195,12 @@ export default function Page() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 4, delay: 1.4 }}
-          className="absolute inset-0 z-10 invert"
+          className="absolute inset-0 z-10 "
         >
           <PixelBlast
             variant="diamond"
             pixelSize={4}
-            color="#F6339A"
+            color="#1345B1"
             patternScale={3}
             patternDensity={1.2}
             pixelSizeJitter={0.5}
@@ -278,14 +278,14 @@ export default function Page() {
               <div
                 key={i}
                 ref={(el) => addToRef(el)}
-                className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-[1fr_1fr_1fr] gap-y-medium"
+                className="absolute top-0 left-0 w-full grid grid-cols-[auto_auto_auto] grid-rows-[1fr_2fr_1fr]"
                 style={{ minHeight: 150 }}
               >
                 {/* Image container that won't be scaled by GSAP */}
                 <div className="col-start-1 col-end-4 row-start-1 row-end-4 place-self-stretch relative z-0">
                   <button
                     onClick={() => handleOpen(project.slug)}
-                    className="w-full h-full p-0 border-0 bg-transparent"
+                    className="w-full h-full p-0 border-0 bg-transparent card-gradient"
                     aria-label={`Open ${project.title} overview`}
                   >
                     <motion.img
@@ -293,7 +293,7 @@ export default function Page() {
                       alt={project.title}
                       layoutId={`project-image-${project.slug}`}
                       transition={{ duration: 0.8, ease: "anticipate" }}
-                      className="rounded-lg w-full h-full object-cover"
+                      className="rounded-lg w-full h-full object-cover "
                       style={{
                         willChange: "transform, opacity",
                         transform: "translateZ(0)", // Force GPU acceleration
@@ -301,21 +301,20 @@ export default function Page() {
                     />
                   </button>
                 </div>
+                <div className="col-start-1 col-end-2 row-start-3 flex items-center gap-medium px-medium">
+                  <h4 className=" text-white text-2xl font-bold z-10 relative">
+                    {project.title}
+                  </h4>
 
-                <span className="col-start-1 uppercase row-start-3 place-self-center p-small rounded-md font-bold bg-pink-50 text-pink-500 relative z-200">
-                  {project.tag}
-                </span>
+                  <span className=" px-small rounded-md font-semibold uppercase bg-pink-50 text-pink-500 relative z-200">
+                    {project.tag}
+                  </span>
+                </div>
 
-                <h4 className="col-start-2 col-span-2 row-start-2 place-self-end pr-10 text-white text-2xl font-bold z-10 relative">
-                  {project.title}
-                </h4>
-
-                <div className="col-start-2 row-start-3 z-10 relative place-self-center">
-                  <div className="flex gap-medium">
-                    <Button onClick={() => handleOpen(project.slug)}>
-                      Overview
-                    </Button>
-                  </div>
+                <div className="col-start-3 row-start-3 z-300 relative place-self-center p-medium">
+                  <Button onClick={() => handleOpen(project.slug)}>
+                    Overview
+                  </Button>
                 </div>
               </div>
             ))}
@@ -324,8 +323,9 @@ export default function Page() {
       </section>
 
       {/* NEW: Project Overlay - appears above everything when open */}
-      {openSlug && <ProjectOverlay slug={openSlug} onClose={handleClose} />}
-
+      <AnimatePresence mode="wait">
+        {openSlug && <ProjectOverlay slug={openSlug} onClose={handleClose} />}
+      </AnimatePresence>
       <section></section>
     </motion.main>
   );

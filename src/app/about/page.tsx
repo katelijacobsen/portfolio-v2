@@ -86,8 +86,8 @@ const educations = [
 export default function Page() {
   return (
     <motion.main
-      initial={{ opacity: 0, y: 150 }} // start slightly below and invisible
-      animate={{ opacity: 1, y: 0 }} // fade in and slide up
+      initial={{ opacity: 0, x: 150 }} // start slightly below and invisible
+      animate={{ opacity: 1, x: 0 }} // fade in and slide up
       transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
       className="space-y-sections py-large px-medium md:px-negative max-w-[1280px] m-auto"
     >

@@ -6,6 +6,7 @@ import { projects } from "../../data/projects"; // adjust path if needed
 import { FaFigma } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import Button from "./Button";
+import { IoClose } from "react-icons/io5";
 
 type Props = {
   slug: string;
@@ -18,7 +19,7 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
 
   useEffect(() => {
     const prev = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = "visible";
+    document.documentElement.style.overflow = "hidden";
     closeBtnRef.current?.focus();
 
     const onKey = (e: KeyboardEvent) => {
@@ -34,8 +35,12 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
   if (!project) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-start justify-center p-6"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0.5, y: 50 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="fixed inset-0 z-50 flex items-start justify-center p-6 w-full max-w-[1440px] m-auto"
       role="dialog"
       aria-modal="true"
       aria-label="dialog"
@@ -43,10 +48,10 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
     >
       {/* backdrop */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.75 }}
-        exit={{ opacity: 0 }}
-        className="absolute inset-0"
+        animate={{ opacity: 0 }}
+        exit={{ opacity: 0, y: 50 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="absolute inset-0 backdrop-blur-lg bg-gray-900"
         aria-hidden="true"
       />
 
@@ -57,32 +62,28 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
         style={{ maxHeight: "100vh" }}
       >
         {/* Close button (top-right of viewport) */}
-        <button
-          ref={closeBtnRef}
-          onClick={onClose}
-          aria-label="Close project overview"
-          className="fixed top-6 right-6 z-[60] rounded-full p-2 mx-32 my-large ring-1 ring-pink-600 bg-pink-900 hover:bg-pink-800"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, y: 50 }}
+          transition={{ duration: 1, ease: "anticipate" }}
+          className="absolute right-0 top-10 z-300 px-large"
         >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden
+          <Button
+            onClick={onClose}
+            ref={closeBtnRef}
+            aria-label="Close project overview"
           >
-            <path
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M18 6L6 18M6 6l12 12"
-            />
-          </svg>
-        </button>
+            <IoClose className="text-xl aspect-square " />
+          </Button>
+        </motion.div>
 
         {/* top image (full width) */}
         <div className="relative">
           <motion.img
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 1 }}
             src={project.image}
             alt={project.title}
             layoutId={`project-image-${project.slug}`}
@@ -96,18 +97,14 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
         <motion.article
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 1, ease: "anticipate", delay: 0.3 }}
           className="
             bg-gray-700 border border-gray-600 backdrop-blur 
             rounded-2xl p-large 
             relative z-10 
-            -mt-20 md:-mt-100 px-large md:mx-large overflow-auto
-          max-h-80 overflow-y-auto
-  [&::-webkit-scrollbar]:w-2
-  [&::-webkit-scrollbar-track]:rounded-full
-  [&::-webkit-scrollbar-track]:bg-slate-100
-  [&::-webkit-scrollbar-thumb]:rounded-full
-  [&::-webkit-scrollbar-thumb]:bg-slate-300"
+            -mt-20 md:-mt-60 px-large md:mx-large 
+          max-h-10 h-[56dvh] overflow-y-scroll"
           style={{ maxHeight: "68vh" }}
         >
           <div className="flex items-center justify-between">
@@ -172,6 +169,6 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
           </div>
         </motion.article>
       </div>
-    </div>
+    </motion.div>
   );
 }

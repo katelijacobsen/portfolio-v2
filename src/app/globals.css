@@ -150,7 +150,7 @@ section div h3 {
 }
 
 h4 {
-  font-size: var(--text-h4);
+  font-size: var(--text-h3);
   font-weight: 700;
   line-height: normal;
   letter-spacing: 1.8pt;

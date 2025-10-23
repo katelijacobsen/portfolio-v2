@@ -124,7 +124,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
   return (
     <div ref={containerRef} className={`my-5 ${containerClassName}`}>
-      <h2>{splitText}</h2>
+      <h3>{splitText}</h3>
     </div>
   );
 };

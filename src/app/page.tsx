@@ -63,7 +63,7 @@ export default function Page() {
   // When overlay opens, add 'overflow: hidden' to body to prevent background scroll
   useEffect(() => {
     if (isOverlayOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "visible";
     } else {
       document.body.style.overflow = "";
     }
@@ -251,7 +251,7 @@ export default function Page() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 4, delay: 1.4 }}
-            className="absolute inset-0 z-10"
+            className="absolute inset-0 z-10 w-full h-full"
             aria-hidden="true" // decorative background animation
           >
             <PixelBlast

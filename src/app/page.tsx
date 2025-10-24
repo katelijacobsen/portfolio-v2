@@ -244,7 +244,7 @@ export default function Page() {
       </a>
 
       {/* When overlay is open, mark the main content as hidden for screen readers */}
-      <div aria-hidden={isOverlayOpen}>
+      <div>
         {/* Hero / Pixel background */}
         <header className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60dvh] overflow-hidden">
           <motion.div
@@ -252,7 +252,7 @@ export default function Page() {
             animate={{ opacity: 1 }}
             transition={{ duration: 4, delay: 1.4 }}
             className="absolute inset-0 z-10 w-full h-full"
-            aria-hidden="true" // decorative background animation
+            aria-hidden="true"
             style={{ width: '100%', height: '600px', position: 'relative' }}
           >
             <PixelBlast

@@ -375,3 +375,6 @@ h4 + p {
   image-rendering: crisp-edges;
 }
 
+.no-scroll {
+  overflow: hidden !important;
+}

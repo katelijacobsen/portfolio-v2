@@ -17,19 +17,50 @@ type Props = {
 export default function ProjectOverlay({ slug, onClose }: Props) {
   const project = projects.find((p) => p.slug === slug);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+  const articleRef = useRef<HTMLElement>(null);
+  const scrollPositionRef = useRef(0);
 
   useEffect(() => {
-    const prev = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = "hidden";
+    // Store scroll position
+    scrollPositionRef.current = window.scrollY;
+    
+    // Add no-scroll class to body
+    document.body.classList.add('no-scroll');
+    
+    // Prevent any background scrolling
+    const preventDefault = (e: Event) => {
+      if (!articleRef.current?.contains(e.target as Node)) {
+        e.preventDefault();
+      }
+    };
+
+    // Add event listeners to prevent scrolling
+    document.addEventListener('scroll', preventDefault, { passive: false });
+    document.addEventListener('wheel', preventDefault, { passive: false });
+    document.addEventListener('touchmove', preventDefault, { passive: false });
+
     closeBtnRef.current?.focus();
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKey);
+    
     return () => {
-      document.documentElement.style.overflow = prev;
+      // Remove no-scroll class
+      document.body.classList.remove('no-scroll');
+      
+      // Remove event listeners
+      document.removeEventListener('scroll', preventDefault);
+      document.removeEventListener('wheel', preventDefault);
+      document.removeEventListener('touchmove', preventDefault);
+      
       window.removeEventListener("keydown", onKey);
+      
+      // Restore scroll position after a brief delay
+      setTimeout(() => {
+        window.scrollTo(0, scrollPositionRef.current);
+      }, 10);
     };
   }, [onClose]);
 
@@ -45,7 +76,7 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
       role="dialog"
       aria-modal="true"
       aria-label="dialog"
-      onClick={onClose} // backdrop click closes
+      onClick={onClose}
     >
       {/* backdrop */}
       <motion.div
@@ -94,18 +125,19 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
           />
         </div>
 
-        {/* article card that overlaps the image (same classes as your Slug page) */}
+        {/* article card that overlaps the image */}
         <motion.article
-          initial={{ opacity: 0, y: 50, filter: "blur(20px)", }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)", }}
-          exit={{ opacity: 0, y: 50, filter: "blur(20px)", }}
+          ref={articleRef}
+          initial={{ opacity: 0, y: 50, filter: "blur(20px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, y: 50, filter: "blur(20px)" }}
           transition={{ duration: 0.6, ease: "anticipate", delay: 0.3 }}
           className="
             bg-gray-700 border border-gray-600 backdrop-blur 
             rounded-2xl p-large 
             relative z-10 
             -mt-20 md:-mt-60 px-large md:mx-large 
-          max-h-10 h-[56dvh] overflow-y-scroll"
+            overflow-y-auto"
           style={{ maxHeight: "68vh" }}
         >
           <div className="flex items-center justify-between">
@@ -142,7 +174,6 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
             {(project.mockup || project.mockupTwo) && (
               <div className="grid grid-cols-1 md:grid-cols-[auto_auto] gap-medium py-large">
                 {project.mockup && (
-                  // using plain <img> for fast load in overlay; change to next/image if preferred
                   <img
                     src={project.mockup}
                     alt={project.alt || "Project mockup"}

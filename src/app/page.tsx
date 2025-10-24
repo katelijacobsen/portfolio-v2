@@ -252,7 +252,7 @@ export default function Page() {
             animate={{ opacity: 1 }}
             transition={{ duration: 4, delay: 1.4 }}
             aria-hidden="true"
-            style={{ width: '100%', height: '600px', position: 'absolute' }}
+            style={{ width: '100%', height: '100%', position: 'fixed' }}
           >
             <PixelBlast
               variant="diamond"

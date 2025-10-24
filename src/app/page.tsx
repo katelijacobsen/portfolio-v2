@@ -246,14 +246,7 @@ export default function Page() {
       {/* When overlay is open, mark the main content as hidden for screen readers */}
       <div>
         {/* Hero / Pixel background */}
-        <header className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60dvh] overflow-hidden">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 4, delay: 1.4 }}
-            aria-hidden="true"
-            style={{ width: '100%', height: '100%', position: 'fixed' }}
-          >
+          <div style={{ width: "100%", height: "100%", position: "fixed" }}>
             <PixelBlast
               variant="diamond"
               pixelSize={4}
@@ -271,8 +264,10 @@ export default function Page() {
               liquidWobbleSpeed={0}
               speed={0.6}
               edgeFade={0.25}
+              transparent
             />
-          </motion.div>
+          </div>
+        <header className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60dvh] overflow-hidden">
 
           <div className="absolute z-200 h-full w-full px-negative flex flex-col justify-center gap-medium lg:gap-y-10 text-gray-200 text-center">
             <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14 mx-negative">

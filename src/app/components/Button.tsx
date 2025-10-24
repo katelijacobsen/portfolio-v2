@@ -1,7 +1,6 @@
 "use client";
 
-import { ReactNode, forwardRef, Ref } from "react";
-import Link from "next/link";
+import React, { ReactNode, forwardRef } from "react";
 
 interface Props {
   href?: string;
@@ -10,22 +9,22 @@ interface Props {
   w?: string;
   fadeIn?: string;
   ariaLabel?: string;
-  onClick?: () => void;
-  ref?: Ref<HTMLButtonElement>;
-  
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function Button({
-  text,
-  href = "#",
-  children,
-  w = "w-auto",
-  fadeIn,
-  ariaLabel,
-  onClick,
+const Button = forwardRef<HTMLButtonElement, Props>(function Button(
+  {
+    text,
+    href = "#",
+    children,
+    w = "w-auto",
+    fadeIn,
+    ariaLabel,
+    onClick,
+  },
   ref
-}: Props) {
-  const isExternal = href.startsWith("http");
+) {
+  const isExternal = typeof href === "string" && href.startsWith("http");
 
   const content = (
     <>
@@ -72,17 +71,18 @@ function Button({
     );
   }
 
-  // internal link
   return (
     <button
       className={`relative z-100 flex items-center justify-center gap-2 py-2 px-4 font-semibold uppercase tracking-[.2ch] rounded-full cursor-pointer transition-all ease-in-out duration-200 group ${w} ${fadeIn}`}
       aria-label={ariaLabel}
-      onClick = {onClick}
+      onClick={onClick}
       ref={ref}
     >
       {content}
     </button>
   );
-}
+});
+
+Button.displayName = "Button";
 
 export default Button;

@@ -7,16 +7,18 @@ import SkillIcon from "./skillIcon";
 
 // Create list of icons for reuseability & maintainability
 const iconImg = [
-  { src: "/img/icons/html.svg", alt: "HTML5", exp: "2.5 years" },
-  { src: "/img/icons/css.svg", alt: "CSS", exp: "2.5 years" },
+  { src: "/img/icons/html.svg", alt: "Hypertext markup language", exp: "2.5 years" },
+  { src: "/img/icons/css.svg", alt: "Cascading Style Sheets", exp: "2.5 years" },
   { src: "/img/icons/js.svg", alt: "Java Script", exp: "2.5 years" },
   { src: "/img/icons/react.svg", alt: "React", exp: "1.5 year" },
   { src: "/img/icons/nextjs.svg", alt: "Next.js", exp: "1 year" },
   { src: "/img/icons/tailwind.svg", alt: "Tailwind CSS", exp: "2 years" },
   { src: "/img/icons/astro.svg", alt: "Astro", exp: "2 years" },
+  { src: "/img/icons/motion.svg", alt: "motion", exp: "1.5 year" },
+  { src: "/img/icons/gsap.svg", alt: "GreenSock Animation Platform", exp: "1.5 year" },
   { src: "/img/icons/figma.svg", alt: "Figma", exp: "2.5 years" },
   { src: "/img/icons/ai.svg", alt: "Adobe Illustrator", exp: "2.5 years" },
-  { src: "/img/icons/lr.svg", alt: "Lightroom", exp: "1.5 years" },
+  { src: "/img/icons/lr.svg", alt: "Adobe Lightroom", exp: "1.5 years" },
   { src: "/img/icons/ae.svg", alt: "Adobe After Effects", exp: "3 years" },
   { src: "/img/icons/pr.svg", alt: "Adobe Premiere Pro", exp: "1.5 year" },
   { src: "/img/icons/git.svg", alt: "Git", exp: "2 years" },

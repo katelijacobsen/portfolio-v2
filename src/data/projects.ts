@@ -21,12 +21,18 @@ export const projects = [
   },
   {
     id: 2,
-    title: "GirlTalk",
-    description: "Creative long-read page for girls and young women...",
-    image: "/img/pictures/GirlTalk.png",
+    title: "3D Galaxy",
+    description: "Personal small project where I learn to use the JS library Three.js.",
+    image: "/img/pictures/3d-galaxy.png",
     slug: "girltalk",
     figmaLink: "",
-    site: "",
+    site: "https://3-d-galaxy.vercel.app/",
+     overview:
+      "A small personal project where I learn Three.js. I wanted to see how to build and animate interactive 3D enviroments directly in the browser. The purpose of this project was that I wanted to know how 3D rendering works, how to apply materials and lightning, and how to create a cute visually engaging experience for the user. ",
+    process:
+      "The scene (canva) combines geometric shapes. I used shapes such as spheres, tori (rings) and custom star shapes to create space enviroment. I wanted the design to feel alive and interactive with motions, blooming lightning and color transitions for the main planet that responds to the user's interaction. Although its mostly technical I did focus on the user's viusal experience such as ambient motion to let the scene slowly give a sense of momvement and dimension wihout needing of manuel control. By dragging and moving the mouse while holding the click changes the spheres color which of course gives interactive feedback. This one of the ways to let the user know they feel involved in the outcome.",
+    results:
+      "I helped me to think more of visual design with a combination of technical implementation. This project taught me how light, shape and motion can influence how users perceive depth and interaction. I thought it might be an interesting idea for mix it with UI/UX design with creative coding. ",
     mockup: "",
     mockupTwo: "",
     alt: "",
@@ -84,8 +90,8 @@ export const projects = [
     results: "",
     figmaLink: "",
     site: "",
-    mockup: "",
-    mockupTwo: "",
+    mockup: "/img/pictures/foodhead-mockup.png",
+    mockupTwo: "/img/pictures/foodhead-mockup2.png",
     alt: "",
   },
   {

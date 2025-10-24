@@ -132,7 +132,7 @@ export default function Page() {
               />
               <Interest
                 interest="DIY"
-                icon="/img/icons/hiking.svg"
+                icon="/img/icons/DIY.svg"
                 borderColor="border border-purple-400"
                 bg="bg-purple-900"
               />
@@ -150,7 +150,7 @@ export default function Page() {
               />
               <Interest
                 interest="Drawing"
-                icon="/img/icons/hiking.svg"
+                icon="/img/icons/drawing.svg"
                 borderColor="border border-fuchsia-400"
                 bg="bg-fuchsia-900"
               />

@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { GoCopy } from "react-icons/go";
-import { BsGithub, BsInstagram, BsLinkedin } from "react-icons/bs";
+import { BsGithub, BsInstagram, BsLinkedin, } from "react-icons/bs";
+import { FaCodepen } from "react-icons/fa";
 
 /**
  * Accessible footer component
@@ -126,6 +127,19 @@ const Footer: React.FC = () => {
             >
               <BsGithub aria-hidden="true" />
               <span className="sr-only">GitHub</span>
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://codepen.io/Katja-M-hleke"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-pink-500 rounded"
+              aria-label="Katja's GitHub (opens in a new tab)"
+            >
+              <FaCodepen aria-hidden="true" />
+              <span className="sr-only">Codepen</span>
             </a>
           </li>
 

@@ -251,9 +251,8 @@ export default function Page() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 4, delay: 1.4 }}
-            className="absolute inset-0 z-10 w-full h-full"
             aria-hidden="true"
-            style={{ width: '100%', height: '600px', position: 'relative' }}
+            style={{ width: '100%', height: '600px', position: 'absolute' }}
           >
             <PixelBlast
               variant="diamond"
@@ -272,11 +271,10 @@ export default function Page() {
               liquidWobbleSpeed={0}
               speed={0.6}
               edgeFade={0.25}
-              transparent
             />
           </motion.div>
 
-          <div className="absolute z-10 h-full w-full px-negative flex flex-col justify-center gap-medium lg:gap-y-10 text-gray-200 text-center">
+          <div className="absolute z-200 h-full w-full px-negative flex flex-col justify-center gap-medium lg:gap-y-10 text-gray-200 text-center">
             <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14 mx-negative">
               <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 self-end text-body-text">
                 KATJA <br /> MÄHLEKE
@@ -299,13 +297,13 @@ export default function Page() {
                 <p className="slide-left" aria-label="Year">
                   2025
                 </p>
-                <p className="slide-right" aria-label="Type">
+                <p className="slide-right" aria-label="web-type">
                   Portfolio
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row gap-medium justify-center items-center relative">
+            <div className="flex flex-col md:flex-row  justify-center items-center relative">
               {/* Consider giving this button an href for real navigation; left as action button */}
               <Button
                 aria-label="Jump to projects"

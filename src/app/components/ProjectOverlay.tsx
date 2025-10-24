@@ -41,7 +41,7 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0.5, y: 50 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="fixed inset-0 z-50 flex items-start justify-center p-6 w-full max-w-[936px] m-auto"
+      className="fixed inset-0 z-500 flex items-start justify-center p-6 w-full max-w-[936px] m-auto"
       role="dialog"
       aria-modal="true"
       aria-label="dialog"

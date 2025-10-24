@@ -162,8 +162,8 @@ export default function Page() {
     // create Observer (wheel/touch)
     const cardsObserver = Observer.create({
       target: window,
-      wheelSpeed: -100,
-      tolerance: 10,
+      wheelSpeed: -300,
+      tolerance: 30,
       preventDefault: true,
       onDown: () => tweenToLabel(tl.previousLabel(), false),
       onUp: () => tweenToLabel(tl.nextLabel(), true),
@@ -253,6 +253,7 @@ export default function Page() {
             transition={{ duration: 4, delay: 1.4 }}
             className="absolute inset-0 z-10 w-full h-full"
             aria-hidden="true" // decorative background animation
+            style={{ width: '100%', height: '600px', position: 'relative' }}
           >
             <PixelBlast
               variant="diamond"
@@ -342,6 +343,7 @@ export default function Page() {
                 src="/img/pictures/pixel-me.gif"
                 alt="Animated pixel portrait of Katja"
                 className="mx-[75%]"
+                unoptimized
               />
               <figcaption className="sr-only">
                 Katja's pixel portrait

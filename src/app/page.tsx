@@ -6,6 +6,7 @@ import gsap from "gsap";
 import Observer from "gsap/Observer";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { AnimatePresence, motion } from "motion/react";
+import ScrollToPlugin from "gsap/ScrollToPlugin";
 
 // Local components & data
 import Button from "./components/Button";
@@ -15,7 +16,7 @@ import ProjectOverlay from "./components/ProjectOverlay";
 import { projects } from "../data/projects";
 
 // Register GSAP plugins once
-gsap.registerPlugin(ScrollTrigger, Observer);
+gsap.registerPlugin(ScrollTrigger, Observer, ScrollToPlugin);
 
 export default function Page() {
   /* ---------------------------
@@ -52,7 +53,7 @@ export default function Page() {
     // Prevent any event propagation that might interfere with GSAP
     event?.stopPropagation();
     event?.preventDefault();
-    
+
     if ((document as any).startViewTransition) {
       (document as any).startViewTransition(() => setOpenSlug(slug));
     } else {
@@ -69,21 +70,20 @@ export default function Page() {
         // Disable all scrolling mechanisms
         document.body.style.overflow = "hidden";
         observerRef.current?.disable();
-        
+
         // Disable the specific ScrollTrigger for cards
         const cardsST = ScrollTrigger.getById("cards-pin");
         if (cardsST) {
           cardsST.disable();
         }
-        
+
         // Prevent scroll re-enable timeouts
         scrollTimeoutRef.current?.pause();
         allowScrollRef.current = false;
-        
       } else {
         // Re-enable scrolling
         document.body.style.overflow = "";
-        
+
         // Re-enable ScrollTrigger - it will handle observer re-enable when user scrolls back to cards section
         const cardsST = ScrollTrigger.getById("cards-pin");
         if (cardsST) {
@@ -93,7 +93,7 @@ export default function Page() {
     };
 
     handleOverlayState();
-    
+
     return () => {
       // Cleanup: ensure scrolling is re-enabled if component unmounts with overlay open
       document.body.style.overflow = "";
@@ -101,8 +101,16 @@ export default function Page() {
   }, [isOverlayOpen]);
 
   /* ---------------------------
-     GSAP setup: stacking, timeline, observer, scrollTrigger
+     GSAP setup: stacking, timeline, observer, scrollTrigger, ScrollTo
      --------------------------- */
+  const scrollToProjects = () => {
+    gsap.to(window, {
+      duration: .4,
+      scrollTo: "#projects",
+      ease: "power2.inOut",
+    });
+  };
+
   useEffect(() => {
     const cards = cardsRef.current;
     const container = containerRef.current;
@@ -276,7 +284,7 @@ export default function Page() {
         {/* Hero / Pixel background */}
         <header className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60dvh] overflow-hidden">
           <motion.div
-            style={{ width: '100%', height: '100%', position: 'absolute' }}
+            style={{ width: "100%", height: "100%", position: "absolute" }}
           >
             <PixelBlast
               variant="diamond"
@@ -330,12 +338,7 @@ export default function Page() {
 
             <div className="flex flex-col md:flex-row  justify-center items-center relative">
               {/* Consider giving this button an href for real navigation; left as action button */}
-              <Button
-                aria-label="Jump to projects"
-                onClick={() => document.getElementById("projects")?.focus()}
-              >
-                See my work
-              </Button>
+              <Button aria-label="Jump to projects" onClick={scrollToProjects}>Jump to Projects</Button>
             </div>
           </div>
         </header>
@@ -385,7 +388,7 @@ export default function Page() {
             Projects
           </h2>
 
-          <article className="cards-section" aria-label="Projects carousel">
+          <article className="cards-section" aria-label="Projects carousel" id="projects">
             {/* container pinned and observed by GSAP */}
             <section
               ref={containerRef}

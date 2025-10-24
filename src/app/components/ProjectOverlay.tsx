@@ -141,15 +141,19 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
           style={{ maxHeight: "68vh" }}
         >
           <div className="flex items-center justify-between">
+            <div className="flex items-center gap-small">
+
             <h3 className="text-2xl font-bold">{project.title}</h3>
+            <span className="bg-pink-50 text-pink-500 px-small rounded-md uppercase font-semibold">{project.tag}</span>
+            </div>
             <div className="flex gap-4 text-xl relative">
               {project.figmaLink && (
-                <Button>
+                <Button href={project.figmaLink} ariaLabel="Open Figma">
                   <FaFigma />
                 </Button>
               )}
               {project.site && (
-                <Button>
+                <Button href={project.site} ariaLabel="Open site">
                   <FiExternalLink />
                 </Button>
               )}

@@ -25,6 +25,7 @@ export const projects = [
     description: "Personal small project where I learn to use the JS library Three.js.",
     image: "/img/pictures/3d-galaxy.png",
     slug: "girltalk",
+    tag:"visual interaction",
     figmaLink: "",
     site: "https://3-d-galaxy.vercel.app/",
      overview:

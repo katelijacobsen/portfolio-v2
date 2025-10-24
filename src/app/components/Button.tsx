@@ -21,6 +21,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(function Button(
     fadeIn,
     ariaLabel,
     onClick,
+    ...rest
   },
   ref
 ) {
@@ -77,6 +78,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(function Button(
       aria-label={ariaLabel}
       onClick={onClick}
       ref={ref}
+      {...rest}
     >
       {content}
     </button>

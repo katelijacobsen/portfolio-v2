@@ -48,7 +48,11 @@ export default function Page() {
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const isOverlayOpen = Boolean(openSlug);
 
-  const openProject = (slug: string) => {
+  const openProject = (slug: string, event?: React.MouseEvent) => {
+    // Prevent any event propagation that might interfere with GSAP
+    event?.stopPropagation();
+    event?.preventDefault();
+    
     if ((document as any).startViewTransition) {
       (document as any).startViewTransition(() => setOpenSlug(slug));
     } else {
@@ -58,14 +62,40 @@ export default function Page() {
 
   const closeProject = () => setOpenSlug(null);
 
-  // When overlay opens, add 'overflow: hidden' to body to prevent background scroll
+  // When overlay opens, manage all scrolling mechanisms
   useEffect(() => {
-    if (isOverlayOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    const handleOverlayState = () => {
+      if (isOverlayOpen) {
+        // Disable all scrolling mechanisms
+        document.body.style.overflow = "hidden";
+        observerRef.current?.disable();
+        
+        // Disable the specific ScrollTrigger for cards
+        const cardsST = ScrollTrigger.getById("cards-pin");
+        if (cardsST) {
+          cardsST.disable();
+        }
+        
+        // Prevent scroll re-enable timeouts
+        scrollTimeoutRef.current?.pause();
+        allowScrollRef.current = false;
+        
+      } else {
+        // Re-enable scrolling
+        document.body.style.overflow = "";
+        
+        // Re-enable ScrollTrigger - it will handle observer re-enable when user scrolls back to cards section
+        const cardsST = ScrollTrigger.getById("cards-pin");
+        if (cardsST) {
+          cardsST.enable();
+        }
+      }
+    };
+
+    handleOverlayState();
+    
     return () => {
+      // Cleanup: ensure scrolling is re-enabled if component unmounts with overlay open
       document.body.style.overflow = "";
     };
   }, [isOverlayOpen]);
@@ -196,10 +226,10 @@ export default function Page() {
       end: "+=",
       markers: false,
       onEnter: () => {
-        if (!cardsObserver.isEnabled) cardsObserver.enable();
+        if (!cardsObserver.isEnabled && !isOverlayOpen) cardsObserver.enable();
       },
       onEnterBack: () => {
-        if (!cardsObserver.isEnabled) cardsObserver.enable();
+        if (!cardsObserver.isEnabled && !isOverlayOpen) cardsObserver.enable();
       },
     });
 
@@ -322,7 +352,7 @@ export default function Page() {
             baseRotation={5}
             blurStrength={10}
           >
-            Hi — I’m Katja! I’m a designer with a strong passion for web design
+            Hi — I'm Katja! I'm a designer with a strong passion for web design
             that is accessible to all users. I focus on using my UI/UX skills to
             create intuitive, straightforward digital experiences, including
             responsive design to ensure consistent performance across devices.
@@ -375,7 +405,7 @@ export default function Page() {
                     <figure className="col-start-1 col-end-4 row-start-1 row-end-4 place-self-stretch relative z-0">
                       {/* The button maintains native keyboard interactivity */}
                       <button
-                        onClick={() => openProject(project.slug)}
+                        onClick={(e) => openProject(project.slug, e)}
                         className="w-full h-full p-0 border-0 card-gradient"
                         aria-label={`Open ${project.title} overview`}
                         aria-controls={`project-overlay-${project.slug}`}
@@ -408,7 +438,7 @@ export default function Page() {
                     {/* Overview action */}
                     <div className="col-start-3 row-start-3 z-300 relative place-self-center p-medium">
                       <Button
-                        onClick={() => openProject(project.slug)}
+                        onClick={(e) => openProject(project.slug, e)}
                         aria-controls={`project-overlay-${project.slug}`}
                         aria-expanded={openSlug === project.slug}
                       >

@@ -135,9 +135,9 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
           className="
             bg-gray-700 border border-gray-600 backdrop-blur 
             rounded-2xl p-large 
-            relative z-10 h-[55vh]
-            -mt-20 md:-mt-60 px-large md:mx-large 
-            overflow-y-auto"
+            relative z-9999 h-[80+vh]
+            -mt-20 md:-mt-75 px-large md:mx-large 
+            overflow-y-scroll"
           style={{ maxHeight: "68vh" }}
         >
           <div className="flex items-center justify-between">

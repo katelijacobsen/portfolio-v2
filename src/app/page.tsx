@@ -49,7 +49,6 @@ export default function Page() {
   const isOverlayOpen = Boolean(openSlug);
 
   const openProject = (slug: string) => {
-    // Use View Transition API when available for a smoother transition
     if ((document as any).startViewTransition) {
       (document as any).startViewTransition(() => setOpenSlug(slug));
     } else {
@@ -62,7 +61,7 @@ export default function Page() {
   // When overlay opens, add 'overflow: hidden' to body to prevent background scroll
   useEffect(() => {
     if (isOverlayOpen) {
-      document.body.style.overflow = "visible";
+      document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
@@ -161,8 +160,8 @@ export default function Page() {
     // create Observer (wheel/touch)
     const cardsObserver = Observer.create({
       target: window,
-      wheelSpeed: -300,
-      tolerance: 30,
+      wheelSpeed: -1000,
+      tolerance: 150,
       preventDefault: true,
       onDown: () => tweenToLabel(tl.previousLabel(), false),
       onUp: () => tweenToLabel(tl.nextLabel(), true),

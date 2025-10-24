@@ -1,4 +1,3 @@
-// app/page.tsx
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -232,7 +231,7 @@ export default function Page() {
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
-      className="space-y-sections px-medium md:px-negative max-w-[1280px] m-auto relative py-sections overflow-hidden"
+      className="space-y-sections px-medium md:px-negative max-w-[1280px] m-auto relative py-sections overflow-hidden z-0"
       aria-live="polite"
     >
       {/* Skip link for keyboard users */}

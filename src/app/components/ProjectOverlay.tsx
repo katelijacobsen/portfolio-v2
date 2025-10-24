@@ -72,7 +72,7 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0.5, y: 50 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="fixed inset-0 z-500 flex items-start justify-center p-6 w-full max-w-[936px] m-auto"
+      className="fixed inset-0 z-500 flex items-start justify-center p-6 w-full max-w-[936px] m-auto overflow-y-scroll"
       role="dialog"
       aria-modal="true"
       aria-label="dialog"
@@ -135,7 +135,7 @@ export default function ProjectOverlay({ slug, onClose }: Props) {
           className="
             bg-gray-700 border border-gray-600 backdrop-blur 
             rounded-2xl p-large 
-            relative z-10 
+            relative z-10 h-[55vh]
             -mt-20 md:-mt-60 px-large md:mx-large 
             overflow-y-auto"
           style={{ maxHeight: "68vh" }}

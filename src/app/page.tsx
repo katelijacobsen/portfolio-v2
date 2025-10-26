@@ -293,6 +293,30 @@ export default function Page() {
       <div>
         {/* Hero / Pixel background */}
         <header className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60dvh] overflow-hidden">
+          <motion.div
+            style={{ width: "100%", height: "100%", position: "absolute" }}
+          >
+            <PixelBlast
+              variant="diamond"
+              pixelSize={4}
+              color="#1345B1"
+              patternScale={3}
+              patternDensity={1.2}
+              pixelSizeJitter={0.5}
+              enableRipples
+              rippleSpeed={0.4}
+              rippleThickness={0.12}
+              rippleIntensityScale={1.5}
+              liquid
+              liquidStrength={0.12}
+              liquidRadius={0}
+              liquidWobbleSpeed={0}
+              speed={0.6}
+              edgeFade={0.55}
+              transparent
+            />
+          </motion.div>
+
           <div className="absolute z-200 h-full w-full px-negative flex flex-col justify-center gap-medium lg:gap-y-10 text-gray-200 text-center">
             <div className="grid grid-cols-[auto_auto_auto] grid-rows-[auto_auto_auto] gap-y-14 mx-negative">
               <h1 className="text-split line uppercase row-start-2 col-start-2 col-end-3 self-end text-body-text">

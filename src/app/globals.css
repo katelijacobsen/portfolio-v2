@@ -94,10 +94,6 @@ p {
   color: var(--color-body-header);
 }
 
-blockquote {
-  font-size: var(--text-blockquote);
-}
-
 p {
   font-weight: 400;
   line-height: 1.6;

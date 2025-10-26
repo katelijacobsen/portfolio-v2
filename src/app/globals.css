@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "TransformaBold";
-  src: url("/fonts/TransformaMix_SemiBold.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Sf Pro Bold";
+  src: url("/fonts/SFProDisplay-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Medium";
+  src: url("/fonts/SFProDisplay-Medium.woff2") format("woff2");
   font-display: swap;
 }
 @font-face {
   font-family: "SF Pro Regular";
-  src: url("/fonts/SFPRODISPLAYREGULAR.woff2") format("woff2");
-  font-style: normal;
+  src: url("/fonts/SFProDisplay-Regular.woff2") format("woff2");
   font-display: swap;
 }
 

@@ -7,16 +7,24 @@ import Observer from "gsap/Observer";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { AnimatePresence, motion } from "motion/react";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+import { useCallback } from "react";
+import dynamic from "next/dynamic";
 
 // Local components & data
 import Button from "./components/Button";
 import ScrollReveal from "./components/ScrollReveal";
-import PixelBlast from "./components/PixelBlast";
 import ProjectOverlay from "./components/ProjectOverlay";
 import { projects } from "../data/projects";
 
 // Register GSAP plugins once
 gsap.registerPlugin(ScrollTrigger, Observer, ScrollToPlugin);
+
+//Dynamic Import :')
+const PixelBlast = dynamic(() => import("./components/PixelBlast"), {
+  ssr: false,
+  loading: () => null,
+});
+
 
 export default function Page() {
   /* ---------------------------
@@ -42,6 +50,8 @@ export default function Page() {
     if (!el) return;
     if (!cardsRef.current.includes(el)) cardsRef.current.push(el);
   };
+
+  
 
   /* ---------------------------
      Overlay state & accessibility helpers

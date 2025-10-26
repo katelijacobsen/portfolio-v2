@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Footer from "./components/Footer";
 import PillNav from "./components/PillNav";
-import ClientTransitions from "./components/ClientTransitions";
 
 export const metadata: Metadata = {
   title: "Katja Mähleke",

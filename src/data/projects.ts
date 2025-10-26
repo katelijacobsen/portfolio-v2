@@ -4,7 +4,7 @@ export const projects = [
     title: "FooFest Festival",
     description:
       "3RD semester project focusing on building user friendly ticket booking-system",
-    image: "/img/pictures/FooFest Festival.png",
+    image: "/img/pictures/foofest-festival.avif",
     slug: "foofest",
     tag:"website",
     overview:
@@ -15,15 +15,15 @@ export const projects = [
     figmaLink:
       "https://www.figma.com/design/xVN4uIsDjVVUeFp7YwFQkp/Foo-Fest?node-id=0-1&t=L5vHaTjijK4zmU7T-1",
     site: "https://foo-fest-optimized.vercel.app/",
-    mockup: "/img/pictures/foofest-mockup.png",
-    mockupTwo: "/img/pictures/foofest-mockup2.png",
+    mockup: "/img/pictures/foofest-mockup.avif",
+    mockupTwo: "/img/pictures/foofest-mockup2.avif",
     alt: "",
   },
   {
     id: 2,
     title: "3D Galaxy",
     description: "Personal small project where I learn to use the JS library Three.js.",
-    image: "/img/pictures/3d-galaxy.png",
+    image: "/img/pictures/3d-galaxy.avif",
     slug: "girltalk",
     tag:"visual interaction",
     figmaLink: "",
@@ -42,7 +42,7 @@ export const projects = [
     id: 3,
     title: "Ducky's Diner",
     description: "A small Y2K inspired JavaScript-game...",
-    image: "/img/pictures/Ducky.png",
+    image: "/img/pictures/Ducky.avif",
     slug: "duckys-diner",
     tag:"web-game",
     overview:
@@ -53,15 +53,15 @@ export const projects = [
       "The game is fully playable in the browser. It features just simple, engaging machanic, cheerful diner asthetic and clean structure with documented graphic assets. ",
     figmaLink: "",
     site: "https://duckys-diner.netlify.app/spil",
-    mockup: "/img/pictures/duckysDiner-mockup.png",
-    mockupTwo: "/img/pictures/duckysDiner-mockup-1.png",
+    mockup: "/img/pictures/duckysDiner-mockup.avif",
+    mockupTwo: "/img/pictures/duckysDiner-mockup-1.avif",
     alt: "",
   },
   {
     id: 4,
     title: "Kær Kaffebar",
     description: "Final last semester project for a small coffee bar",
-    image: "/img/pictures/Kær.png",
+    image: "/img/pictures/kaer-kaffebar.avif",
     slug: "kaer-kaffebar",
     tag:"website",
     overview:
@@ -73,16 +73,16 @@ export const projects = [
     figmaLink:
       "https://www.figma.com/design/q3uIyBx3GutWyuzmBWtpXU/K%C3%A6r-Kaffebar--Backup-?node-id=1-8&t=C6Mr8wx23pBzJ3d7-1",
     site: "https://kaerkaffebar.netlify.app/",
-    mockup: "/img/pictures/Mockup 1.png",
-    mockupTwo: "/img/pictures/Mockup 2.png",
+    mockup: "/img/pictures/kaer-mockup.avif",
+    mockupTwo: "/img/pictures/kaer-mockup-2.avif",
     alt: "",
   },
   {
     id: 5,
     title: "Madhovedet",
     description: "Small personal recipe app",
-    image: "/img/pictures/FoodHead.png",
-    slug: "foodhead",
+    image: "/img/pictures/madhovedet.avif",
+    slug: "madhovedet",
     tag:"App",
     overview:
       "Madhovedet is a small, personal side project: a mobile application created to simplify the search for recipes across the Danish food universe. This single, cohesive app brings friends and family together with all the recipes they need, eliminating the need to browse multiple sites. Crucially, the design of this app to promote a healthy, balanced relationship with food, meaning it embraces both nutritious meals and enjoyable snacks and drinks. Its design features a playful, experimental, and fresh tone-of-voice to ensure the culinary journey is both accessible and fun.",
@@ -91,8 +91,8 @@ export const projects = [
     results: "",
     figmaLink: "",
     site: "",
-    mockup: "/img/pictures/foodhead-mockup.png",
-    mockupTwo: "/img/pictures/foodhead-mockup2.png",
+    mockup: "/img/pictures/foodhead-mockup.avif",
+    mockupTwo: "/img/pictures/foodhead-mockup2.avif",
     alt: "",
   },
   {

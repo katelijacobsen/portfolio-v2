@@ -102,7 +102,7 @@ export default function Page() {
           <Image
             width={300}
             height={300}
-            src="/img/pictures/profile-image.png"
+            src="/img/pictures/profile-image.avif"
             alt="Profile image of Katja"
             className="w-full aspect-square object-contain p-small"
           />

@@ -49,7 +49,6 @@ export default function HeroSection({ scrollTargetId }: HeroSectionProps) {
   return (
     <header className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60dvh] overflow-hidden">
       <div className="absolute inset-0" aria-hidden="true">
-        <PixelBlast {...PIXEL_BLAST_SETTINGS} />
       </div>
 
       <div className="absolute z-200 h-full w-full px-negative flex flex-col justify-center gap-medium lg:gap-y-10 text-gray-200 text-center">

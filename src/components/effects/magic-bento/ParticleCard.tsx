@@ -198,7 +198,7 @@ export default function ParticleCard({
   ]);
 
   return (
-    <div ref={cardRef} className={cn("relative overflow-hidden", className)} style={style}>
+    <div ref={cardRef} className={cn("relative overflow-hidden bg-caption p-medium rounded-md border-[#4A5565] border", className)} style={style}>
       {children}
     </div>
   );
@@ -213,9 +213,9 @@ function createParticleElement(x: number, y: number, color: string): HTMLDivElem
     position: absolute;
     width: 4px;
     height: 4px;
-    border-radius: 50%;
+    border-radius: 80%;
     background: rgba(${color}, 1);
-    box-shadow: 0 0 6px rgba(${color}, 0.6);
+    box-shadow: 0 0 6px rgba(${color}, 1);
     pointer-events: none;
     z-index: 100;
     left: ${x}px;
@@ -254,7 +254,7 @@ function spawnRipple(element: HTMLElement, event: MouseEvent, glowColor: string)
     width: ${radius * 2}px;
     height: ${radius * 2}px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(${glowColor}, 0.4) 0%, rgba(${glowColor}, 0.2) 30%, transparent 70%);
+    background: radial-gradient(circle, rgba(${glowColor}, 0.4) 0%, rgba(${glowColor}, 0.6) 30%, transparent 70%);
     left: ${x - radius}px;
     top: ${y - radius}px;
     pointer-events: none;

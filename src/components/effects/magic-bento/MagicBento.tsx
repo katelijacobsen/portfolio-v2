@@ -18,7 +18,6 @@ interface MagicBentoProps<T> extends BentoEffectOptions {
   renderItem: (item: T, index: number) => ReactNode;
   /** Stable key per item. Defaults to the array index. */
   getKey?: (item: T, index: number) => Key;
-  /** Grid classes for the card container, e.g. "lg:grid-cols-2". */
   className?: string;
   /** Accessible label for the list of cards. */
   ariaLabel?: string;
@@ -74,7 +73,7 @@ export default function MagicBento<T>({
 
       <ul
         aria-label={ariaLabel}
-        className={cn("grid grid-cols-1 gap-medium list-none m-0 p-0", className)}
+        className={cn("grid grid-cols-1 gap-large list-none m-0 p-0", className)}
       >
         {items.map((item, index) => (
           <li key={getKey?.(item, index) ?? index} className="contents">

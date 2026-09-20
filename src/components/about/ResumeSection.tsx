@@ -23,7 +23,6 @@ export default function ResumeSection({ heading, entries }: ResumeSectionProps) 
       <MagicBento
         items={entries}
         ariaLabel={heading}
-        className="lg:grid-cols-2"
         getKey={(entry) => `${entry.company}-${entry.role}-${entry.year}`}
         renderItem={(entry) => <ResumeCard entry={entry} />}
         enableTilt={false}

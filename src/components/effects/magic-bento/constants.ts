@@ -1,9 +1,9 @@
 /** Shared defaults and tuning values for the Magic Bento effects. */
 
-export const DEFAULT_PARTICLE_COUNT = 12;
-export const DEFAULT_SPOTLIGHT_RADIUS = 300;
+export const DEFAULT_PARTICLE_COUNT = 30;
+export const DEFAULT_SPOTLIGHT_RADIUS = 500;
 /** Tailwind gray-400, as the `R, G, B` triplet the CSS variables expect. */
-export const DEFAULT_GLOW_COLOR = "156, 163, 175";
+export const DEFAULT_GLOW_COLOR = "255, 93, 163, 0.5";
 
 /** Class the spotlight uses to find the section it should light up. */
 export const BENTO_SECTION_CLASS = "bento-section";

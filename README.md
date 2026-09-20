@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Katja Mähleke
 
-## Getting Started
+Next.js 15 (App Router) portfolio. Tailwind CSS v4 for styling, GSAP for
+scroll-driven animation, Motion for page and layout transitions, three.js for
+the WebGL hero background.
 
-First, run the development server:
+## Getting started
+
+```bash
+npm install
+```
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts: `npm run build` (production build) and `npm start` (serve it).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+├── app/            Routes only — each page composes components, nothing more
+│   ├── layout.tsx          Nav, footer, metadata
+│   ├── page.tsx            Home
+│   ├── about/              About
+│   ├── projects/[slug]/    One project, deep-linkable
+│   └── globals.css         Design tokens, base type, shared effect styles
+│
+├── components/
+│   ├── ui/         Primitives: Button, Tag, Flag, SkillIcon, InterestPill
+│   ├── layout/     SiteNav, SiteFooter
+│   ├── home/       HeroSection, IntroSection, ProjectsSection
+│   ├── about/      ProfileIntro, ResumeSection, ResumeCard
+│   ├── projects/   ProjectCardStack, ProjectCard, ProjectOverlay, ProjectDetails
+│   └── effects/    Animation-heavy pieces: PixelBlast, ScrollReveal,
+│                   SkillsMarquee, magic-bento/
+│
+├── config/site.ts  Site copy, URL, email, nav links, social links
+├── data/           Content: projects, experiences, educations, skills, interests
+├── hooks/          useProjectCardStack, useIsMobile, useCopyToClipboard,
+│                   useBodyScrollLock
+├── lib/            gsap.ts (single plugin registration), cn.ts
+└── types/          Project, ResumeEntry
+```
 
-To learn more about Next.js, take a look at the following resources:
+Import with the `@/` alias (`@/components/ui/Button`), never long relative paths.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How to make common changes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| I want to…                  | Edit                                                        |
+| --------------------------- | ----------------------------------------------------------- |
+| Add or edit a project       | `src/data/projects.ts`                                       |
+| Add a job or a degree       | `src/data/experiences.ts` / `src/data/educations.ts`         |
+| Add a skill to the marquee  | `src/data/skills.ts`                                         |
+| Change an interest or flag  | `src/data/interests.ts`                                      |
+| Add a page to the nav       | `navLinks` in `src/config/site.ts` (plus the route itself)   |
+| Add a social profile        | `socialLinks` in `src/config/site.ts`                        |
+| Change the email or SEO copy| `src/config/site.ts`                                         |
+| Change colours or spacing   | the `@theme` block in `src/app/globals.css`                  |
 
-## Deploy on Vercel
+None of these require touching a component.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Conventions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Pages compose, components render.** A file in `src/app` should read like a
+  table of contents. Markup, data and animation belong in components.
+- **Content is data.** Anything that could change without a design change lives
+  in `src/data` or `src/config`, typed against `src/types`.
+- **Animation is scoped.** GSAP work goes inside a `gsap.context()` and is torn
+  down with `context.revert()`, so one component's cleanup never kills another
+  component's ScrollTriggers.
+- **Plugins register once**, in `src/lib/gsap.ts`. Import `gsap` from there.
+- **`src/components/effects/PixelBlast.tsx` is vendored** third-party code.
+  Configure it through props rather than editing it.

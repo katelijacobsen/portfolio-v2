@@ -377,3 +377,74 @@ h4 + p {
 .no-scroll {
   overflow: hidden !important;
 }
+/* ===== Magic Bento =====
+   Cursor-reactive cards. The JS in src/components/effects/magic-bento sets
+   --glow-x / --glow-y / --glow-intensity per card as the pointer moves;
+   --glow-color is set on the section by the MagicBento component. */
+.bento-section {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 200px;
+  --glow-color: 156, 163, 175;
+}
+
+.bento-card {
+  position: relative;
+  background-color: rgb(31 41 55); /* gray-800 */
+  border: 1px solid rgb(75 85 99); /* gray-600 */
+  color: var(--color-body-header);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient border that brightens as the pointer approaches. */
+.bento-card--border-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 0.8)) 0%,
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 0.4)) 30%,
+    transparent 60%
+  );
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: subtract;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.bento-card--border-glow:hover {
+  box-shadow: 0 4px 8px rgba(209, 213, 219, 0.3),
+    0 0 30px rgba(var(--glow-color), 0.2);
+}
+
+.particle::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: rgba(var(--glow-color), 0.2);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento-card,
+  .bento-card--border-glow::after {
+    transition: none;
+  }
+}

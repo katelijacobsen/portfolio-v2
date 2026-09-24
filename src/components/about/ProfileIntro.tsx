@@ -18,17 +18,10 @@ export default function ProfileIntro() {
         <Image
           width={300}
           height={300}
-          src="/img/pictures/profile-image.avif"
+          src="/img/pictures/profile.avif"
           alt="Profile image of Katja"
-          className="w-full aspect-square object-contain p-small"
+          className="w-full aspect-square object-contain p-small rounded-2xl"
         />
-        {/* Four stacked layers build the feathered blur; see globals.css. */}
-        <div className="feather-blur w-full" aria-hidden="true">
-          <div />
-          <div />
-          <div />
-          <div />
-        </div>
       </div>
 
       <div className="flex gap-medium flex-col order-3 col-span-2 lg:col-span-1 lg:col-start-3 row-start-2 lg:row-start-1 place-self-center">

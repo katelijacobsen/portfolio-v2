@@ -58,8 +58,8 @@ export default function HeroSection({ scrollTargetId }: HeroSectionProps) {
           </h1>
 
           <div className="flex items-center justify-between col-span-3">
-            <p className="slide-left">Frontend</p>
-            <p className="slide-right">UI/UX</p>
+            <p className="slide-left">Full-stack</p>
+            <p className="slide-right">Development</p>
           </div>
 
           <div className="flex items-center justify-between col-span-3">

@@ -12,8 +12,13 @@ const SCROLL_PER_CARD = 0.8;
 const SCRUB_SMOOTHING = 1;
 
 interface Options {
-  /** Element that gets pinned while the stack is being stepped through. */
+  /** Element holding the cards. */
   containerRef: RefObject<HTMLElement | null>;
+  /**
+   * Element pinned while the stack is stepped through, e.g. the cards plus
+   * their heading. Defaults to the container itself.
+   */
+  pinRef?: RefObject<HTMLElement | null>;
   /**
    * Suspends snapping — used while the project overlay is open, so the scroll
    * lock and the scroll restore on close cannot make the deck jump.
@@ -30,7 +35,11 @@ interface Options {
  * snapping settles the deck on the next card in the scroll direction once the
  * gesture ends.
  */
-export function useProjectCardStack({ containerRef, paused = false }: Options): void {
+export function useProjectCardStack({
+  containerRef,
+  pinRef,
+  paused = false,
+}: Options): void {
   // Read inside the snap callback so it always sees the current value rather
   // than the value captured when the (mount-only) setup effect ran.
   const pausedRef = useRef(paused);
@@ -41,6 +50,7 @@ export function useProjectCardStack({ containerRef, paused = false }: Options): 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    const pinned = pinRef?.current ?? container;
 
     const cards = Array.from(
       container.querySelectorAll<HTMLElement>(`[${CARD_ATTRIBUTE}]`)
@@ -66,9 +76,9 @@ export function useProjectCardStack({ containerRef, paused = false }: Options): 
       const timeline = gsap.timeline({
         defaults: { duration: 1, ease: "power2.inOut" },
         scrollTrigger: {
-          trigger: container,
-          pin: true,
-          start: "top 30%",
+          trigger: pinned,
+          pin: pinned,
+          start: "top 15%",
           end: () => `+=${(cards.length - 1) * window.innerHeight * SCROLL_PER_CARD}`,
           scrub: SCRUB_SMOOTHING,
           invalidateOnRefresh: true,
@@ -110,5 +120,5 @@ export function useProjectCardStack({ containerRef, paused = false }: Options): 
     // `context.revert()` only kills the tweens and ScrollTriggers created above,
     // leaving animations owned by other components alone.
     return () => context.revert();
-  }, [containerRef]);
+  }, [containerRef, pinRef]);
 }

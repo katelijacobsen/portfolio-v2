@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import { AnimatePresence } from "motion/react";
 import { projects } from "@/data/projects";
 import { useProjectCardStack } from "@/hooks/useProjectCardStack";
@@ -13,11 +13,17 @@ import ProjectOverlay from "./ProjectOverlay";
  * Owns which project is open; the GSAP wiring lives in `useProjectCardStack`
  * and the card markup in `ProjectCard`, so this component only coordinates.
  */
-export default function ProjectCardStack() {
+interface ProjectCardStackProps {
+  /** Rendered above the deck and pinned with it, so it stays put while stepping. */
+  heading?: ReactNode;
+}
+
+export default function ProjectCardStack({ heading }: ProjectCardStackProps) {
+  const pinRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [openSlug, setOpenSlug] = useState<string | null>(null);
 
-  useProjectCardStack({ containerRef, paused: openSlug !== null });
+  useProjectCardStack({ containerRef, pinRef, paused: openSlug !== null });
 
   const openProject = (slug: string) => {
     // View Transitions make the swap smoother where supported; the shared
@@ -31,24 +37,29 @@ export default function ProjectCardStack() {
 
   return (
     <>
-      {/* Pinning wraps the container in a GSAP "pin-spacer"; this wrapper keeps
+      {/* Pinning wraps the pinned block in a GSAP "pin-spacer"; this wrapper keeps
           that extra node out of the tree React itself inserts and removes. */}
       <div>
-        <div
-          ref={containerRef}
-          className="relative min-h-[60vh] w-full cards-section"
-          aria-label="Projects"
-        >
-          <ul className="m-0 p-0 list-none">
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.slug}
-                project={project}
-                isOpen={openSlug === project.slug}
-                onOpen={openProject}
-              />
-            ))}
-          </ul>
+        {/* `flow-root` keeps the heading's margin inside the pinned block. */}
+        <div ref={pinRef} className="flow-root">
+          {heading}
+
+          <div
+            ref={containerRef}
+            className="relative min-h-[60vh] w-full cards-section"
+            aria-label="Projects"
+          >
+            <ul className="m-0 p-0 list-none">
+              {projects.map((project) => (
+                <ProjectCard
+                  key={project.slug}
+                  project={project}
+                  isOpen={openSlug === project.slug}
+                  onOpen={openProject}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 

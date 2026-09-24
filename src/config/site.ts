@@ -15,7 +15,7 @@ export const siteConfig = {
   url: "https://katjajacobsen.dk",
   email: "katjamaehleke98@gmail.com",
   description:
-    "Hi! I’m Katja Mähleke, a web developer student from Business Academy Copenhagen passionate about creating intuitive, accessible, and user-friendly digital experiences. I specialize in frontend development and UI/UX, blending modern technologies with strong design principles.",
+    "Hi — I'm Katja, a web developer who likes to understand how things work all the way through. Knowing how data flows from the backend to the screen lets me build applications that are fast, reliable and accessible to everyone, not just nice on the surface. Explaining that to others as a teaching assistant has only made me better at it",
   ogDescription:
     "Portfolio of Katja Mähleke – specializing in intuitive UI/UX and modern frontend development with a strong foundation in accessibility and design thinking.",
   ogTitle: "Katja Mähleke – Multimedia Designer & Frontend Developer",

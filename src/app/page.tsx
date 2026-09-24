@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { HeroSection, IntroSection, ProjectsSection } from "@/components/home";
+import { ScrollTrigger } from "@/lib/gsap";
 
 const PROJECTS_ANCHOR = "projects";
 
@@ -12,6 +13,9 @@ export default function HomePage() {
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
+      // Scroll positions measured mid-animation are offset by the slide-in, so
+      // re-measure once the page has settled.
+      onAnimationComplete={() => ScrollTrigger.refresh()}
       className="space-y-sections px-medium md:px-negative max-w-[1280px] m-auto relative py-sections overflow-hidden z-0"
     >
       <a href={`#${PROJECTS_ANCHOR}`} className="sr-only focus:not-sr-only">

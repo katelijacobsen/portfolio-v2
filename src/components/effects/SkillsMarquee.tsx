@@ -15,10 +15,18 @@ interface SkillsMarqueeProps {
 }
 
 /**
+ * How quickly the track eases back to its cruising speed after a fling or a
+ * hover pause. Higher is snappier; 3 settles in roughly a second.
+ */
+const VELOCITY_EASING = 3;
+
+/**
  * An endlessly scrolling row of skill icons, with a tooltip on hover.
  *
- * The track holds two identical copies of the list and slides by exactly one
- * copy's width, so the loop point is invisible no matter the viewport size.
+ * The track holds two identical copies of the list and its offset is wrapped
+ * by exactly one copy's width, so the loop point is invisible no matter the
+ * viewport size. The row can be dragged either way; letting go keeps the
+ * momentum of the drag, which then eases back into the normal auto-scroll.
  */
 export default function SkillsMarquee({
   speed = 50,
@@ -27,52 +35,121 @@ export default function SkillsMarquee({
   className,
 }: SkillsMarqueeProps) {
   const trackRef = useRef<HTMLUListElement>(null);
-  const animationRef = useRef<gsap.core.Tween | null>(null);
+
+  // Mutable animation state, read every frame by the ticker below.
+  const hoveringRef = useRef(false);
+  const dragRef = useRef<{ pointerId: number; lastX: number; lastTime: number } | null>(null);
+  const offsetRef = useRef(0);
+  const velocityRef = useRef(0);
 
   const [hoveredSkill, setHoveredSkill] = useState<Skill | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    // One copy is half the track; sliding by that much lands on an identical frame.
-    const distance = track.scrollWidth / 2;
-    const duration = distance / speed;
-    const [from, to] = direction === "left" ? [0, -50] : [-50, 0];
+    const cruiseVelocity = direction === "left" ? -speed : speed;
+    velocityRef.current = cruiseVelocity;
 
-    const context = gsap.context(() => {
-      animationRef.current = gsap.fromTo(
-        track,
-        { xPercent: from },
-        { xPercent: to, duration, ease: "none", repeat: -1 }
-      );
-    }, track);
+    // One copy is half the track; wrapping by that much lands on an identical frame.
+    let copyWidth = track.scrollWidth / 2;
+    const resizeObserver = new ResizeObserver(() => {
+      copyWidth = track.scrollWidth / 2;
+    });
+    resizeObserver.observe(track);
 
-    return () => {
-      animationRef.current = null;
-      context.revert();
+    const setX = gsap.quickSetter(track, "x", "px");
+
+    const tick = (_time: number, deltaMs: number) => {
+      const delta = Math.min(deltaMs, 100) / 1000; // Avoid a jump after a background tab.
+
+      if (!dragRef.current) {
+        const target = pauseOnHover && hoveringRef.current ? 0 : cruiseVelocity;
+        // Frame-rate independent ease towards the target speed.
+        velocityRef.current += (target - velocityRef.current) * (1 - Math.exp(-VELOCITY_EASING * delta));
+        offsetRef.current += velocityRef.current * delta;
+      }
+
+      if (copyWidth > 0) setX(gsap.utils.wrap(-copyWidth, 0, offsetRef.current));
     };
-  }, [speed, direction]);
 
-  const handleEnter = (skill: Skill) => {
-    setHoveredSkill(skill);
-    if (pauseOnHover) animationRef.current?.pause();
+    gsap.ticker.add(tick);
+    return () => {
+      gsap.ticker.remove(tick);
+      resizeObserver.disconnect();
+      gsap.set(track, { clearProps: "transform" });
+    };
+  }, [speed, direction, pauseOnHover]);
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+
+    // Keep receiving moves even when the pointer leaves the row mid-drag.
+    event.currentTarget.setPointerCapture(event.pointerId);
+    dragRef.current = { pointerId: event.pointerId, lastX: event.clientX, lastTime: event.timeStamp };
+    velocityRef.current = 0;
+    setHovered(null);
+    setIsDragging(true);
   };
 
-  const handleLeave = () => {
-    setHoveredSkill(null);
-    if (pauseOnHover) animationRef.current?.play();
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    setPointer({ x: event.clientX, y: event.clientY });
+
+    const drag = dragRef.current;
+    if (!drag) {
+      // Hover is resolved from the pointer's target rather than per-icon enter/leave
+      // events, which pointer capture and touch input leave in a stale state.
+      if (event.pointerType === "mouse") setHovered(event.target);
+      return;
+    }
+    if (drag.pointerId !== event.pointerId) return;
+
+    const dx = event.clientX - drag.lastX;
+    const dt = Math.max(event.timeStamp - drag.lastTime, 1) / 1000;
+    offsetRef.current += dx;
+    // Smoothed so a single jittery event does not decide the fling speed.
+    velocityRef.current = velocityRef.current * 0.8 + (dx / dt) * 0.2;
+
+    drag.lastX = event.clientX;
+    drag.lastTime = event.timeStamp;
+  };
+
+  const endDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+
+    // A pointer that stopped before release should not fling.
+    if (event.timeStamp - drag.lastTime > 80) velocityRef.current = 0;
+
+    dragRef.current = null;
+    setIsDragging(false);
+  };
+
+  const setHovered = (target: EventTarget | null) => {
+    const item = target instanceof Element ? target.closest<HTMLElement>("[data-skill-index]") : null;
+    const skill = item ? skills[Number(item.dataset.skillIndex)] : null;
+
+    hoveringRef.current = skill !== null;
+    setHoveredSkill((current) => (current === skill ? current : skill));
   };
 
   return (
     <div
-      className={cn("relative overflow-hidden w-full", className)}
-      onMouseMove={(event) => setPointer({ x: event.clientX, y: event.clientY })}
+      // `pan-y` leaves vertical swipes to the page, so touch users can still scroll past.
+      className={cn("relative overflow-hidden w-full select-none touch-pan-y", className)}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
+      onPointerLeave={() => setHovered(null)}
+      // Stop the browser's native image drag from hijacking the gesture.
+      onDragStart={(event) => event.preventDefault()}
     >
       <div className="absolute inset-0 z-10 fade-overlay pointer-events-none" />
 
-      {hoveredSkill && (
+      {hoveredSkill && !isDragging && (
         <div
           role="tooltip"
           className="fixed z-50 px-2 py-[.3rem] text-h1 text-white bg-[#DD2590] rounded-md pointer-events-none"
@@ -88,9 +165,8 @@ export default function SkillsMarquee({
           <li
             key={`${skill.src}-${index}`}
             aria-hidden={index >= skills.length}
+            data-skill-index={index % skills.length}
             className="inline-flex items-center justify-center p-medium flex-shrink-0"
-            onMouseEnter={() => handleEnter(skill)}
-            onMouseLeave={handleLeave}
           >
             <div className="transition-transform duration-300 hover:scale-125">
               <SkillIcon src={skill.src} alt={skill.name} size={64} />

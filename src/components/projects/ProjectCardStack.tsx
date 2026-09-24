@@ -31,21 +31,25 @@ export default function ProjectCardStack() {
 
   return (
     <>
-      <div
-        ref={containerRef}
-        className="relative min-h-[60vh] w-full cards-section"
-        aria-label="Projects"
-      >
-        <ul className="m-0 p-0 list-none">
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              isOpen={openSlug === project.slug}
-              onOpen={openProject}
-            />
-          ))}
-        </ul>
+      {/* Pinning wraps the container in a GSAP "pin-spacer"; this wrapper keeps
+          that extra node out of the tree React itself inserts and removes. */}
+      <div>
+        <div
+          ref={containerRef}
+          className="relative min-h-[60vh] w-full cards-section"
+          aria-label="Projects"
+        >
+          <ul className="m-0 p-0 list-none">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                isOpen={openSlug === project.slug}
+                onOpen={openProject}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
 
       <AnimatePresence mode="wait">

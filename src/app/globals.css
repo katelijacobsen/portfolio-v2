@@ -75,8 +75,9 @@
 }
 
 /*===== Fixed Rules =====*/
+/* No `scroll-behavior: smooth` here: it fights GSAP's scroll snapping in the
+   project stack. Smooth jumps go through ScrollToPlugin instead. */
 html {
-  scroll-behavior: smooth;
   background: var(--color-dark);
 }
 

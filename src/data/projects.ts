@@ -92,32 +92,17 @@ export const projects: Project[] = [
   },
     {
     slug: "wash-world",
-    title: "Was World",
+    title: "Wash World",
     tag: "App",
-    description: "Web Dev Project",
-    image: "/img/pictures/madhovedet.avif",
+    description: "Web Dev Exams Project",
+    image: "/img/pictures/wash-world.avif",
     overview:
-      "Madhovedet is a small, personal side project: a mobile application created to simplify the search for recipes across the Danish food universe. This single, cohesive app brings friends and family together with all the recipes they need, eliminating the need to browse multiple sites. Crucially, the design of this app to promote a healthy, balanced relationship with food, meaning it embraces both nutritious meals and enjoyable snacks and drinks. Its design features a playful, experimental, and fresh tone-of-voice to ensure the culinary journey is both accessible and fun.",
+      "Our research showed that the biggest frustrations weren't about the wash itself. People didn't know how long the queue would be, found the payment terminals clunky, and weren't always sure they were doing things right. We designed an app that makes waiting times visible, automates payment, and guides people through the wash.",
     process:
-      "On Madhovedet, I kicked things off by checking out a bunch of other food apps—doing that competitor research helped me figure out what works and what kind of unique look our app needed. That research totally guided the whole aesthetic. For the design, I've been creating all the graphic assets and key visuals, like the logo, icons, and abstract backgrounds, to make sure the app has a genuinely vibrant and coherent brand identity. Right now, a big part of my focus is building an experimental Design System. This is basically the master guide that keeps every single piece of the app consistent, which is crucial for a great user experience. From the tech view, I handle most frontend development. This meant jumping headfirst into learning React Native and the Expo framework, and I use standard CSS for all the styling. I’m currently designing animations in Rive.App that I'll be implementing later on. My goal here is to bring the app's playful tone-of-voice to life through engaging visual movement and make the interactions feel like smooth user-experiment.",
+      "We built the app as a monorepo with a Next.js and TypeScript frontend and a Python/Flask REST API, running in Docker alongside a MariaDB database. We started with a relational database covering users, cars, wash locations, membership plans, receipts and support cases. Each location stores capacity and in-use counts for its wash bays, which lays the groundwork for live waiting times. On the backend, we split the routes by domain and validated all input on the server, returning errors tied to the specific field. We then built a complete account flow with email verification, login, password reset, profile editing and avatar upload. Server data is handled with TanStack Query through custom hooks, and the code is organized by feature. Authentication, the profile page and a searchable location list are connected end to end. Live waiting times, car management and support cases are the next steps.",
     mockups: [
-      { src: "/img/pictures/foodhead-mockup.avif", alt: "Madhovedet mockup" },
-      { src: "/img/pictures/foodhead-mockup2.avif", alt: "Madhovedet mockup" },
-    ],
-  },
-    {
-    slug: "teacher-assistant-platform-ek",
-    title: "Teacher Assistant's Platform",
-    tag: "App",
-    description: "Web Dev Project",
-    image: "/img/pictures/madhovedet.avif",
-    overview:
-      "Madhovedet is a small, personal side project: a mobile application created to simplify the search for recipes across the Danish food universe. This single, cohesive app brings friends and family together with all the recipes they need, eliminating the need to browse multiple sites. Crucially, the design of this app to promote a healthy, balanced relationship with food, meaning it embraces both nutritious meals and enjoyable snacks and drinks. Its design features a playful, experimental, and fresh tone-of-voice to ensure the culinary journey is both accessible and fun.",
-    process:
-      "On Madhovedet, I kicked things off by checking out a bunch of other food apps—doing that competitor research helped me figure out what works and what kind of unique look our app needed. That research totally guided the whole aesthetic. For the design, I've been creating all the graphic assets and key visuals, like the logo, icons, and abstract backgrounds, to make sure the app has a genuinely vibrant and coherent brand identity. Right now, a big part of my focus is building an experimental Design System. This is basically the master guide that keeps every single piece of the app consistent, which is crucial for a great user experience. From the tech view, I handle most frontend development. This meant jumping headfirst into learning React Native and the Expo framework, and I use standard CSS for all the styling. I’m currently designing animations in Rive.App that I'll be implementing later on. My goal here is to bring the app's playful tone-of-voice to life through engaging visual movement and make the interactions feel like smooth user-experiment.",
-    mockups: [
-      { src: "/img/pictures/foodhead-mockup.avif", alt: "Madhovedet mockup" },
-      { src: "/img/pictures/foodhead-mockup2.avif", alt: "Madhovedet mockup" },
+      { src: "/img/pictures/wash-world-mockup-1.avif", alt: "Wash World mockup" },
+      { src: "/img/pictures/wash-world-mockup-2.avif", alt: "Madhovedet mockup" },
     ],
   },
   ];

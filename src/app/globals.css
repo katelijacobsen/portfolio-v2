@@ -449,3 +449,132 @@ h4 + p {
     transition: none;
   }
 }
+
+/* ===== Border Glow =====
+   Cursor-reactive card border (src/components/effects/BorderGlow.tsx). The JS
+   only writes --glow-edge (0 centre → 1 edge) and --glow-angle (direction of
+   the cursor); everything below derives from those two values. The layers use
+   z-index -1 inside the card's own stacking context (`isolation`), so they
+   paint above its background but below its content. */
+.border-glow {
+  --glow-edge: 0;
+  --glow-angle: 45deg;
+  /* The coloured border kicks in a little later than the soft halo. */
+  --_halo-strength: clamp(
+    0,
+    (var(--glow-edge) * 100 - var(--glow-sensitivity)) / (100 - var(--glow-sensitivity)),
+    1
+  );
+  --_border-strength: clamp(
+    0,
+    (var(--glow-edge) * 100 - var(--glow-sensitivity) - 20) / (80 - var(--glow-sensitivity)),
+    1
+  );
+  /* Arc of the card facing the cursor. */
+  --_lit-arc: conic-gradient(
+    from var(--glow-angle),
+    #000 var(--glow-cone),
+    transparent calc(var(--glow-cone) + 15%),
+    transparent calc(85% - var(--glow-cone)),
+    #000 calc(100% - var(--glow-cone))
+  );
+  --_mesh: radial-gradient(at 80% 55%, var(--glow-c1) 0, transparent 50%),
+    radial-gradient(at 69% 34%, var(--glow-c2) 0, transparent 50%),
+    radial-gradient(at 8% 6%, var(--glow-c3) 0, transparent 50%),
+    radial-gradient(at 41% 38%, var(--glow-c1) 0, transparent 50%),
+    radial-gradient(at 86% 85%, var(--glow-c2) 0, transparent 50%),
+    radial-gradient(at 82% 18%, var(--glow-c3) 0, transparent 50%),
+    radial-gradient(at 51% 4%, var(--glow-c2) 0, transparent 50%),
+    linear-gradient(var(--glow-c1) 0 0);
+
+  position: relative;
+  isolation: isolate;
+  background: var(--glow-bg);
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: var(--glow-border-radius);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 10%), 0 4px 8px rgb(0 0 0 / 10%),
+    0 16px 32px rgb(0 0 0 / 10%), 0 32px 64px rgb(0 0 0 / 10%);
+}
+
+.border-glow__border,
+.border-glow__fill,
+.border-glow__halo {
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: opacity 0.75s ease-in-out;
+}
+
+.border-glow:hover > :is(.border-glow__border, .border-glow__fill, .border-glow__halo) {
+  transition: opacity 0.25s ease-out;
+}
+
+/* Mesh gradient, cut down to a 1px ring and then to the lit arc. */
+.border-glow__border {
+  inset: -1px;
+  padding: 1px;
+  z-index: -1;
+  background: var(--_mesh);
+  mask: var(--_lit-arc), linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: intersect, exclude;
+  opacity: var(--_border-strength);
+}
+
+/* Soft colour wash just inside the lit edge. */
+.border-glow__fill {
+  inset: 0;
+  z-index: -1;
+  background: var(--_mesh);
+  mask: var(--_lit-arc), radial-gradient(ellipse at center, transparent 45%, #000 85%);
+  mask-composite: intersect;
+  mix-blend-mode: soft-light;
+  opacity: calc(var(--_border-strength) * var(--glow-fill));
+}
+
+/* Halo that bleeds outside the card, only around the cursor. */
+.border-glow__halo {
+  inset: calc(var(--glow-radius) * -1);
+  z-index: -1;
+  mask: conic-gradient(
+    from var(--glow-angle),
+    #000 2.5%,
+    transparent 10%,
+    transparent 90%,
+    #000 97.5%
+  );
+  mix-blend-mode: plus-lighter;
+  opacity: var(--_halo-strength);
+}
+
+.border-glow__halo::before {
+  --_a: calc(10% * var(--glow-intensity));
+  content: "";
+  position: absolute;
+  inset: var(--glow-radius);
+  border-radius: var(--glow-border-radius);
+  box-shadow: inset 0 0 0 1px hsl(var(--glow-color) / min(100%, calc(var(--_a) * 10))),
+    inset 0 0 3px 0 hsl(var(--glow-color) / min(100%, calc(var(--_a) * 5))),
+    inset 0 0 15px 0 hsl(var(--glow-color) / min(100%, calc(var(--_a) * 3))),
+    inset 0 0 50px 2px hsl(var(--glow-color) / var(--_a)),
+    0 0 3px 0 hsl(var(--glow-color) / min(100%, calc(var(--_a) * 5))),
+    0 0 15px 0 hsl(var(--glow-color) / min(100%, calc(var(--_a) * 3))),
+    0 0 25px 2px hsl(var(--glow-color) / min(100%, calc(var(--_a) * 2))),
+    0 0 50px 2px hsl(var(--glow-color) / var(--_a));
+}
+
+/* No cursor, no glow: skip painting the layers entirely. */
+@media (hover: none) {
+  .border-glow__border,
+  .border-glow__fill,
+  .border-glow__halo {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-glow__border,
+  .border-glow__fill,
+  .border-glow__halo {
+    transition: none;
+  }
+}

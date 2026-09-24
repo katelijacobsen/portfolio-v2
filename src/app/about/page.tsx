@@ -14,7 +14,9 @@ export default function AboutPage() {
       initial={{ opacity: 0, x: 150 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1.4, ease: "anticipate", delay: 0.1 }}
-      className="space-y-sections py-large px-medium md:px-negative max-w-[1440px] m-auto"
+      // `overflow-x-clip` keeps the cards' glow halos from adding a sideways
+      // scrollbar on narrow windows (it does not create a scroll container).
+      className="space-y-sections py-large px-medium md:px-negative max-w-[1440px] m-auto overflow-x-clip"
     >
       <ProfileIntro />
 

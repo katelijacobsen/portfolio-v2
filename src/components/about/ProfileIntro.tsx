@@ -1,4 +1,5 @@
 import Image from "next/image";
+import BorderGlow from "@/components/effects/BorderGlow";
 import Flag from "@/components/ui/Flag";
 import InterestPill from "@/components/ui/InterestPill";
 import { interests, languages } from "@/data/interests";
@@ -25,9 +26,10 @@ export default function ProfileIntro() {
       </div>
 
       <div className="flex gap-medium flex-col order-3 col-span-2 lg:col-span-1 lg:col-start-3 row-start-2 lg:row-start-1 place-self-center">
-        <section
+        <BorderGlow
+          as="section"
           aria-labelledby="interests-heading"
-          className="bg-caption space-y-medium border border-gray-600 rounded-lg p-medium"
+          className="flex flex-col gap-medium p-medium"
         >
           <h3 id="interests-heading" className="headline-regular">
             Interests
@@ -37,11 +39,12 @@ export default function ProfileIntro() {
               <InterestPill key={interest.label} {...interest} />
             ))}
           </ul>
-        </section>
+        </BorderGlow>
 
-        <section
+        <BorderGlow
+          as="section"
           aria-labelledby="languages-heading"
-          className="bg-caption p-medium inline-flex justify-between items-center rounded-lg border border-gray-600 w-full"
+          className="p-medium flex justify-between items-center w-full"
         >
           <h3 id="languages-heading" className="headline-regular">
             Languages
@@ -51,7 +54,7 @@ export default function ProfileIntro() {
               <Flag key={code} countryCode={code} />
             ))}
           </ul>
-        </section>
+        </BorderGlow>
       </div>
     </article>
   );

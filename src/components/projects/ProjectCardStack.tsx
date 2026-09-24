@@ -7,17 +7,17 @@ import { useProjectCardStack } from "@/hooks/useProjectCardStack";
 import ProjectCard from "./ProjectCard";
 import ProjectOverlay from "./ProjectOverlay";
 
+interface ProjectCardStackProps {
+  /** Rendered above the deck and pinned with it, so it stays put while stepping. */
+  heading?: ReactNode;
+}
+
 /**
  * The scroll-driven deck of project cards plus the overlay it opens.
  *
  * Owns which project is open; the GSAP wiring lives in `useProjectCardStack`
  * and the card markup in `ProjectCard`, so this component only coordinates.
  */
-interface ProjectCardStackProps {
-  /** Rendered above the deck and pinned with it, so it stays put while stepping. */
-  heading?: ReactNode;
-}
-
 export default function ProjectCardStack({ heading }: ProjectCardStackProps) {
   const pinRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);

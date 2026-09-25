@@ -2,10 +2,12 @@
 
 import { motion } from "motion/react";
 import ProfileIntro from "@/components/about/ProfileIntro";
+import RecommendationsSection from "@/components/about/RecommendationsSection";
 import ResumeSection from "@/components/about/ResumeSection";
 import SkillsMarquee from "@/components/effects/SkillsMarquee";
 import { educations } from "@/data/educations";
 import { experiences } from "@/data/experiences";
+import { recommendations } from "@/data/recommendations";
 
 /** About page. Content lives in `src/data`; layout is composed from sections. */
 export default function AboutPage() {
@@ -29,6 +31,8 @@ export default function AboutPage() {
         <ResumeSection heading="Experience" entries={experiences} />
         <ResumeSection heading="Education" entries={educations} />
       </article>
+
+      <RecommendationsSection recommendations={recommendations} />
     </motion.main>
   );
 }

@@ -17,8 +17,8 @@ export const siteConfig = {
   description:
     "Hi — I'm Katja, a web developer who likes to understand how things work all the way through. Knowing how data flows from the backend to the screen lets me build applications that are fast, reliable and accessible to everyone, not just nice on the surface. Explaining that to others as a teaching assistant has only made me better at it",
   ogDescription:
-    "Portfolio of Katja Mähleke – specializing in intuitive UI/UX and modern frontend development with a strong foundation in accessibility and design thinking.",
-  ogTitle: "Katja Mähleke – Multimedia Designer & Frontend Developer",
+    "Portfolio of Katja Mähleke – specializing in web development with a strong focus on maintainability and accessibility, from the backend to the screen",
+  ogTitle: "Katja Mähleke – Full-stack Developer & Multimedia Designer",
   keywords: [
     "Katja Mähleke",
     "Multimedia Designer",

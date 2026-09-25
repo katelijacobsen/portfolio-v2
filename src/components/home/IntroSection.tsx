@@ -2,7 +2,7 @@ import Image from "next/image";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 
 const INTRO_TEXT =
-  "Hi — I'm Katja! I'm a designer with a strong passion for web design that is accessible to all users. I focus on using my UI/UX skills to create intuitive, straightforward digital experiences, including responsive design to ensure consistent performance across devices.";
+  "Hi — I'm Katja, a web developer who likes to understand how things work all the way through. Knowing how data flows from the backend to the screen lets me build applications that are fast, reliable and accessible to everyone, not just nice on the surface. Explaining that to others as a teaching assistant has only made me better at it";
 
 /** Short personal introduction, revealed word by word on scroll. */
 export default function IntroSection() {
